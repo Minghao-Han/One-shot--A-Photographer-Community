@@ -1,4 +1,4 @@
-package com.ShengQin.OneShot.Controllers;
+package com.ShengQin.OneShot.UserThings.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
