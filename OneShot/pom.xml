@@ -17,12 +17,20 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-		<!--jwt 依赖-->
+		<!-- JWT依赖 -->
 		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.10.3</version>
 		</dependency>
+		<!-- json,用来返回信息 -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -63,7 +71,7 @@
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-core</artifactId>
-			<version>8.5.35</version>
+			<version>10.1.7</version>
 		</dependency>
 	</dependencies>
 
