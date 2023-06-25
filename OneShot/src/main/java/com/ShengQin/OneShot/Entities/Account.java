@@ -16,7 +16,7 @@ public class Account {
     }
 
    public Account newAccount(String email, String password){
-        int id = IdGenerator.newID();
+        int id = IdGenerator.newUserID();
         return new Account(id,email,password);
    }
 }

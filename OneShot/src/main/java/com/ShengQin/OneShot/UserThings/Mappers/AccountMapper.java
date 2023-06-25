@@ -20,4 +20,6 @@ public interface AccountMapper {
      public void delete(Account account);
      @Select("select password from account where email = #{email}")
      public String getPassword(String email);
+    @Select("select id from account where email = #{email}")
+     public int getId(String email);
 }
