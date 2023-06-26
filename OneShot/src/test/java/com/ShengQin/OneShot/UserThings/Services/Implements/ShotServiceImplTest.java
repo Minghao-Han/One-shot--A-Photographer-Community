@@ -26,11 +26,18 @@ class ShotServiceImplTest {
         tags.add("帅");
         tags.add("钓鱼");
         tags.add("武汉大学");
+        tags.add("185黑皮");
+        tags.add("体育生");
         shotService.createShot(user_id,title,content,time,tags);
     }
 
     @Test
     void addThumb() {
         shotService.addThumb(8);
+    }
+
+    @Test
+    void delete() {
+        shotService.delete(7);
     }
 }

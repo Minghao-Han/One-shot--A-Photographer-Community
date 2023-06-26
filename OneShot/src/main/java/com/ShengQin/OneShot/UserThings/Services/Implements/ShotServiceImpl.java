@@ -19,32 +19,28 @@ public class ShotServiceImpl implements ShotService {
 
     @Override
     public Shot getShot(int shot_id) {
-        return null;
+        return shotMapper.getShot(shot_id);
     }
 
     @Override
     public boolean isExist(Shot shot) {
-        return false;
+        return shotMapper.isExist(shot);
     }
 
     @Override
     public boolean isExist(int shot_id) {
-        return false;
+        return shotMapper.idExist(shot_id);
     }
 
     @Override
-    public void insert(Shot newShot) {
-
-    }
-
-    @Override
-    public void update(Shot updatedShot) {
-
+    public void save(Shot shot) {
+        shotMapper.save(shot);
     }
 
     @Override
     public void delete(int shot_id) {
-
+        tagMapper.removeTagsFromShot(shot_id);
+        shotMapper.delete(shot_id);
     }
 
     @Override

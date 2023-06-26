@@ -28,7 +28,8 @@ public interface ShotMapper {
         }
         else insert(shot);
     }
-    public boolean isExist(int user_id);
+    @Select("select count(*) from shot where id=#{shot_id}")
+    public boolean idExist(int shot_id);
     @Select("select count(*) from shot where id=#{id}")
     public boolean isExist(Shot shot);
 
@@ -45,6 +46,8 @@ public interface ShotMapper {
 
     @Update("update shot set title=#{title},content=#{content},total_thumb=#{total_thumb},total_collect=#{total_collect},page_view=#{pageView},time=#{createTime} where id=#{id}")
     public void update(Shot updatedShot);
+    @Delete("delete from shot where id=#{shot_id}")
+    public void delete(int shot_id);
     public List<Shot> getRecommendShot(List<String> tags,int pageNum);//多条件查询
     public List<Shot> getShotsOf(int user_id, int pageNum);
 
