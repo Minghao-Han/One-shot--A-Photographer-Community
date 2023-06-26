@@ -21,6 +21,13 @@ public class User {
         this.personalSignature = personalSignature;
     }
 
+    public User(String userName, Gender gender, int age, String personalSignature) {
+        this.userName = userName;
+        this.gender = gender;
+        this.age = age;
+        this.personalSignature = personalSignature;
+    }
+
     public User(String userName, Integer id) {
         this.userName = userName;
         this.id = id;

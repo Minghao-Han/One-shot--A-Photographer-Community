@@ -1,6 +1,5 @@
 package com.ShengQin.OneShot.Entities;
 
-import com.ShengQin.OneShot.Utils.IdGenerator;
 import lombok.Data;
 
 @Data
@@ -9,14 +8,8 @@ public class Account {
     private String email;
     private String password;
 
-    public Account(int id, String email, String password) {
-        this.id = id;
+    public Account(String email, String password) {//id在mysql设置乘auto increase
         this.email = email;
         this.password = password;
     }
-
-   public Account newAccount(String email, String password){
-        int id = IdGenerator.newUserID();
-        return new Account(id,email,password);
-   }
 }

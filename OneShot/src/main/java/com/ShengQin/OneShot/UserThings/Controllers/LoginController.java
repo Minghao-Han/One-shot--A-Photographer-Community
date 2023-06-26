@@ -16,7 +16,7 @@ public class LoginController {
     LoginService loginService;
 
     @PostMapping("/login")
-    public String test(@RequestBody Map<String,String> data){
+    public String login(@RequestBody Map<String,String> data){
         //要补log
         String email = data.get("email");
         String password = data.get("password");

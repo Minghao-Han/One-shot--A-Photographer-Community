@@ -17,7 +17,7 @@ public interface ShotService {
     public void update(Shot updatedShot);
     public void delete(int shot_id);
 
-    public void createShot(String title, String content, Date time, List<String> tags);
-    public void addThumb(Shot shot);
-    public void addCollect(Shot shot);
+    public void createShot(int user_id, String title, String content, Date time, List<String> tags);
+    public void addThumb(int shot_id);
+    public void addCollect(int shot_id);
 }
