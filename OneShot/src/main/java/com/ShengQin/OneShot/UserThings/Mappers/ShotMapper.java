@@ -48,7 +48,17 @@ public interface ShotMapper {
     public void update(Shot updatedShot);
     @Delete("delete from shot where id=#{shot_id}")
     public void delete(int shot_id);
-    public List<Shot> getRecommendShot(List<String> tags,int pageNum);//多条件查询
-    public List<Shot> getShotsOf(int user_id, int pageNum);
+    @Select("<script>select  from shot_tags where"
+            +"<foreach collection='tags' item ='tag' separator='or'>"+
+            "tag=#{tag}"+
+            "</foreach></script>"
+    )
+    public int getShotMatchesPreferenceHighTotal(List<String> tags,int pageNum);//获得符合用户喜好且高浏览点赞比的shot总数
+    public List<Integer> getShotMatchesPreferenceHigh(List<String> tags,int pageNum);//多条件查询,获得符合用户喜好且高浏览点赞比的shot
+    public List<Integer> getShotMatchesPreferenceLow(List<String> tags,int pageNum);//多条件查询,获得符合用户喜好但低浏览点赞比的shot
+    public int getShotIgnoresPreferenceHighTotal(int pageNum);//获得不匹配用户喜好，高浏览点赞比的shot总数
+    public List<Integer> getShotIgnorePreferenceHigh(int pageNum);//多条件查询,不匹配用户喜好但高浏览点赞比的shot
+    public List<Integer> getShotIgnorePreferenceLow(int pageNum);//多条件查询,不匹配用户喜好且低浏览点赞比的shot
+    public List<Integer> getShotsOfUser(int user_id, int pageNum);
 
 }

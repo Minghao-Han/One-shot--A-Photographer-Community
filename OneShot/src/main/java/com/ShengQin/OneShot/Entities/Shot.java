@@ -1,6 +1,7 @@
 package com.ShengQin.OneShot.Entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -8,7 +9,9 @@ import java.util.Date;
 @Data
 public class Shot {
     private int id;
-    private int user_id;//该shot属于谁
+    private int user_id;//作者id
+
+    private String userName;//作者用户名
     private String title;
     private String content;
     private int total_thumb;

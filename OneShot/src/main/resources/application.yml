@@ -11,5 +11,9 @@ mybatis:
     #下划线转驼峰
     map-underscore-to-camel-case: true
 
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
 
 
