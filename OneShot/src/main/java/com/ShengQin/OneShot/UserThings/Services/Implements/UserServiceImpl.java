@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
     @Override
     public User getUser(int user_id) {
-        return null;
+        return userMapper.getUser(user_id);
     }
 
     @Override
@@ -22,13 +22,9 @@ public class UserServiceImpl implements UserService {
         userMapper.save(user);
     }
 
-    @Override
-    public List<String> getPreference(int user_id) {
-        return null;
-    }
 
     @Override
     public String getUserName(int user_id) {
-        return null;
+        return userMapper.getUserName(user_id);
     }
 }

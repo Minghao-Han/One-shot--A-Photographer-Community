@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class UserMapperTest {
     @Autowired
@@ -17,6 +15,6 @@ class UserMapperTest {
     void isExist() {
         User testUser = new User("韩明昊", Gender.Male,20,"hahahahaha");
         testUser.setId(4);
-        System.out.println(userMapper.isExist(testUser));
+        System.out.println(userMapper.isExistBy(testUser));
     }
 }

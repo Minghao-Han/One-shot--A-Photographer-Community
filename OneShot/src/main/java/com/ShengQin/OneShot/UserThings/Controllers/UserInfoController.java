@@ -26,8 +26,8 @@ public class UserInfoController {
         int age = (int) userInfo.get("age");
         int id = (int) userInfo.get("id");
         String personSignature = (String) userInfo.get("personSignature");
-        User newUser = new User(userName, id, Gender.getGender(genderStr), age, personSignature);
-        userService.saveUser(newUser);
+        User updatedUser = new User(userName, id, Gender.getGender(genderStr), age, personSignature);
+        userService.saveUser(updatedUser);
         return Result.success("修改个人信息成功");
     }
 }

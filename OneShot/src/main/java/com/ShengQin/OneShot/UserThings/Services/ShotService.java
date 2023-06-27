@@ -15,4 +15,7 @@ public interface ShotService {
     public void createShot(int user_id, String title, String content, Date time, List<String> tags);
     public void addThumb(int shot_id);
     public void addCollect(int shot_id);
+    public void addPageView(int shot_id);
+    public void subThumb(int shot_id);
+    public void subCollect(int shot_id);
 }

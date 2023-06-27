@@ -13,6 +13,9 @@ public class User {
     private int age;
     private String personalSignature;
 
+    /**一定要有无参构造函数！不然mybatis只能根据全参构造按顺序对应*/
+    public User(){}
+
     public User(String userName, Integer id, Gender gender, int age, String personalSignature) {
         this.userName = userName;
         this.id = id;

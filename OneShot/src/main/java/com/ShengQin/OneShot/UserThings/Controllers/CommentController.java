@@ -1,6 +1,7 @@
 package com.ShengQin.OneShot.UserThings.Controllers;
 
 import com.ShengQin.OneShot.Entities.Comment;
+import com.ShengQin.OneShot.Security.TokenUtil;
 import com.ShengQin.OneShot.UserThings.Services.PostCommentService;
 import com.ShengQin.OneShot.UserThings.Services.ShotCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,7 @@ public class CommentController {
         int commentator_id = (int) requestBody.get("commentator_id");
         int shot_id = (int) requestBody.get("shot_id");
         int parent_id = (int) requestBody.get("parent_id");
-        Date time = (Date) requestBody.get("time");
-        boolean serviceResult = shotCommentService.createComment(shot_id,parent_id,commentator_id,time,content);
+        boolean serviceResult = shotCommentService.createComment(shot_id,parent_id,commentator_id,content);
         if (serviceResult) return Result.success("评论成功");
         else return Result.fail("评论失败");
     }
@@ -34,10 +34,12 @@ public class CommentController {
     @DeleteMapping("/shot")
     public String deleteCommentOfShot(@RequestBody Map<String,Integer> requestBody){
         int shot_id = requestBody.get("shot_id");
-        int comment_id = requestBody.get("comment_id");
-        boolean serviceResult = shotCommentService.deleteComment(comment_id,shot_id);
-        if (serviceResult) return Result.success("评论成功");
-        else return Result.fail("评论失败");
+        int innerID = requestBody.get("innerID");
+//        System.out.println(shot_id);
+//        System.out.println(innerID);
+        boolean serviceResult = shotCommentService.deleteComment(innerID,shot_id);
+        if (serviceResult) return Result.success("删除评论成功");
+        else return Result.fail("删除评论失败");
     }
 
     @GetMapping("/shot/{shot_id}/{pageNum}")

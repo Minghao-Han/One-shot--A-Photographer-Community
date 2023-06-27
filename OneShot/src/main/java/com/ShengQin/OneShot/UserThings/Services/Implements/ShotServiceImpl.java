@@ -64,4 +64,25 @@ public class ShotServiceImpl implements ShotService {
         shot.addCollect();
         shotMapper.save(shot);
     }
+
+    @Override
+    public void addPageView(int shot_id) {
+        Shot shot = shotMapper.getShot(shot_id);
+        shot.addPageView();
+        shotMapper.save(shot);
+    }
+
+    @Override
+    public void subThumb(int shot_id) {
+        Shot shot = shotMapper.getShot(shot_id);
+        shot.subThumb();
+        shotMapper.save(shot);
+    }
+
+    @Override
+    public void subCollect(int shot_id) {
+        Shot shot = shotMapper.getShot(shot_id);
+        shot.subCollect();
+        shotMapper.save(shot);
+    }
 }

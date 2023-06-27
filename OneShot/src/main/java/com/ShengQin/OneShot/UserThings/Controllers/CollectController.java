@@ -19,38 +19,54 @@ public class CollectController {
     /**shot*/
     @PostMapping("/shot")
     public String shotCollect(@RequestBody Map<String,Integer> requestBody){
-        int thumber_id = requestBody.get("thumber_id");
+        int collector_id = requestBody.get("collector_id");
         int shot_id = requestBody.get("shot_id");
-        boolean successfulAdd = shotCollectService.collect(thumber_id,shot_id);
-        if (successfulAdd) return Result.success("收藏成功");
-        else return Result.fail("已收藏");
+        int serviceResult = shotCollectService.collect(collector_id,shot_id);
+        switch (serviceResult){
+            case ShotCollectService.success -> {return Result.success("收藏成功");}
+            case ShotCollectService.notExist -> {return Result.fail("收藏的作品不存在");}
+            case ShotCollectService.operated -> {return Result.fail("已收藏");}
+            default -> {return Result.fail("something wrong");}
+        }
     }
 
     @DeleteMapping("/shot")
     public String shotCancelCollect(@RequestBody Map<String,Integer> requestBody){
-        int thumber_id = requestBody.get("thumber_id");
+        int collector_id = requestBody.get("collector_id");
         int shot_id = requestBody.get("shot_id");
-        boolean successfulAdd = shotCollectService.collect(thumber_id,shot_id);
-        if (successfulAdd) return Result.success("取消收藏成功");
-        else return Result.fail("取消收藏失败");
+        int serviceResult = shotCollectService.cancelCollect(collector_id,shot_id);
+        switch (serviceResult){
+            case ShotCollectService.success -> {return Result.success("取消收藏成功");}
+            case ShotCollectService.notExist -> {return Result.fail("取消收藏的作品不存在");}
+            case ShotCollectService.operated -> {return Result.fail("尚未收藏");}
+            default -> {return Result.fail("something wrong");}
+        }
     }
 
     /**post*/
     @PostMapping("/post")
     public String postCollect(@RequestBody Map<String,Integer> requestBody){
-        int thumber_id = requestBody.get("thumber_id");
-        int shot_id = requestBody.get("post_id");
-        boolean successfulAdd = postCollectService.collect(thumber_id,shot_id);
-        if (successfulAdd) return Result.success("收藏成功");
-        else return Result.fail("已收藏");
+        int thumber_id = requestBody.get("collector_id");
+        int post_id = requestBody.get("post_id");
+        int serviceResult = postCollectService.collect(thumber_id,post_id);
+        switch (serviceResult){
+            case ShotCollectService.success -> {return Result.success("收藏成功");}
+            case ShotCollectService.notExist -> {return Result.fail("收藏的作品不存在");}
+            case ShotCollectService.operated -> {return Result.fail("已收藏");}
+            default -> {return Result.fail("something wrong");}
+        }
     }
 
     @DeleteMapping("/post")
     public String postCancelCollect(@RequestBody Map<String,Integer> requestBody){
-        int thumber_id = requestBody.get("thumber_id");
-        int shot_id = requestBody.get("post_id");
-        boolean successfulAdd = postCollectService.collect(thumber_id,shot_id);
-        if (successfulAdd) return Result.success("取消收藏成功");
-        else return Result.fail("取消收藏失败");
+        int collector_id = requestBody.get("collector_id");
+        int post_id = requestBody.get("post_id");
+        int serviceResult = postCollectService.cancelCollect(collector_id,post_id);
+        switch (serviceResult){
+            case ShotCollectService.success -> {return Result.success("取消收藏成功");}
+            case ShotCollectService.notExist -> {return Result.fail("取消收藏的作品不存在");}
+            case ShotCollectService.operated -> {return Result.fail("尚未收藏");}
+            default -> {return Result.fail("something wrong");}
+        }
     }
 }

@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostCollectServiceImpl implements PostCollectService {
     @Override
-    public boolean collect(int collector_id, int post_id) {
-        return false;
+    public int collect(int collector_id, int post_id) {
+        return operated;
     }
 
     @Override
-    public boolean CancelCollect(int collector_id, int post_id) {
-        return false;
+    public int cancelCollect(int collector_id, int post_id) {
+        return operated;
     }
 }
