@@ -4,6 +4,7 @@ import com.ShengQin.OneShot.Entities.Shot;
 import com.ShengQin.OneShot.UserThings.Mappers.ShotMapper;
 import com.ShengQin.OneShot.UserThings.Services.PreferenceService;
 import com.ShengQin.OneShot.UserThings.Services.ShotBrowseService;
+import com.ShengQin.OneShot.UserThings.Services.ShotVOService;
 import com.ShengQin.OneShot.UserThings.Services.UserService;
 import com.ShengQin.OneShot.Utils.ServiceResult;
 import com.ShengQin.OneShot.VO.ShotVO;
@@ -22,7 +23,7 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
     @Autowired
     PreferenceService preferenceService;
     @Autowired
-    UserService userService;
+    ShotVOService shotVOService;
 
     @Override
     public ServiceResult addPageView(int shot_id) {
@@ -71,8 +72,7 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
         }
         for (Shot shot :
                 shots) {
-            String userName = userService.getUserName(shot.getUser_id());
-            shotVOs.add(ShotVO.createShotVO(shot,userName));
+            shotVOs.add(shotVOService.createShotVO(shot));
         }
         return shotVOs;
     }

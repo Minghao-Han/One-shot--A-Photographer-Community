@@ -18,8 +18,4 @@ public class ShotVO {//相比Shot增加作者用户名，仅用来向前端传�
     private int total_collect;
     private int pageView;//浏览量
     private Date createTime;
-    public static ShotVO createShotVO(Shot shot,String user_name){
-        ShotVO newShotVO = new ShotVO(shot.getId(), shot.getUser_id(),user_name, shot.getTitle(), shot.getContent(), shot.getTotal_thumb(), shot.getTotal_collect(), shot.getPageView(), shot.getCreateTime());
-        return newShotVO;
-    }
 }

@@ -3,9 +3,11 @@ package com.ShengQin.OneShot.UserThings.Controllers;
 import com.ShengQin.OneShot.UserThings.Services.PostCollectService;
 import com.ShengQin.OneShot.UserThings.Services.ShotCollectService;
 import com.ShengQin.OneShot.Utils.Result;
+import com.ShengQin.OneShot.VO.ShotVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -72,6 +74,8 @@ public class CollectController {
 
     @GetMapping("/check/shot/{user_id}/{pageNum}")
     public String testCheckCollections(@PathVariable("user_id")int user_id,@PathVariable("pageNum")int pageNum){
-        return Result.success("666");
+        List<ShotVO> collections = shotCollectService.getUserShotCollections(user_id, pageNum);
+        if (!collections.isEmpty())return Result.success("成功获取收藏",collections);
+        else return Result.success("成功但没更多收藏");
     }
 }

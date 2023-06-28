@@ -4,6 +4,7 @@ import com.ShengQin.OneShot.Entities.Comment;
 import com.ShengQin.OneShot.Security.TokenUtil;
 import com.ShengQin.OneShot.UserThings.Services.PostCommentService;
 import com.ShengQin.OneShot.UserThings.Services.ShotCommentService;
+import com.ShengQin.OneShot.VO.CommentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ShengQin.OneShot.Utils.Result;
@@ -26,7 +27,8 @@ public class CommentController {
         int commentator_id = (int) requestBody.get("commentator_id");
         int shot_id = (int) requestBody.get("shot_id");
         int parent_id = (int) requestBody.get("parent_id");
-        boolean serviceResult = shotCommentService.createComment(shot_id,parent_id,commentator_id,content);
+        int receiver_id = (int) requestBody.get("receiver_id");
+        boolean serviceResult = shotCommentService.createComment(shot_id,parent_id,commentator_id,content,receiver_id);
         if (serviceResult) return Result.success("评论成功");
         else return Result.fail("评论失败");
     }
@@ -44,8 +46,8 @@ public class CommentController {
 
     @GetMapping("/shot/{shot_id}/{pageNum}")
     public String shotGetMoreComment(@PathVariable("shot_id")int shot_id,@PathVariable("pageNum")int pageNum){
-        List<Comment> comments = shotCommentService.getComments(shot_id,pageNum);
-        return Result.success("获得下一页评论成功",comments);
+        List<CommentVO> commentVOs = shotCommentService.getComments(shot_id,pageNum);
+        return Result.success("获得下一页评论成功",commentVOs);
     }
 
     /**post*/
@@ -68,7 +70,7 @@ public class CommentController {
         if (serviceResult) return Result.success("评论成功");
         else return Result.fail("评论失败");
     }
-    @GetMapping("/shot/{post_id}/{pageNum}")
+    @GetMapping("/post/{post_id}/{pageNum}")
     public String postGetMoreComment(@PathVariable("post_id")int post_id,@PathVariable("pageNum")int pageNum){
         List<Comment> comments = postCommentService.getComments(post_id,pageNum);
         return Result.success("获得下一页评论成功",comments);

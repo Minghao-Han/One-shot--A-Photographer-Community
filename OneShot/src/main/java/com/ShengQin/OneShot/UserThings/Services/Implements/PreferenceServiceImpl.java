@@ -35,7 +35,7 @@ public class PreferenceServiceImpl implements PreferenceService {
     @Override
     public boolean removePreferences(List<String> tags, int user_id) {
         return false;
-    }
+    }//似乎没用
 
     @Override
     public List<String> getPreferences(int user_id) {
