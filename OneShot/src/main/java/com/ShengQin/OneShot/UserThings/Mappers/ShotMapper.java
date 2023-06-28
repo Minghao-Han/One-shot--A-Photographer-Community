@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface ShotMapper {
+    public static final int RECOMMEND_TV_RATE = 2;//推荐的浏览点赞比
     public Shot getShotWithTags(int shot_id);
     @Select("select * from shot where id = #{shot_id}")
     @Results(id="shotMap", value={
@@ -48,17 +49,41 @@ public interface ShotMapper {
     public void update(Shot updatedShot);
     @Delete("delete from shot where id=#{shot_id}")
     public void delete(int shot_id);
-    @Select("<script>select  from shot_tags where"
-            +"<foreach collection='tags' item ='tag' separator='or'>"+
+    @Select("<script>select count(*) from shot where id in(" +
+            "select distinct shot_id from shot_tags where"+
+            "<foreach collection='tags' item ='tag' separator='or'>"+
             "tag=#{tag}"+
-            "</foreach></script>"
+            "</foreach>)" +
+            "and page_view != 0 and (total_thumb/page_view)>=2</script>"
     )
-    public int getShotMatchesPreferenceHighTotal(List<String> tags,int pageNum);//获得符合用户喜好且高浏览点赞比的shot总数
-    public List<Integer> getShotMatchesPreferenceHigh(List<String> tags,int pageNum);//多条件查询,获得符合用户喜好且高浏览点赞比的shot
-    public List<Integer> getShotMatchesPreferenceLow(List<String> tags,int pageNum);//多条件查询,获得符合用户喜好但低浏览点赞比的shot
-    public int getShotIgnoresPreferenceHighTotal(int pageNum);//获得不匹配用户喜好，高浏览点赞比的shot总数
-    public List<Integer> getShotIgnorePreferenceHigh(int pageNum);//多条件查询,不匹配用户喜好但高浏览点赞比的shot
-    public List<Integer> getShotIgnorePreferenceLow(int pageNum);//多条件查询,不匹配用户喜好且低浏览点赞比的shot
-    public List<Integer> getShotsOfUser(int user_id, int pageNum);
+    public int getShotMatchesPreferenceHighTotal(List<String> tags);//获得符合用户喜好且高浏览点赞比的shot总数
+
+    @Select("<script>select * from shot where id in(" +
+            "select distinct shot_id from shot_tags where"+
+            "<foreach collection='tags' item ='tag' separator='or'>"+
+            "tag=#{tag}"+
+            "</foreach>)" +
+            "and page_view != 0 and (total_thumb/page_view)>=2</script>"
+    )
+    @ResultMap("shotMap")
+    public List<Shot> getShotMatchesPreferenceHigh(List<String> tags);//多条件查询,获得符合用户喜好且高浏览点赞比的shot
+    @Select("<script>select * from shot where id in(" +
+            "select distinct shot_id from shot_tags where"+
+            "<foreach collection='tags' item ='tag' separator='or'>"+
+            "tag=#{tag}"+
+            "</foreach>)" +
+            "and (page_view = 0 or (page_view !=0 and 2 > (total_thumb/page_view))) </script>"
+    )
+    @ResultMap("shotMap")
+    public List<Shot> getShotMatchesPreferenceLow(List<String> tags);//多条件查询,获得符合用户喜好但低浏览点赞比的shot
+    @Select("select count(*) from shot where page_view != 0 and (total_thumb/page_view)>=2")
+    public int getShotIgnoresPreferenceHighTotal();//获得不匹配用户喜好，高浏览点赞比的shot总数
+    @Select("select * from shot where page_view != 0 and (total_thumb/page_view)>=2")
+    @ResultMap("shotMap")
+    public List<Shot> getShotIgnorePreferenceHigh();//多条件查询,不匹配用户喜好但高浏览点赞比的shot
+    @Select("select * from shot where (page_view != 0 and 2>(total_thumb/page_view)) or (page_view = 0)")
+    @ResultMap("shotMap")
+    public List<Shot> getShotIgnorePreferenceLow();//多条件查询,不匹配用户喜好且低浏览点赞比的shot
+    public List<Shot> getShotsOfUser(int user_id);
 
 }

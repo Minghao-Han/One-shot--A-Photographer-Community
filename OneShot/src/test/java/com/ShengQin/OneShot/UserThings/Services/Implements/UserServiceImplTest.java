@@ -18,4 +18,9 @@ class UserServiceImplTest {
         User user = userService.getUser(4);
         System.out.println(user);
     }
+
+    @Test
+    void getUserName() {
+        System.out.println(userService.getUserName(5));
+    }
 }

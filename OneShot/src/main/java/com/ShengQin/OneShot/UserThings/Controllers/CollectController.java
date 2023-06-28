@@ -3,8 +3,6 @@ package com.ShengQin.OneShot.UserThings.Controllers;
 import com.ShengQin.OneShot.UserThings.Services.PostCollectService;
 import com.ShengQin.OneShot.UserThings.Services.ShotCollectService;
 import com.ShengQin.OneShot.Utils.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
