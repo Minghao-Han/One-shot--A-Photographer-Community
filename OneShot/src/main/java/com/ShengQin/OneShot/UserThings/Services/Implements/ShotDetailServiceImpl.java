@@ -5,12 +5,12 @@ import com.ShengQin.OneShot.UserThings.Services.*;
 import com.ShengQin.OneShot.VO.CommentVO;
 import com.ShengQin.OneShot.VO.ShotVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Service
 public class ShotDetailServiceImpl implements ShotDetailService {
@@ -19,7 +19,8 @@ public class ShotDetailServiceImpl implements ShotDetailService {
     @Autowired
     ShotVOService shotVOService;
     @Autowired
-    ShotCommentService shotCommentService;
+    @Qualifier("shotCommentServiceImpl")
+    CommentService shotCommentServiceImpl;
 
     @Override
     public Map<String, Object> getShotDetail(int shot_id) {
@@ -27,7 +28,7 @@ public class ShotDetailServiceImpl implements ShotDetailService {
         Shot shot = shotService.getShot(shot_id);
         ShotVO shotVO = shotVOService.createShotVO(shot);
         shotWithFewComments.put("shotVO",shotVO);
-        List<CommentVO> commentVOs = shotCommentService.getComments(shot_id,1);
+        List<CommentVO> commentVOs = shotCommentServiceImpl.getComments(shot_id,1);
         shotWithFewComments.put("commentVOs",commentVOs);
         return shotWithFewComments;
     }

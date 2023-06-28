@@ -1,11 +1,11 @@
 package com.ShengQin.OneShot.UserThings.Controllers;
 
 import com.ShengQin.OneShot.Entities.Comment;
-import com.ShengQin.OneShot.Security.TokenUtil;
-import com.ShengQin.OneShot.UserThings.Services.PostCommentService;
-import com.ShengQin.OneShot.UserThings.Services.ShotCommentService;
+import com.ShengQin.OneShot.UserThings.Services.CommentService;
 import com.ShengQin.OneShot.VO.CommentVO;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.ShengQin.OneShot.Utils.Result;
 import java.util.Date;
@@ -16,9 +16,11 @@ import java.util.Map;
 @RequestMapping("/comment")
 public class CommentController {
     @Autowired
-    ShotCommentService shotCommentService;
+    @Qualifier("shotCommentServiceImpl")
+    private CommentService shotCommentServiceImpl;
     @Autowired
-    PostCommentService postCommentService;
+    @Qualifier("shotCommentServiceImpl")
+    private CommentService postCommentServiceImpl;
 
     /**shot评论*/
     @PostMapping("/shot")
@@ -28,7 +30,7 @@ public class CommentController {
         int shot_id = (int) requestBody.get("shot_id");
         int parent_id = (int) requestBody.get("parent_id");
         int receiver_id = (int) requestBody.get("receiver_id");
-        boolean serviceResult = shotCommentService.createComment(shot_id,parent_id,commentator_id,content,receiver_id);
+        boolean serviceResult = shotCommentServiceImpl.createComment(shot_id,parent_id,commentator_id,content,receiver_id);
         if (serviceResult) return Result.success("评论成功");
         else return Result.fail("评论失败");
     }
@@ -39,14 +41,14 @@ public class CommentController {
         int innerID = requestBody.get("innerID");
 //        System.out.println(shot_id);
 //        System.out.println(innerID);
-        boolean serviceResult = shotCommentService.deleteComment(innerID,shot_id);
+        boolean serviceResult = shotCommentServiceImpl.deleteComment(innerID,shot_id);
         if (serviceResult) return Result.success("删除评论成功");
         else return Result.fail("删除评论失败");
     }
 
     @GetMapping("/shot/{shot_id}/{pageNum}")
     public String shotGetMoreComment(@PathVariable("shot_id")int shot_id,@PathVariable("pageNum")int pageNum){
-        List<CommentVO> commentVOs = shotCommentService.getComments(shot_id,pageNum);
+        List<CommentVO> commentVOs = shotCommentServiceImpl.getComments(shot_id,pageNum);
         return Result.success("获得下一页评论成功",commentVOs);
     }
 
@@ -57,8 +59,8 @@ public class CommentController {
         int commentator_id = (int) requestBody.get("commentator_id");
         int post_id = (int) requestBody.get("post_id");
         int parent_id = (int) requestBody.get("parent_id");
-        Date time = (Date) requestBody.get("time");
-        boolean serviceResult = postCommentService.createComment(post_id,parent_id,commentator_id,time,content);
+        int receiver_id = (int) requestBody.get("receiver_id");
+        boolean serviceResult = postCommentServiceImpl.createComment(post_id,parent_id,commentator_id,content,receiver_id);
         if (serviceResult) return Result.success("评论成功");
         else return Result.fail("评论失败");
     }
@@ -66,13 +68,13 @@ public class CommentController {
     public String deleteCommentOfPost(@RequestBody Map<String,Integer> requestBody){
         int shot_id = requestBody.get("post_id");
         int comment_id = requestBody.get("comment_id");
-        boolean serviceResult = postCommentService.deleteComment(comment_id,shot_id);
+        boolean serviceResult = postCommentServiceImpl.deleteComment(comment_id,shot_id);
         if (serviceResult) return Result.success("评论成功");
         else return Result.fail("评论失败");
     }
     @GetMapping("/post/{post_id}/{pageNum}")
     public String postGetMoreComment(@PathVariable("post_id")int post_id,@PathVariable("pageNum")int pageNum){
-        List<Comment> comments = postCommentService.getComments(post_id,pageNum);
-        return Result.success("获得下一页评论成功",comments);
+        List<CommentVO> commentVOs = postCommentServiceImpl.getComments(post_id,pageNum);
+        return Result.success("获得下一页评论成功",commentVOs);
     }
 }

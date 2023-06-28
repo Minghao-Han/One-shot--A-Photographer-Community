@@ -2,8 +2,8 @@ package com.ShengQin.OneShot.UserThings.Services.Implements;
 
 import com.ShengQin.OneShot.Entities.Comment;
 import com.ShengQin.OneShot.UserThings.Mappers.ShotCommentMapper;
+import com.ShengQin.OneShot.UserThings.Services.CommentService;
 import com.ShengQin.OneShot.UserThings.Services.CommentVOService;
-import com.ShengQin.OneShot.UserThings.Services.ShotCommentService;
 import com.ShengQin.OneShot.UserThings.Services.ShotService;
 import com.ShengQin.OneShot.VO.CommentVO;
 import com.github.pagehelper.PageHelper;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ShotCommentServiceImpl implements ShotCommentService {
+public class ShotCommentServiceImpl implements CommentService {
     @Autowired
     ShotCommentMapper shotCommentMapper;
     @Autowired
