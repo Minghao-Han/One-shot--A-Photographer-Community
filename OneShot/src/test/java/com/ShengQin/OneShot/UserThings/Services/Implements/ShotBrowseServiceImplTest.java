@@ -2,6 +2,7 @@ package com.ShengQin.OneShot.UserThings.Services.Implements;
 
 import com.ShengQin.OneShot.Entities.Shot;
 import com.ShengQin.OneShot.UserThings.Services.ShotBrowseService;
+import com.ShengQin.OneShot.VO.ShotVO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,9 +18,9 @@ class ShotBrowseServiceImplTest {
 
     @Test
     void getRecommendPage() {
-        List<Shot> shots = shotBrowseService.getRecommendPage(4,2);
-        for (Shot shot : shots) {
-            System.out.println(shot);
+        List<ShotVO> shotVOs = shotBrowseService.getRecommendPage(4,2);
+        for (ShotVO shotVO : shotVOs) {
+            System.out.println(shotVO);
         }
     }
 }

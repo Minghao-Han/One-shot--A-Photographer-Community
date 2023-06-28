@@ -3,13 +3,12 @@ package com.ShengQin.OneShot.UserThings.Controllers;
 import com.ShengQin.OneShot.UserThings.Services.SubscribeService;
 import com.ShengQin.OneShot.Utils.Result;
 import com.ShengQin.OneShot.Utils.ServiceResult;
+import com.ShengQin.OneShot.VO.SubscribeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-
-import static com.ShengQin.OneShot.Utils.ServiceResult.OPERATED;
 
 @RestController
 @RequestMapping("/subscribe")
@@ -53,8 +52,9 @@ public class SubscribeController {
     }
 
     @GetMapping("/{user_id}/{pageNum}")
-    public String getSubscriptions(@PathVariable("user_id")int user_id, @PathVariable("user_id")int pageNum){
-        List<Map<String,String>> serviceResult = subscribeService.getSubscribes(user_id,pageNum);
-        return Result.success("获取关注成功",serviceResult);
+    public String getSubscriptions(@PathVariable("user_id")int user_id, @PathVariable("pageNum")int pageNum){
+        List<SubscribeVO> serviceResult = subscribeService.getSubscribes(user_id,pageNum);
+        if (serviceResult.isEmpty()) return Result.success("成功，但没更多关注");
+        else return Result.success("获取关注成功",serviceResult);
     }
 }

@@ -1,9 +1,9 @@
 package com.ShengQin.OneShot.UserThings.Mappers;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import com.ShengQin.OneShot.Entities.Subscribe;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface SubscribeMapper {
@@ -13,4 +13,6 @@ public interface SubscribeMapper {
     public void cancelSubscribe(int user_id,int subscribed_id);
     @Select("select count(*) from subscribe where user_id = #{user_id} and subscribed_id = #{subscribed_id}")
     public boolean isExist(int user_id,int subscribed_id);
+    @Select("select * from subscribe where user_id = #{user_id}")
+    public List<Subscribe> getSubscription(int user_id);
 }
