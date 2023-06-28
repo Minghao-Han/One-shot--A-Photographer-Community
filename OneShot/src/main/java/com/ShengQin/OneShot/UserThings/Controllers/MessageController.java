@@ -1,6 +1,6 @@
 package com.ShengQin.OneShot.UserThings.Controllers;
 
-import com.ShengQin.OneShot.Entities.Message;
+import com.ShengQin.OneShot.VO.Message;
 import com.ShengQin.OneShot.Security.TokenUtil;
 import com.ShengQin.OneShot.UserThings.Services.MessageService;
 import com.ShengQin.OneShot.Utils.Result;

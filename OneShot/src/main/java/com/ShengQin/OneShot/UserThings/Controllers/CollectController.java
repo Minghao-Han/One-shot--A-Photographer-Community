@@ -69,4 +69,9 @@ public class CollectController {
             default -> {return Result.fail("something wrong");}
         }
     }
+
+    @GetMapping("/check/shot/{user_id}/{pageNum}")
+    public String testCheckCollections(@PathVariable("user_id")int user_id,@PathVariable("pageNum")int pageNum){
+        return Result.success("666");
+    }
 }

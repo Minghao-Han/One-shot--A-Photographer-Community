@@ -1,6 +1,6 @@
 package com.ShengQin.OneShot.UserThings.Services.Implements;
 
-import com.ShengQin.OneShot.Entities.Message;
+import com.ShengQin.OneShot.VO.Message;
 import com.ShengQin.OneShot.UserThings.Services.MessageService;
 import org.springframework.stereotype.Service;
 

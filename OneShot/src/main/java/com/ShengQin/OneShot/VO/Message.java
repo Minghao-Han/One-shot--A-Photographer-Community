@@ -1,6 +1,6 @@
-package com.ShengQin.OneShot.Entities;
+package com.ShengQin.OneShot.VO;
 
-import lombok.AllArgsConstructor;
+import com.ShengQin.OneShot.Entities.Comment;
 import lombok.Data;
 
 @Data
@@ -24,7 +24,7 @@ public class Message {
     public Message thumbedMessage(int from_id,String from_userName){
         return new Message(from_id,from_userName,THUMB,null);
     }
-    public Message collectedMessage(Comment comment,String from_userName){
+    public Message collectedMessage(Comment comment, String from_userName){
         int from_id = comment.getCommentator_id();
         String content = comment.getContent();
         return new Message(from_id,from_userName,COMMENT,content);

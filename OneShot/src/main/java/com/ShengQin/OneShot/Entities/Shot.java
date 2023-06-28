@@ -10,8 +10,6 @@ import java.util.Date;
 public class Shot {
     private int id;
     private int user_id;//作者id
-
-    private String userName;//作者用户名
     private String title;
     private String content;
     private int total_thumb;

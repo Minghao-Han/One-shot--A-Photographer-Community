@@ -1,6 +1,6 @@
 package com.ShengQin.OneShot.UserThings.Services;
 
-import com.ShengQin.OneShot.Entities.Message;
+import com.ShengQin.OneShot.VO.Message;
 
 import java.util.List;
 

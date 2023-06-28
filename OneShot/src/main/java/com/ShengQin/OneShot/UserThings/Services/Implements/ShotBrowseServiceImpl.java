@@ -5,6 +5,8 @@ import com.ShengQin.OneShot.UserThings.Mappers.ShotMapper;
 import com.ShengQin.OneShot.UserThings.Services.PreferenceService;
 import com.ShengQin.OneShot.UserThings.Services.ShotBrowseService;
 import com.ShengQin.OneShot.UserThings.Services.UserService;
+import com.ShengQin.OneShot.Utils.ServiceResult;
+import com.ShengQin.OneShot.VO.ShotVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,23 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
     PreferenceService preferenceService;
     @Autowired
     UserService userService;
+
     @Override
-    public List<Shot> getRecommendPage(int user_id, int pageNum) {
+    public ServiceResult addPageView(int shot_id) {
+        if (!shotMapper.idExist(shot_id)) return ServiceResult.NONEXISTENT;
+        else {
+            Shot shot = shotMapper.getShot(shot_id);
+            shot.addPageView();
+            shotMapper.save(shot);
+            return ServiceResult.SUCCESS;
+        }
+    }
+
+
+    @Override
+    public List<ShotVO> getRecommendPage(int user_id, int pageNum) {
         List<Shot> shots = new ArrayList<Shot>();
+        List<ShotVO> shotVOs = new ArrayList<ShotVO>();
         List<String> tags = preferenceService.getPreferences(user_id);
         /**---------------------------------------------------获取shot们--------------------------------------------------*/
         if (tags.isEmpty()){//用户未设置喜好
@@ -56,8 +72,8 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
         for (Shot shot :
                 shots) {
             String userName = userService.getUserName(shot.getUser_id());
-            shot.setUserName(userName);
+            shotVOs.add(ShotVO.createShotVO(shot,userName));
         }
-        return shots;
+        return shotVOs;
     }
 }
