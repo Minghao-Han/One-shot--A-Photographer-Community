@@ -4,6 +4,7 @@ package com.ShengQin.OneShot.UserThings.Controllers;
 import com.ShengQin.OneShot.UserThings.Mappers.ShotMapper;
 import com.ShengQin.OneShot.UserThings.Services.PreferenceService;
 import com.ShengQin.OneShot.UserThings.Services.ShotBrowseService;
+import com.ShengQin.OneShot.UserThings.Services.ShotDetailService;
 import com.ShengQin.OneShot.UserThings.Services.ShotService;
 import com.ShengQin.OneShot.Utils.Result;
 import com.ShengQin.OneShot.Utils.ServiceResult;
@@ -19,6 +20,8 @@ import java.util.Map;
 public class ShotBrowseController {
     @Autowired
     ShotBrowseService shotBrowseService;
+    @Autowired
+    ShotDetailService shotDetailService;
 
     @GetMapping("/{user_id}/{pageNum}")
     public String getRecommendPage(@PathVariable("user_id")int user_id,@PathVariable("pageNum")int pageNum){
@@ -36,4 +39,10 @@ public class ShotBrowseController {
         else return Result.success("浏览量成功加一");
     }
 
+    @GetMapping("/detail/{shot_id}")
+    public String getDetailShot(@PathVariable("shot_id")int shot_id){
+        Map<String,Object> shotWithFewComments = shotDetailService.getShotDetail(shot_id);
+        if (shotWithFewComments.get("shotVO")==null) return Result.fail("查无此shot");
+        else return Result.success("成功获取详细shot(带评论)",shotWithFewComments);
+    }
 }
