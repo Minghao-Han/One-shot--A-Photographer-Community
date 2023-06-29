@@ -19,7 +19,7 @@ public class CommentController {
     @Qualifier("shotCommentServiceImpl")
     private CommentService shotCommentServiceImpl;
     @Autowired
-    @Qualifier("shotCommentServiceImpl")
+    @Qualifier("postCommentServiceImpl")
     private CommentService postCommentServiceImpl;
 
     /**shot评论*/

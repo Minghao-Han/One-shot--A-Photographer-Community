@@ -11,7 +11,7 @@ import java.util.Date;
 public class CommentVO {
     private int id;
     private int innerID;//在一条shot或post中的id
-    private int shot_id;
+    private int shot_or_post_id;
     private int receiver_id;
     private int commentator_id;
     private Date time;
