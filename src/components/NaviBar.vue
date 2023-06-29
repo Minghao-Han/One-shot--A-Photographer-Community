@@ -7,26 +7,26 @@
                 <!-- logo -->
                 <RouterLink to="/" class="logo">
                     <span>
-                        <img src="/logo.png" height="60" width="216" alt="OneShot">
+                        <img src="@/assets/images/logo.png" height="60" width="216" alt="OneShot">
                     </span>
                 </RouterLink>
                 <!-- 跳转到shots、论坛和比赛页面 -->
                 <ul class="navigator">
                     <RouterLink to="">
                         <li class="navi-block">
-                            <img src="/shots.png" alt="Shots">
+                            <img src="@/assets/images/shots.png" alt="Shots">
                             <p class="navi-word">动态</p>
                         </li>
                     </RouterLink>
                     <RouterLink to="">
                         <li class="navi-block">
-                            <img src="/forum.png" alt="Forum">
+                            <img src="@/assets/images/forum.png" alt="Forum">
                             <p class="navi-word">论坛</p>
                         </li>
                     </RouterLink>
                     <RouterLink to="">
                         <li class="navi-block">
-                            <img src="/competition.png" alt="Competition">
+                            <img src="@/assets/images/competition.png" alt="Competition">
                             <p class="navi-word">比赛</p>
                         </li>
                     </RouterLink>
@@ -43,7 +43,7 @@
                 <RouterLink to="/">
                     <div class="post-shot">
 
-                        <img src="/add.png" alt="post shot" :style="{
+                        <img src="@/assets/images/add.png" alt="post shot" :style="{
                             width: '40px', height: '40px', verticalAlign: 'middle'
                         }">
 
@@ -52,7 +52,7 @@
 
                 <RouterLink to="/">
                     <div class="user-info">
-                        <img :src="avator" alt="avator" :style="{
+                        <img src="@/assets/images/userAvator.png" alt="avator" :style="{
                             width: '48px', height: '48px', verticalAlign: 'middle'
                             , borderRadius: '50%', border: 'solid', margin: 'auto 5px'
                         }">
@@ -74,7 +74,8 @@ const route = useRoute();
 const searchInfo = ref();
 import { Search } from "@element-plus/icons-vue"
 
-const avator = ref("/userAvator.png");
+const avator = ref();
+
 
 </script>
 
@@ -145,15 +146,12 @@ a {
             .el-input {
                 --el-input-focus-border-color: #000;
             }
-
         }
 
         .post-shot {
             margin: auto 80px;
         }
-
     }
-
 }
 </style>
 
