@@ -1,15 +1,20 @@
 package com.ShengQin.OneShot.UserThings.Mappers;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface ThumbMapper {
     /**shot*/
+
+    @Select("select max(id) from thumb_of_shot")
+    public Integer getLatestInsertShotThumbId();
     @Insert("insert into thumb_of_shot(shot_id,thumber_id)  values(#{shot_id},#{thumber_id})")
-    public void shotAddThumb(int thumber_id, int shot_id);
+    @SelectKey(statement="SELECT last_insert_id() from thumb_of_shot", keyProperty="id", keyColumn = "id",before=true, resultType=Long.class)
+    public Long shotAddThumb1(int thumber_id, int shot_id);
+    public default Integer shotAddThumb(int thumber_id, int shot_id){
+        shotAddThumb1(thumber_id,shot_id);
+        return getLatestInsertShotThumbId();
+    }
 
     @Select("select count(*) from thumb_of_shot where shot_id=#{shot_id} and thumber_id=#{thumber_id}")
     public boolean shotThumbExist(int thumber_id,int shot_id);

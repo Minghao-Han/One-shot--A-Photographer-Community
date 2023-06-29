@@ -1,5 +1,6 @@
 package com.ShengQin.OneShot.UserThings.Services.Implements;
 
+import com.ShengQin.OneShot.UserThings.Mappers.MessageMappers.MessageMapper;
 import com.ShengQin.OneShot.UserThings.Mappers.ThumbMapper;
 import com.ShengQin.OneShot.UserThings.Services.PostService;
 import com.ShengQin.OneShot.UserThings.Services.ShotService;
@@ -15,6 +16,8 @@ public class ThumbServiceImpl implements ThumbService {
     PostService postService;
     @Autowired
     ThumbMapper thumbMapper;
+    @Autowired
+    MessageMapper messageMapper;
 
     @Override
     public int shotGiveThumb(int thumber_id, int shot_id) {
@@ -22,8 +25,9 @@ public class ThumbServiceImpl implements ThumbService {
         else if (thumbMapper.shotThumbExist(thumber_id,shot_id)) {
             return operated;
         } else {
-            shotService.addThumb(shot_id);
-            thumbMapper.shotAddThumb(thumber_id, shot_id);
+            shotService.addThumb(shot_id);//shot表里加点赞
+            thumbMapper.shotAddThumb(thumber_id, shot_id);//往thumb_of_shot里加数据
+
             return success;
         }
     }
