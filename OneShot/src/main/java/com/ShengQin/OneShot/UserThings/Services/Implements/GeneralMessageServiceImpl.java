@@ -40,6 +40,7 @@ public class GeneralMessageServiceImpl implements GeneralMessageService {
 
     @Override
     public List<Message> getHistoryMessage(int user_id, int pageNum) {
+
         return null;
     }
 
