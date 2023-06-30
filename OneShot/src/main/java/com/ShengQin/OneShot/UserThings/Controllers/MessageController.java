@@ -16,12 +16,13 @@ public class MessageController {
     @Autowired
     GeneralMessageService generalMessageService;
 
-    @GetMapping("/history/{user_id}/{pageNum}")
-    public String getHistoryMessage(@PathVariable("user_id") int user_id, @PathVariable("pageNum") int pageNum,@RequestHeader Map<String,String> requestHeader){
+    @GetMapping("/history/{user_id}/{pageOffset}")
+    public String getHistoryMessage(@PathVariable("user_id") int user_id, @PathVariable("pageOffset") int pageOffset,@RequestHeader Map<String,String> requestHeader){
         String token = (String) requestHeader.get("token");
         if (!TokenUtil.IdPermissionCheck(token,user_id)) return Result.fail("失败，不能看别人的信息");
-        List<Message> historyThumbCommentMessageVO = generalMessageService.getHistoryMessage(user_id,pageNum);
-        if (!historyThumbCommentMessageVO.isEmpty())return Result.success("成功获得信息", historyThumbCommentMessageVO);
+        generalMessageService.registerSubMessageService();
+        List<Message> historyMessages = generalMessageService.getHistoryMessage(user_id,pageOffset);
+        if (!historyMessages.isEmpty())return Result.success("成功获得信息", historyMessages);
         else return Result.fail("没有更多历史消息");
     }
     @GetMapping("/uncheck/{user_id}")
