@@ -1,5 +1,6 @@
 package com.ShengQin.OneShot.UserThings.Mappers;
 
+import com.ShengQin.OneShot.Entities.Thumb;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,8 +13,9 @@ class ThumbMapperTest {
     ThumbMapper thumbMapper;
 
     @Test
-    void shotAddThumb1() {
-        int result = (thumbMapper.shotAddThumb1(5,12)).intValue();
-        System.out.println("result is "+result);
+    void shotAddThumb() {
+        Thumb newThumb = new Thumb(4,12);
+        int result = thumbMapper.shotAddThumb(newThumb);
+        System.out.println(newThumb.getId());
     }
 }

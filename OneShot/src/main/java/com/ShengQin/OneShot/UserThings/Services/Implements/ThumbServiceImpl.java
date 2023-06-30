@@ -1,5 +1,6 @@
 package com.ShengQin.OneShot.UserThings.Services.Implements;
 
+import com.ShengQin.OneShot.Entities.Thumb;
 import com.ShengQin.OneShot.UserThings.Mappers.MessageMappers.MessageMapper;
 import com.ShengQin.OneShot.UserThings.Mappers.ThumbMapper;
 import com.ShengQin.OneShot.UserThings.Services.PostService;
@@ -26,8 +27,10 @@ public class ThumbServiceImpl implements ThumbService {
             return operated;
         } else {
             shotService.addThumb(shot_id);//shot表里加点赞
-            thumbMapper.shotAddThumb(thumber_id, shot_id);//往thumb_of_shot里加数据
-
+            Thumb newThumb = new Thumb(thumber_id, shot_id);
+            thumbMapper.shotAddThumb(newThumb);//往thumb_of_shot里加数据
+            int receiver_id = shotService.getShot(shot_id).getUser_id();
+            messageMapper.createMessage("thumb_of_shot", newThumb.getId(), receiver_id);
             return success;
         }
     }
@@ -40,7 +43,8 @@ public class ThumbServiceImpl implements ThumbService {
         }
         else {
             shotService.subThumb(shot_id);
-            thumbMapper.shotCancelThumb(thumber_id, shot_id);
+            int references_id = thumbMapper.shotCancelThumb(thumber_id, shot_id);
+            messageMapper.deleteMessage("thumb_of_shot",references_id);
             return success;
         }
     }
@@ -52,7 +56,10 @@ public class ThumbServiceImpl implements ThumbService {
             return operated;
         }else {
             postService.addThumb(post_id);
-            thumbMapper.postAddThumb(thumber_id, post_id);
+            Thumb newThumb = new Thumb(thumber_id, post_id);
+            thumbMapper.postAddThumb(newThumb);//往thumb_of_shot里加数据
+            int receiver_id = postService.getPost(post_id).getUserId();
+            messageMapper.createMessage("thumb_of_post", newThumb.getId(), receiver_id);
             return success;
         }
     }
@@ -64,7 +71,8 @@ public class ThumbServiceImpl implements ThumbService {
             return operated;
         }else {
             postService.subThumb(post_id);
-            thumbMapper.postCancelThumb(thumber_id, post_id);
+            int references_id = thumbMapper.postCancelThumb(thumber_id, post_id);
+            messageMapper.deleteMessage("thumb_of_post",references_id);
             return success;
         }
     }

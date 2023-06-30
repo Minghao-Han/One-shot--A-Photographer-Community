@@ -1,6 +1,7 @@
 package com.ShengQin.OneShot.UserThings.Services.Implements;
 
 import com.ShengQin.OneShot.Entities.Comment;
+import com.ShengQin.OneShot.UserThings.Mappers.MessageMappers.MessageMapper;
 import com.ShengQin.OneShot.UserThings.Mappers.ShotCommentMapper;
 import com.ShengQin.OneShot.UserThings.Services.CommentService;
 import com.ShengQin.OneShot.UserThings.Services.CommentVOService;
@@ -21,13 +22,18 @@ public class ShotCommentServiceImpl implements CommentService {
     ShotService shotService;
     @Autowired
     CommentVOService commentVOService;
+    @Autowired
+    MessageMapper messageMapper;
     @Override
     public boolean createComment(int shot_id, int parent_id, int commentator_id, String content,int receiver_id) {
         if (!shotService.isExist(shot_id)) return false;
         else {
             Integer innerID = shotCommentMapper.getNewInnerID(shot_id);//获取该评论在这条shot中的id，即innerID
             if (innerID==null) innerID=1;
-            shotCommentMapper.insert(new Comment((int)innerID,shot_id,parent_id,commentator_id,content,receiver_id));
+            Comment newComment = new Comment((int)innerID,shot_id,parent_id,commentator_id,content,receiver_id);
+            shotCommentMapper.insert(newComment);
+            int references_id = newComment.getId();
+            messageMapper.createMessage("comment_Of_shot",references_id,receiver_id);
             return true;
         }
     }
@@ -47,7 +53,8 @@ public class ShotCommentServiceImpl implements CommentService {
     public boolean deleteComment(int innerID, int shot_id) {
         if (!shotCommentMapper.isExist(shot_id,innerID)) return false;
         else {
-            shotCommentMapper.delete(shot_id,innerID);
+            int references_id = shotCommentMapper.delete(shot_id,innerID);
+            messageMapper.deleteMessage("comment_of_shot",references_id);
             return true;
         }
     }

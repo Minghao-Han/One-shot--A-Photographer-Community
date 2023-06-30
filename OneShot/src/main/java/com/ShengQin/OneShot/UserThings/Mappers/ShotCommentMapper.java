@@ -1,10 +1,7 @@
 package com.ShengQin.OneShot.UserThings.Mappers;
 
 import com.ShengQin.OneShot.Entities.Comment;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -12,10 +9,18 @@ import java.util.List;
 public interface ShotCommentMapper {
 
     @Insert("insert into comment_of_shot(inner_id,shot_id,parent_id,commentator_id,content,receiver_id) values(#{innerID},#{shot_id},#{parent_id},#{commentator_id},#{content},#{receiver_id})")
+    @SelectKey(statement = "SELECT last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     public void insert(Comment comment);
 
     @Delete("delete from comment_of_shot where shot_id=#{shot_id} and inner_id=#{innerID}")
-    public void delete(int shot_id,int innerID);
+    public void delete1(int shot_id,int innerID);
+    @Select("select id from comment_of_shot where shot_id=#{shot_id} and inner_id=#{innerID}")
+    public int getId(int shot_id,int innerID);
+    public default int delete(int shot_id, int innerID){
+        int id = getId(shot_id, innerID);
+        delete1(shot_id, innerID);
+        return id;
+    }
 
     @Select("select count(*) from comment_of_shot where shot_id=#{shot_id} and inner_id=#{innerID}")
     public boolean isExist(int shot_id,int innerID);
