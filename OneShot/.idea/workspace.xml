@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/MessageMappers/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/MessageMappers/MessageMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GeneralMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GeneralMessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Controllers/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Controllers/MessageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Mappers/MessageMappers/MessageMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Mappers/MessageMappers/MessageMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/GeneralMessageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/GeneralMessageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/UserThings/Services/Implements/GeneralMessageServiceImplTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
