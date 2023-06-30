@@ -20,7 +20,7 @@ public class TokenUtil {
     //密钥 (随机生成,可以从网上找到随机密钥生成器)
     private static final String TOKEN_SECRET="MD9**+4MG^EG79RV+T?J87AI4NWQVT^&";
     /** 生成token */
-    public static String createToken(User user){
+    public static String createToken(int id){
         String token=null;
         try {
             Date expireAt=new Date(System.currentTimeMillis()+EXPIRE_TIME);
@@ -29,8 +29,8 @@ public class TokenUtil {
                     .withIssuer("auth0")
                     .withClaim("role","user")
                     //存放数据
-                    .withClaim("userName",user.getUserName())
-                    .withClaim("id",user.getId())
+//                    .withClaim("userName",user.getUserName())
+                    .withClaim("id",id)
                     //过期时间
                     .withExpiresAt(expireAt)
                     .sign(Algorithm.HMAC256(TOKEN_SECRET));
@@ -89,6 +89,13 @@ public class TokenUtil {
             return false;
         }
         return true;
+    }
+
+    public static boolean IdPermissionCheck(String token,int user_id){//验证用户权限，避免操作别人的页面
+        JWTVerifier jwtVerifier=JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
+        DecodedJWT decodedJWT=jwtVerifier.verify(token);
+        if ((decodedJWT.getClaim("id").asInt()).equals(user_id)) return true;
+        else return false;
     }
 }
 

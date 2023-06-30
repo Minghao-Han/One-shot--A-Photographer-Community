@@ -25,7 +25,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         String requestUrl = request.getServletPath();
         if (token!=null){
             boolean result;
-            // 验证token
+            // 验证token,user和admin用不同的验证方式
             if (requestUrl.contains("admin")) result = TokenUtil.checkAdminToken(token);
             else result = TokenUtil.checkToken(token);
             if (result){
