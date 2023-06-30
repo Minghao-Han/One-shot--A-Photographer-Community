@@ -12,8 +12,15 @@ public class LoginServiceImpl implements LoginService {
     AccountMapper accountMapper;
 
     @Override
-    public boolean varify() {
-        return true;
+    public boolean verify(String email,String password) {
+        String shouldBePassword = accountMapper.getPassword(email);
+        if (password.equals(shouldBePassword)) return true;
+        else return false;
+    }
+
+    @Override
+    public int getId(String email) {
+        return accountMapper.getId(email);
     }
 }
 
