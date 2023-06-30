@@ -27,6 +27,7 @@ public class GeneralMessageServiceImpl implements GeneralMessageService {
             String messageType = messageVO.getMessageType();
             int references_id = messageVO.getReferencesId();
             Date time = messageVO.getTime();
+            System.out.println(subMessageServiceMap.get(messageType));
             AbstractSubMessageService subMessageService = subMessageServiceSelector.get(subMessageServiceMap.get(messageType));
             Message message = subMessageService.getMessage(references_id);
             message.setTime(time);
@@ -44,7 +45,7 @@ public class GeneralMessageServiceImpl implements GeneralMessageService {
 
     @Override
     public void registerSubMessageService() {
-//        subMessageServiceSelector.put(messageType,subMessageService);格式
+//        subMessageServiceSelector.put(messageType,subMessageService); <--格式
         subMessageServiceMap.put("thumb_of_shot","shotThumbMessageService");
         subMessageServiceMap.put("thumb_of_post","postThumbMessageService");
         subMessageServiceMap.put("comment_of_shot","shotCommentMessageService");

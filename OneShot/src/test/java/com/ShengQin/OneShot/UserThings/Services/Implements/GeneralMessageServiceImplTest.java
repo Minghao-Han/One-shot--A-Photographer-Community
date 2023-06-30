@@ -13,8 +13,23 @@ class GeneralMessageServiceImplTest {
     @Autowired
     GeneralMessageService generalMessageService;
 
+//    @Test
+//    void getUncheckMessage() {
+//        generalMessageService.registerSubMessageService();
+//        List<Message> uncheckMessages = generalMessageService.getUncheckMessages(4);
+//        System.out.println("uncheckMessages is empty "+uncheckMessages.isEmpty());
+//        for (Message message :
+//                uncheckMessages) {
+//            System.out.println(message);
+//        }
+//    }
+
     @Test
-    void getUncheckMessage() {
+    void getUncheckMessages() {
+    }
+
+    @Test
+    void getUncheckMessagesTest() {
         generalMessageService.registerSubMessageService();
         List<Message> uncheckMessages = generalMessageService.getUncheckMessages(4);
         System.out.println("uncheckMessages is empty "+uncheckMessages.isEmpty());
@@ -22,9 +37,6 @@ class GeneralMessageServiceImplTest {
                 uncheckMessages) {
             System.out.println(message);
         }
-    }
 
-    @Test
-    void getUncheckMessages() {
     }
 }

@@ -9,6 +9,6 @@ import java.util.Map;
 @Mapper
 public interface ShotCommentMessageMapper extends SubMessageMapperInterface {
     @Override
-    @Select("select id,shot_id,content,commentator_id from comment_of_shot where id = #{references_id}")
+    @Select("select id,shot_id,content,commentator_id,parent_id from comment_of_shot where id = #{references_id}")
     public Map<String,Object> getMessage(int references_id);
 }

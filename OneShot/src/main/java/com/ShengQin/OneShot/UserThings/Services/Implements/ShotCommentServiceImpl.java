@@ -33,7 +33,7 @@ public class ShotCommentServiceImpl implements CommentService {
             Comment newComment = new Comment((int)innerID,shot_id,parent_id,commentator_id,content,receiver_id);
             shotCommentMapper.insert(newComment);
             int references_id = newComment.getId();
-            messageMapper.createMessage("comment_Of_shot",references_id,receiver_id);
+            messageMapper.createMessage("comment_of_shot",references_id,receiver_id);
             return true;
         }
     }

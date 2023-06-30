@@ -8,20 +8,23 @@ import java.util.List;
 
 @Mapper
 public interface MessageMapper {//从message表获取数据
-    @Update("<script>update message set checked = true where" +
+    @Update("<script>UPDATE message set checked = true where" +
             "<foreach collection='checkedIds' item ='id' separator='or'>" +
             "id = #{id}" +
             "</foreach></script>")
-    public void setMessageChecked(List<Integer> checkedIds);
-    @Select("select id,message_type,references_id,time from message where checked=false and receiver_id=#{receiver_id} order by time desc")
+    public void setMessageChecked(@Param("checkedIds") List<Integer> checkedIds);
+    @Select("select id,message_type,references_id,time from message where checked=false and receiver_id=#{receiver_id}")
     public List<MessageVO> getUncheckMessageVOs1(int receiver_id);
-    public default List<MessageVO> getUncheckMessageVOs(int receiver_id){
+    public default List<MessageVO> getUncheckMessageVOs(int` receiver_id){
         List<MessageVO> messageVOs = this.getUncheckMessageVOs1(receiver_id);
-        List<Integer> checkedIds = new ArrayList<>();
-        for (MessageVO messageVO:messageVOs) {
-            checkedIds.add(messageVO.getId());
+        if (!messageVOs.isEmpty()){
+            List<Integer> checkedIds = new ArrayList<>();
+            for (MessageVO messageVO:messageVOs) {
+                checkedIds.add(messageVO.getId());
+            }
+            setMessageChecked(checkedIds);
+            return messageVOs;
         }
-        setMessageChecked(checkedIds);
         return messageVOs;
     }
 
