@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/GameInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameVoteMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GameInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GameParticipationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GameVoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameInfoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameParticipationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameVoteServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/VO/GameParticipatorVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/VO/VoteVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Mappers/GameInfoMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Mappers/GameVoteMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/Implements/ShotBrowseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/Implements/ShotBrowseServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -64,86 +82,94 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ShengQin.OneShot.UserThings.Services.Implements" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.ShengQin.OneShot.UserThings.Mappers" />
       <recent name="com.ShengQin.OneShot.AdminThings.Mapper" />
       <recent name="com.ShengQin.OneShot.UserThings.Services.Implements" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OneShotApplication">
-    <configuration name="OneShotApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.OneShotApplication" />
+  <component name="RunManager" selected="JUnit.GameVoteMapperTest.revokeVote">
+    <configuration name="GameParticipationMapperTest.participate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.*" />
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GeneralMessageServiceImplTest.getHistoryMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneShot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Services.Implements.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Services.Implements" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Services.Implements.GeneralMessageServiceImplTest" />
-      <option name="METHOD_NAME" value="getHistoryMessage" />
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameParticipationMapperTest" />
+      <option name="METHOD_NAME" value="participate" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManagerMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameParticipationMapperTest.participated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.AdminThings.Mapper.*" />
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.ManagerMapperTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ManagerMapperTest.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneShot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.AdminThings.Mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.ManagerMapperTest" />
-      <option name="METHOD_NAME" value="findAll" />
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameParticipationMapperTest" />
+      <option name="METHOD_NAME" value="participated" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManagerMapperTest.selectPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameVoteMapperTest.revokeVote" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.AdminThings.Mapper.*" />
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.ManagerMapperTest" />
-      <option name="METHOD_NAME" value="selectPage" />
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapperTest" />
+      <option name="METHOD_NAME" value="revokeVote" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameVoteMapperTest.vote" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneShot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapperTest" />
+      <option name="METHOD_NAME" value="vote" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameVoteMapperTest.voteExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneShot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapperTest" />
+      <option name="METHOD_NAME" value="voteExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,11 +184,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.OneShotApplication" />
-        <item itemvalue="JUnit.ManagerMapperTest.selectPage" />
-        <item itemvalue="JUnit.ManagerMapperTest.findAll" />
-        <item itemvalue="JUnit.ManagerMapperTest" />
-        <item itemvalue="JUnit.GeneralMessageServiceImplTest.getHistoryMessage" />
+        <item itemvalue="JUnit.GameVoteMapperTest.revokeVote" />
+        <item itemvalue="JUnit.GameVoteMapperTest.voteExist" />
+        <item itemvalue="JUnit.GameVoteMapperTest.vote" />
+        <item itemvalue="JUnit.GameParticipationMapperTest.participated" />
+        <item itemvalue="JUnit.GameParticipationMapperTest.participate" />
       </list>
     </recent_temporary>
   </component>

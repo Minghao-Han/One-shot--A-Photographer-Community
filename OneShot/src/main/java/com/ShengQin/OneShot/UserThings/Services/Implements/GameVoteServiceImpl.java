@@ -1,0 +1,37 @@
+package com.ShengQin.OneShot.UserThings.Services.Implements;
+
+import com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapper;
+import com.ShengQin.OneShot.UserThings.Services.GameParticipationService;
+import com.ShengQin.OneShot.UserThings.Services.GameVoteService;
+import com.ShengQin.OneShot.Utils.ServiceResult;
+import com.ShengQin.OneShot.VO.VoteVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class GameVoteServiceImpl implements GameVoteService {
+    @Autowired
+    GameParticipationService gameParticipationService;
+    @Autowired
+    GameVoteMapper gameVoteMapper;
+    @Override
+    public ServiceResult vote(int voter_id, int entry_id) {
+        if (gameVoteMapper.voteExist(entry_id,voter_id)) return ServiceResult.OPERATED;//已经投票
+        else if (!gameParticipationService.entryExist(entry_id)) return ServiceResult.NONEXISTENT;//要投票的作品不存在
+        else {
+            VoteVO voteVO = new VoteVO(entry_id,voter_id);
+            gameVoteMapper.vote(voteVO);
+            return ServiceResult.SUCCESS;
+        }
+    }
+
+    @Override
+    public ServiceResult revokeVote(int voter_id, int entry_id) {
+        if (!gameVoteMapper.voteExist(entry_id,voter_id)) return ServiceResult.OPERATED;//尚未投票
+        else if (!gameParticipationService.entryExist(entry_id)) return ServiceResult.NONEXISTENT;//要撤回投票的作品不存在
+        else {
+            gameVoteMapper.revokeVote(entry_id,voter_id);
+            return ServiceResult.SUCCESS;
+        }
+    }
+}
