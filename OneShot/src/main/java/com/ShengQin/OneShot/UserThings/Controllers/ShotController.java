@@ -2,6 +2,7 @@ package com.ShengQin.OneShot.UserThings.Controllers;
 
 import com.ShengQin.OneShot.UserThings.Services.ShotService;
 import com.ShengQin.OneShot.Utils.Result;
+import com.ShengQin.OneShot.Utils.UserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,7 @@ public class ShotController {
     ShotService shotService;
 
     @PostMapping
-    public String createShot(@RequestBody Map<String,Object> requestBody){
-        int user_id = (int)requestBody.get("user_id");
+    public String createShot(@RequestBody Map<String,Object> requestBody, @UserId int user_id){
         String title = (String) requestBody.get("title");
         String content = (String) requestBody.get("content");
         List<String> tags = (List<String>) requestBody.get("tags");
@@ -27,7 +27,7 @@ public class ShotController {
     }
 
     @DeleteMapping
-    public String deleteShot(@RequestBody Map<String,Integer> requestBody){
+    public String deleteShot(@RequestBody Map<String,Integer> requestBody){//要改，不能删别人shot
         int shot_id = (int) requestBody.get("shot_id");
         shotService.delete(shot_id);
         return Result.success("删除成功");

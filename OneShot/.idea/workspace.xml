@@ -5,12 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Utils/UserId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Utils/UserIdArgumentResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/MyWebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/MyWebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/CollectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/CollectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/PreferenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/ShotBrowseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/ShotBrowseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/ShotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/ShotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/SubscribeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/SubscribeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/ThumbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/ThumbController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/UserInfoController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />

@@ -27,7 +27,10 @@ public class TokenInterceptor implements HandlerInterceptor {
             boolean result;
             // 验证token,user和admin用不同的验证方式
             if (requestUrl.contains("admin")) result = TokenUtil.checkAdminToken(token);
-            else result = TokenUtil.checkToken(token);
+            else {
+                result = TokenUtil.checkToken(token);
+                request.setAttribute("user_id", TokenUtil.getUserIdFromToken(token));//从token获取用户id并放入request
+            }
             if (result){
                 System.out.println("通过拦截器："+requestUrl);  // 可以输出接口是否通过拦截器
                 return true;

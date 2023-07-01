@@ -2,6 +2,7 @@ package com.ShengQin.OneShot.UserThings.Controllers;
 
 import com.ShengQin.OneShot.UserThings.Services.ThumbService;
 import com.ShengQin.OneShot.Utils.Result;
+import com.ShengQin.OneShot.Utils.UserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,7 @@ public class ThumbController {
     ThumbService thumbService;
 
     @PostMapping("/shot")
-    public String shotGiveThumb(@RequestBody Map<String,Integer> requestBody){
-        int thumber_id = requestBody.get("thumber_id");
+    public String shotGiveThumb(@RequestBody Map<String,Integer> requestBody,@UserId int thumber_id){
         int shot_id = requestBody.get("shot_id");
         int serviceResult = thumbService.shotGiveThumb(thumber_id,shot_id);
         switch (serviceResult){
@@ -26,8 +26,7 @@ public class ThumbController {
         }
     }
     @DeleteMapping("/shot")
-    public String shotRevokeThumb(@RequestBody Map<String,Integer> requestBody) {
-        int thumber_id = requestBody.get("thumber_id");
+    public String shotRevokeThumb(@RequestBody Map<String,Integer> requestBody,@UserId int thumber_id) {
         int shot_id = requestBody.get("shot_id");
         int serviceResult = thumbService.shotRevokeThumb(thumber_id,shot_id);
         switch (serviceResult){
@@ -39,8 +38,7 @@ public class ThumbController {
     }
     /**post*/
     @PostMapping("/post")
-    public String postAddThumb(@RequestBody Map<String,Integer> requestBody){
-        int thumber_id = requestBody.get("thumber_id");
+    public String postAddThumb(@RequestBody Map<String,Integer> requestBody,@UserId int thumber_id){
         int shot_id = requestBody.get("shot_id");
         int serviceResult = thumbService.postGiveThumb(thumber_id,shot_id);
         switch (serviceResult){
@@ -51,8 +49,7 @@ public class ThumbController {
         }
     }
     @DeleteMapping("/post")
-    public String postCancelThumb(@RequestBody Map<String,Integer> requestBody){
-        int thumber_id = requestBody.get("thumber_id");
+    public String postCancelThumb(@RequestBody Map<String,Integer> requestBody,@UserId int thumber_id){
         int shot_id = requestBody.get("shot_id");
         int serviceResult = thumbService.postRevokeThumb(thumber_id,shot_id);
         switch (serviceResult){
