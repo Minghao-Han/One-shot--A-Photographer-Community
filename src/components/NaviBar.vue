@@ -1,68 +1,70 @@
 <template>
-    <div>
-        <!-- 页面头部导航栏 -->
-        <div class="header">
-            <!-- 导航栏内容部分 -->
-            <div class="header-content">
-                <!-- logo -->
-                <RouterLink to="/" class="logo">
-                    <span>
-                        <img src="@/assets/images/logo.png" height="60" width="216" alt="OneShot">
-                    </span>
-                </RouterLink>
-                <!-- 跳转到shots、论坛和比赛页面 -->
-                <ul class="navigator">
-                    <RouterLink to="">
-                        <li class="navi-block">
-                            <img src="@/assets/images/shots.png" alt="Shots">
-                            <p class="navi-word">动态</p>
-                        </li>
+    <ElHeader>
+        <div>
+            <!-- 页面头部导航栏 -->
+            <div class="header">
+                <!-- 导航栏内容部分 -->
+                <div class="header-content">
+                    <!-- logo -->
+                    <RouterLink to="/" class="logo">
+                        <span>
+                            <img src="@/assets/images/logo.png" height="60" width="216" alt="OneShot">
+                        </span>
                     </RouterLink>
-                    <RouterLink to="">
-                        <li class="navi-block">
-                            <img src="@/assets/images/forum.png" alt="Forum">
-                            <p class="navi-word">论坛</p>
-                        </li>
+                    <!-- 跳转到shots、论坛和比赛页面 -->
+                    <ul class="navigator">
+                        <RouterLink to="">
+                            <li class="navi-block">
+                                <img src="@/assets/images/shots.png" alt="Shots">
+                                <p class="navi-word">动态</p>
+                            </li>
+                        </RouterLink>
+                        <RouterLink to="">
+                            <li class="navi-block">
+                                <img src="@/assets/images/forum.png" alt="Forum">
+                                <p class="navi-word">论坛</p>
+                            </li>
+                        </RouterLink>
+                        <RouterLink to="">
+                            <li class="navi-block">
+                                <img src="@/assets/images/competition.png" alt="Competition">
+                                <p class="navi-word">比赛</p>
+                            </li>
+                        </RouterLink>
+                    </ul>
+                    <!-- 搜索输入框 -->
+                    <div class="search-entry">
+                        <el-input deep v-model="searchInfo" placeholder="你有一双发现美的眼睛" cleartable class="search-input">
+                            <template #prepend>
+                                <el-button :icon="Search" class="search-icon" />
+                            </template>
+                        </el-input>
+                    </div>
+                    <!-- 发布shot -->
+                    <RouterLink to="/">
+                        <div class="post-shot">
+
+                            <img src="@/assets/images/add.png" alt="post shot" :style="{
+                                width: '40px', height: '40px', verticalAlign: 'middle'
+                            }">
+
+                        </div>
                     </RouterLink>
-                    <RouterLink to="">
-                        <li class="navi-block">
-                            <img src="@/assets/images/competition.png" alt="Competition">
-                            <p class="navi-word">比赛</p>
-                        </li>
+
+                    <RouterLink to="/">
+                        <div class="user-info">
+                            <img src="@/assets/images/userAvator.png" alt="avator" :style="{
+                                width: '48px', height: '48px', verticalAlign: 'middle'
+                                , borderRadius: '50%', border: 'solid', margin: 'auto 5px'
+                            }">
+
+                        </div>
                     </RouterLink>
-                </ul>
-                <!-- 搜索输入框 -->
-                <div class="search-entry">
-                    <el-input deep v-model="searchInfo" placeholder="你有一双发现美的眼睛" cleartable class="search-input">
-                        <template #prepend>
-                            <el-button :icon="Search" class="search-icon" />
-                        </template>
-                    </el-input>
                 </div>
-                <!-- 发布shot -->
-                <RouterLink to="/">
-                    <div class="post-shot">
 
-                        <img src="@/assets/images/add.png" alt="post shot" :style="{
-                            width: '40px', height: '40px', verticalAlign: 'middle'
-                        }">
-
-                    </div>
-                </RouterLink>
-
-                <RouterLink to="/">
-                    <div class="user-info">
-                        <img src="@/assets/images/userAvator.png" alt="avator" :style="{
-                            width: '48px', height: '48px', verticalAlign: 'middle'
-                            , borderRadius: '50%', border: 'solid', margin: 'auto 5px'
-                        }">
-
-                    </div>
-                </RouterLink>
             </div>
-
         </div>
-    </div>
+    </ElHeader>
 </template>
 
 <script setup>
@@ -73,6 +75,7 @@ const router = useRouter();
 const route = useRoute();
 const searchInfo = ref();
 import { Search } from "@element-plus/icons-vue"
+import { ElHeader } from "element-plus";
 
 const avator = ref();
 

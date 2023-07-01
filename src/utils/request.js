@@ -1,6 +1,9 @@
 import axios from "axios";
-
+import { ref } from "vue";
 import querystring from 'querystring';
+
+//获取response的信息
+export const resolvedObj = ref();
 
 const errorHandle = (status, info) => {
     switch (status) {
@@ -55,7 +58,7 @@ instance.interceptors.request.use(
 // 接收数据之前
 instance.interceptors.response.use(
     response => {
-        response.status === 200 ? Promise.resolve(response).then(console.log(response)) : Promise.reject(response)
+        response.status === 200 ? Promise.resolve(response).then(resolvedObj.value = response.data) : Promise.reject(response)
     },
     error => {
         console.log("error.response:");
