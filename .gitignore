@@ -15,7 +15,9 @@ bin-release/
 *.DS_Store
 *.gitignore
 *.idea/workspace.xml
-/OneShot/.idea/workspace.xml
+
+# Exclude OneShot's workspace.xml file
+OneShot/.idea/workspace.xml
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
