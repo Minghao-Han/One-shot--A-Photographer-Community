@@ -3,12 +3,9 @@ package com.ShengQin.OneShot.AdminThings.Mapper;
 import com.ShengQin.OneShot.Entities.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ManagerMapperTest {
@@ -17,7 +14,7 @@ class ManagerMapperTest {
 
     @Test
     void selectPage() {
-        List<User> users = managerMapper.selectPage(1,6);
+        List<User> users = managerMapper.selectPage(1,3);
         for (User user :
                 users) {
             System.out.println(user);
@@ -26,10 +23,11 @@ class ManagerMapperTest {
 
     @Test
     void findAll() {
-        List<User> users = managerMapper.findAll();
+        List<User> users = managerMapper.selectPage();
         for (User user :
                 users) {
             System.out.println(user);
         }
     }
+
 }

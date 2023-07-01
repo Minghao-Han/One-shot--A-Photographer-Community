@@ -3,6 +3,7 @@ package com.ShengQin.OneShot.AdminThings.Controller;
 import com.ShengQin.OneShot.AdminThings.Mapper.ManagerMapper;
 import com.ShengQin.OneShot.AdminThings.Service.ManagerService;
 import com.ShengQin.OneShot.Entities.User;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,9 +40,9 @@ public class ManagerInfoController {
     //分页查询
     @GetMapping("/pagem")
     public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize){
-        pageNum=(pageNum-1)*pageSize;
-
-        List<User> data= managermapper.selectPage(pageNum,pageSize);
+//        pageNum=(pageNum-1)*pageSize;
+        PageHelper.startPage(pageNum,pageSize);
+        List<User> data= managermapper.findAll();
         Integer total = managermapper.selectTotal();
         Map<String,Object> res=new HashMap<>();
         System.out.println(data);

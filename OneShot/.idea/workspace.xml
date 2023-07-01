@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="" />
+    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/ManagerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/ManagerInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/ManagerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/ManagerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/AdminThings/Mapper/ManagerMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/AdminThings/Mapper/ManagerMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/AdminThings/Mapper/ManagerMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/AdminThings/Mapper/ManagerMapperTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +77,13 @@
       <recent name="com.ShengQin.OneShot.UserThings.Services.Implements" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ManagerMapperTest.selectPage">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install" />
+      <command value="mvn clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.OneShotApplication">
     <configuration name="OneShotApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.OneShotApplication" />
       <module name="OneShot" />
@@ -138,6 +152,7 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
       <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.ManagerMapperTest" />
       <option name="METHOD_NAME" value="selectPage" />
@@ -155,10 +170,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OneShotApplication" />
         <item itemvalue="JUnit.ManagerMapperTest.selectPage" />
         <item itemvalue="JUnit.ManagerMapperTest.findAll" />
         <item itemvalue="JUnit.ManagerMapperTest" />
-        <item itemvalue="Application.OneShotApplication" />
         <item itemvalue="JUnit.GeneralMessageServiceImplTest.getHistoryMessage" />
       </list>
     </recent_temporary>

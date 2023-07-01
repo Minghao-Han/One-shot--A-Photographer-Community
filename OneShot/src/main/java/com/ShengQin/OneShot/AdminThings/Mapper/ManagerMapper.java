@@ -26,16 +26,19 @@ public interface ManagerMapper {
     int insert(User managerinfo);
 
 //    @Select("SELECT * from  user  limit #{pageNum},  #{pageSize}")
-    @Select("SELECT * from  user")
-//    @Results(id="shotMap1", value={
-//            @Result(column="id", property="id", id=true),
-//            @Result(column="user_name", property="userName"),
-//            @Result(column="personal_signature", property="personalSignature"),
-//            @Result(column="gender", property="gender"),
-//            @Result(column="age", property="age"),
-//
-//    })
-    List<User> selectPage(Integer pageNum, Integer pageSize);
+//    @Select("SELECT * from  user")
+////    @Results(id="shotMap1", value={
+////            @Result(column="id", property="id", id=true),
+////            @Result(column="user_name", property="userName"),
+////            @Result(column="personal_signature", property="personalSignature"),
+////            @Result(column="gender", property="gender"),
+////            @Result(column="age", property="age"),
+////
+////    })
+//    List<User> selectPage(Integer pageNum, Integer pageSize);
+
+//    @Select("SELECT * FROM user")
+//    List<User> abc();
 
     @Select("SELECT count(*)  from user  ")
     Integer selectTotal();
