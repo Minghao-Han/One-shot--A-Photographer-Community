@@ -25,15 +25,15 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        List<String> excludePath = new ArrayList<>();
-        //这里用来排除拦截的接口,例如登录前调用的接口
-        excludePath.add("/login");  //登录
-        excludePath.add("/register");     //注册
-        excludePath.add("/admin/login");  //管理员登录
-        registry.addInterceptor(tokenInterceptor) // 注册拦截器
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePath);
-        WebMvcConfigurer.super.addInterceptors(registry);
+//        List<String> excludePath = new ArrayList<>();
+//        //这里用来排除拦截的接口,例如登录前调用的接口
+//        excludePath.add("/login");  //登录
+//        excludePath.add("/register");     //注册
+//        excludePath.add("/admin/login");  //管理员登录
+//        registry.addInterceptor(tokenInterceptor) // 注册拦截器
+//                .addPathPatterns("/**")
+//                .excludePathPatterns(excludePath);
+//        WebMvcConfigurer.super.addInterceptors(registry);
     }
 }
 

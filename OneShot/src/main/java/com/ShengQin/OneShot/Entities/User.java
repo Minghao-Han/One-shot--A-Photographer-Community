@@ -2,10 +2,11 @@ package com.ShengQin.OneShot.Entities;
 
 import com.ShengQin.OneShot.Utils.Gender;
 import lombok.Data;
-
+import lombok.ToString;
 
 
 @Data
+@ToString
 public class User {
     private String userName;
     private Integer id;
