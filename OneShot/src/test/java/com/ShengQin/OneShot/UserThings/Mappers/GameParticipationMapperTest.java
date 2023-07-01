@@ -27,4 +27,9 @@ class GameParticipationMapperTest {
     void participated() {
         System.out.println(gameParticipationMapper.participated(5,4));
     }
+
+    @Test
+    void getGameId() {
+        System.out.println(gameParticipationMapper.getGameId(2));
+    }
 }

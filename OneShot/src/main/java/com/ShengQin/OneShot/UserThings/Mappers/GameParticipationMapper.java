@@ -12,10 +12,12 @@ import java.util.List;
 public interface GameParticipationMapper {
     @Insert("insert into game_participation(game_id,user_id) values(#{game_id},#{user_id})")
     public void participate(GameParticipatorVO gameParticipatorVO);
-    @Delete("delete from game_participation where game_id=#{game_id} and user_id=#{user_id}")
+    @Delete("delete from game_participation where game_id=#{game_id} and user_id=#{participator_id}")
     public void retire(int game_id,int participator_id);
-    @Select("select count(*) from game_participation where game_id=#{game_id} and user_id=#{user_id}")
+    @Select("select count(*) from game_participation where game_id=#{game_id} and user_id=#{participator_id}")
     public boolean participated(int game_id,int participator_id);
     @Select("select count(*) from game_participation where id=#{entry_id}")
     public boolean entryExist(int entry_id);
+    @Select("select game_id from game_participation where id = #{id}")
+    public Integer getGameId(int id);
 }
