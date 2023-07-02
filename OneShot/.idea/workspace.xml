@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
