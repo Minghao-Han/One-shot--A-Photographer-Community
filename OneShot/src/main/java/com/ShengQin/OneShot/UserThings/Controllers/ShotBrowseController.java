@@ -8,6 +8,7 @@ import com.ShengQin.OneShot.UserThings.Services.ShotDetailService;
 import com.ShengQin.OneShot.UserThings.Services.ShotService;
 import com.ShengQin.OneShot.Utils.Result;
 import com.ShengQin.OneShot.Utils.ServiceResult;
+import com.ShengQin.OneShot.Utils.UserId;
 import com.ShengQin.OneShot.VO.ShotVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +24,8 @@ public class ShotBrowseController {
     @Autowired
     ShotDetailService shotDetailService;
 
-    @GetMapping("/{user_id}/{pageNum}")
-    public String getRecommendPage(@PathVariable("user_id")int user_id,@PathVariable("pageNum")int pageNum){
+    @GetMapping("/{pageNum}")
+    public String getRecommendPage(@UserId int user_id, @PathVariable("pageNum")int pageNum){
         List<ShotVO> shotVOs = shotBrowseService.getRecommendPage(user_id,pageNum);
         if (shotVOs.isEmpty()) return Result.fail("没有更多内容");
         else return Result.success("成功获得更多的shot",shotVOs);

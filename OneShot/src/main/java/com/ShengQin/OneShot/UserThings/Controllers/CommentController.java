@@ -2,6 +2,7 @@ package com.ShengQin.OneShot.UserThings.Controllers;
 
 import com.ShengQin.OneShot.Entities.Comment;
 import com.ShengQin.OneShot.UserThings.Services.CommentService;
+import com.ShengQin.OneShot.Utils.UserId;
 import com.ShengQin.OneShot.VO.CommentVO;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,8 @@ public class CommentController {
 
     /**shot评论*/
     @PostMapping("/shot")
-    public String makeCommentOnShot(@RequestBody Map<String,Object> requestBody){
+    public String makeCommentOnShot(@RequestBody Map<String,Object> requestBody, @UserId int commentator_id){
         String content = (String) requestBody.get("content");
-        int commentator_id = (int) requestBody.get("commentator_id");
         int shot_id = (int) requestBody.get("shot_id");
         int parent_id = (int) requestBody.get("parent_id");
         int receiver_id = (int) requestBody.get("receiver_id");
@@ -54,9 +54,8 @@ public class CommentController {
 
     /**post*/
     @PostMapping("/post")
-    public String makeCommentOnPost(@RequestBody Map<String,Object> requestBody){
+    public String makeCommentOnPost(@RequestBody Map<String,Object> requestBody,@UserId int commentator_id){
         String content = (String) requestBody.get("content");
-        int commentator_id = (int) requestBody.get("commentator_id");
         int post_id = (int) requestBody.get("post_id");
         int parent_id = (int) requestBody.get("parent_id");
         int receiver_id = (int) requestBody.get("receiver_id");

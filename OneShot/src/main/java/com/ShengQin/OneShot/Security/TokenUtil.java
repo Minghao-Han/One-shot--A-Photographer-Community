@@ -97,5 +97,16 @@ public class TokenUtil {
         if ((decodedJWT.getClaim("id").asInt()).equals(user_id)) return true;
         else return false;
     }
+    public static int getUserIdFromToken(String token){
+        try {
+            //创建token验证器
+            JWTVerifier jwtVerifier=JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
+            DecodedJWT decodedJWT=jwtVerifier.verify(token);
+            return decodedJWT.getClaim("id").asInt();
+        } catch (IllegalArgumentException | JWTVerificationException e) {
+            //抛出错误即为验证不通过
+            return 0;
+        }
+    }
 }
 
