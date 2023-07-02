@@ -38,7 +38,7 @@ public class TokenUtil {
         return token;
     }
     /**管理员token生成*/
-    public static String createAdminToken(Administrator administrator){
+    public static String createAdminToken(int  adminId){
         String token=null;
         try {
             Date expireAt=new Date(System.currentTimeMillis()+EXPIRE_TIME);
@@ -47,8 +47,8 @@ public class TokenUtil {
                     .withIssuer("auth0")
                     .withClaim("role","administrator")
                     //存放数据
-                    .withClaim("userName",administrator.getAdminName())
-                    .withClaim("id",administrator.getId())
+//                    .withClaim("userName",administrator.getAdminName())
+                    .withClaim("id",adminId)
                     //过期时间
                     .withExpiresAt(expireAt)
                     .sign(Algorithm.HMAC256(TOKEN_SECRET));

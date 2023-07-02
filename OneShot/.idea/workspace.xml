@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="" />
+    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Security/TokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,9 +80,9 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.ShengQin.OneShot.AdminThings.Mapper" />
       <recent name="com.ShengQin.OneShot.UserThings.Services.Implements" />
       <recent name="com.ShengQin.OneShot.UserThings.Mappers" />
-      <recent name="com.ShengQin.OneShot.AdminThings.Mapper" />
     </key>
   </component>
   <component name="RunManager" selected="Application.OneShotApplication">
@@ -121,33 +131,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameVoteMapperTest.revokeVote" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginAdminMapperTest.getId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
+          <option name="PATTERN" value="com.ShengQin.OneShot.AdminThings.Mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapperTest" />
-      <option name="METHOD_NAME" value="revokeVote" />
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.LoginAdminMapperTest" />
+      <option name="METHOD_NAME" value="getId" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameVoteMapperTest.voteExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginAdminMapperTest.getPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
+          <option name="PATTERN" value="com.ShengQin.OneShot.AdminThings.Mapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapperTest" />
-      <option name="METHOD_NAME" value="voteExist" />
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.LoginAdminMapperTest" />
+      <option name="METHOD_NAME" value="getPassword" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,10 +173,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.OneShotApplication" />
+        <item itemvalue="JUnit.LoginAdminMapperTest.getId" />
+        <item itemvalue="JUnit.LoginAdminMapperTest.getPassword" />
         <item itemvalue="JUnit.GameInfoServiceImplTest.gameAvailable" />
         <item itemvalue="JUnit.GameParticipationMapperTest.getGameId" />
-        <item itemvalue="JUnit.GameVoteMapperTest.revokeVote" />
-        <item itemvalue="JUnit.GameVoteMapperTest.voteExist" />
       </list>
     </recent_temporary>
   </component>
