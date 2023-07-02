@@ -4,40 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/CommentadminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/GameCheckController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/GameInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/GamePersonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/LoginAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/ManagerInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/ShotadminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/AdminGameInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/AdminUserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/CommentadminMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/GameCheckMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/GamePersonMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/LoginAdminMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/ManagerMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/ShotadminMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/AdminUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/CommentadminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/GameCheckService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/GameInfoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/GamePersonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/LoginAdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/ManagerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Service/ShotadminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/CommentAdminPost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/Commentadmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/GamePerson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/PostAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/Shotadmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/imgPackage/Controller/imgcontroller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/imgPackage/Utils/uploadutilgame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/imgPackage/Utils/uploadutilshot.java" afterDir="false" />
-    </list>
+    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
