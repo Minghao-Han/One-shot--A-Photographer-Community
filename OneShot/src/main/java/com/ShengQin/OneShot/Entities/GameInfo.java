@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 import java.util.Date;
 
 //比赛信息发布
@@ -19,5 +18,6 @@ public class GameInfo {
     //起始时间与结束时间
     private Date start_time;
     private Date end_time;
-    private int winner;//获奖者
+    private int winner; //冠军id
+
 }

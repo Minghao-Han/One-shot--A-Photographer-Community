@@ -13,11 +13,16 @@ bin-release/
 *.ipa
 *.apk
 *.DS_Store
+<<<<<<< HEAD
 *.gitignore
 *.idea/workspace.xml
 
 # Exclude OneShot's workspace.xml file
 OneShot/.idea/workspace.xml
+=======
+.gitignore
+OneShot/.idea/*.xml
+>>>>>>> f8557e73e6e98b153d194c81906811f03f971ddd
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
