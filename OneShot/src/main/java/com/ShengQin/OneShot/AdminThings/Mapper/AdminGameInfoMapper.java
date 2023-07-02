@@ -2,15 +2,13 @@ package com.ShengQin.OneShot.AdminThings.Mapper;
 
 
 
-import com.ShengQin.OneShot.Entities.Commentadmin;
 import com.ShengQin.OneShot.Entities.GameInfo;
 import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
 
 @Mapper
-public interface GameInfoMapper {
+public interface AdminGameInfoMapper {
 
     @Insert("INSERT INTO game_publish(id, title,content,start_time,end_time,winner ) VALUES " +
             "(#{id},  #{title}, " +

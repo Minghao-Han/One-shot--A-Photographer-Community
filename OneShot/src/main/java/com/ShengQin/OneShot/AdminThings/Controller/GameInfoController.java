@@ -1,7 +1,7 @@
 package com.ShengQin.OneShot.AdminThings.Controller;
 
 
-import com.ShengQin.OneShot.AdminThings.Mapper.GameInfoMapper;
+import com.ShengQin.OneShot.AdminThings.Mapper.AdminGameInfoMapper;
 import com.ShengQin.OneShot.AdminThings.Service.GameInfoService;
 import com.ShengQin.OneShot.Entities.GameInfo;
 import com.github.pagehelper.PageHelper;
@@ -18,7 +18,7 @@ import java.util.Map;
 @RequestMapping("/gamepublish")
 public class GameInfoController {
 @Autowired
-GameInfoMapper gameInfoMapper;
+AdminGameInfoMapper adminGameInfoMapper;
 
 @Autowired
 GameInfoService gameInfoService;
@@ -32,7 +32,7 @@ GameInfoService gameInfoService;
 //获取所有比赛信息
     @GetMapping("/select")
     public List<GameInfo> index() {
-        List<GameInfo> all=gameInfoMapper.findAll();
+        List<GameInfo> all= adminGameInfoMapper.findAll();
         return all;
     }
 
@@ -42,8 +42,8 @@ GameInfoService gameInfoService;
         //pageNum=(pageNum-1)*pageSize;
 
         PageHelper.startPage(pageNum,pageSize);
-        List<GameInfo> data= gameInfoMapper.findAll();
-        Integer total = gameInfoMapper.selectTotal();
+        List<GameInfo> data= adminGameInfoMapper.findAll();
+        Integer total = adminGameInfoMapper.selectTotal();
         Map<String,Object> res=new HashMap<>();
         res.put("data",data);
         res.put("total",total);
@@ -54,7 +54,7 @@ GameInfoService gameInfoService;
     @DeleteMapping("delete/{id}")
     public Integer delete(@PathVariable int id)
     {
-        return  gameInfoMapper.deleteByShotId(id);
+        return  adminGameInfoMapper.deleteByShotId(id);
     }
 
     //6.30
@@ -63,8 +63,8 @@ GameInfoService gameInfoService;
     public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize,
                                         @RequestParam int id) {
         pageNum=(pageNum-1)*pageSize;
-        List<GameInfo> data= gameInfoMapper.selectPage1(id);
-        Integer total = gameInfoMapper.selectTotal1(id);
+        List<GameInfo> data= adminGameInfoMapper.selectPage1(id);
+        Integer total = adminGameInfoMapper.selectTotal1(id);
         // email="%"+email+"%";
 
         Map<String,Object> res=new HashMap<>();
