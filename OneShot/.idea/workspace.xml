@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -36,18 +43,36 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ShengQin.OneShot.UserThings.Services.Implements" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.ShengQin.OneShot.UserThings.Services.Implements" />
+      <recent name="com.ShengQin.OneShot.UserThings.Mappers" />
+      <recent name="com.ShengQin.OneShot.AdminThings.Mapper" />
     </key>
   </component>
   <component name="RunManager" selected="Application.OneShotApplication">
@@ -64,7 +89,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeneralMessageServiceImplTest.getHistoryMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameInfoServiceImplTest.gameAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
@@ -73,20 +98,64 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Services.Implements" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Services.Implements.GeneralMessageServiceImplTest" />
-      <option name="METHOD_NAME" value="getHistoryMessage" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Services.Implements.GameInfoServiceImplTest" />
+      <option name="METHOD_NAME" value="gameAvailable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration name="GameParticipationMapperTest.getGameId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneShot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameParticipationMapperTest" />
+      <option name="METHOD_NAME" value="getGameId" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
+    <configuration name="GameVoteMapperTest.revokeVote" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneShot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapperTest" />
+      <option name="METHOD_NAME" value="revokeVote" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameVoteMapperTest.voteExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneShot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameVoteMapperTest" />
+      <option name="METHOD_NAME" value="voteExist" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OneShotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="OneShot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ShengQin.OneShot.OneShotApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -94,7 +163,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.OneShotApplication" />
-        <item itemvalue="JUnit.GeneralMessageServiceImplTest.getHistoryMessage" />
+        <item itemvalue="JUnit.GameInfoServiceImplTest.gameAvailable" />
+        <item itemvalue="JUnit.GameParticipationMapperTest.getGameId" />
+        <item itemvalue="JUnit.GameVoteMapperTest.revokeVote" />
+        <item itemvalue="JUnit.GameVoteMapperTest.voteExist" />
       </list>
     </recent_temporary>
   </component>
@@ -106,8 +178,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688108058733</updated>
+      <workItem from="1688116963052" duration="10014000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -119,5 +195,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
