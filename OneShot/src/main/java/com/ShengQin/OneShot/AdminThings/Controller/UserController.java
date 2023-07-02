@@ -5,6 +5,7 @@ package com.ShengQin.OneShot.AdminThings.Controller;
 import com.ShengQin.OneShot.AdminThings.Mapper.AdminUserMapper;
 import com.ShengQin.OneShot.AdminThings.Service.AdminUserService;
 import com.ShengQin.OneShot.Entities.Account;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,9 +51,10 @@ public class UserController {
     @GetMapping("/page")
     public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize){//,
                                        // @RequestParam String email) {
-        pageNum=(pageNum-1)*pageSize;
+//        pageNum=(pageNum-1)*pageSize;
         //email="%"+email+"%";
-       List<Account> data= adminUserMapper.selectPage(pageNum,pageSize);//,email);
+        PageHelper.startPage(pageNum,pageSize);
+       List<Account> data= adminUserMapper.findAll();//,email);
        Integer total = adminUserMapper.selectTotal();//email);
         Map<String,Object> res=new HashMap<>();
         res.put("data",data);
@@ -64,8 +66,8 @@ public class UserController {
     @GetMapping("/searchdemo")
     public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize,
             @RequestParam String email) {
-        pageNum=(pageNum-1)*pageSize;
-        List<Account> data= adminUserMapper.selectPage1(pageNum,pageSize,email);
+        PageHelper.startPage(pageNum,pageSize);
+        List<Account> data= adminUserMapper.selectPage1(email);
         Integer total = adminUserMapper.selectTotal1(email);
        // email="%"+email+"%";
 

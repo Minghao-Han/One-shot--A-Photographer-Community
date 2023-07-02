@@ -4,6 +4,7 @@ package com.ShengQin.OneShot.AdminThings.Controller;
 import com.ShengQin.OneShot.AdminThings.Mapper.ShotadminMapper;
 import com.ShengQin.OneShot.AdminThings.Service.ShotadminService;
 import com.ShengQin.OneShot.Entities.Shotadmin;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,9 +38,9 @@ public class ShotadminController {
     //分页查询
     @GetMapping("/page")
     public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize){
-        pageNum=(pageNum-1)*pageSize;
-
-        List<Shotadmin> data= shotadminmapper.selectPage(pageNum,pageSize);
+      //  pageNum=(pageNum-1)*pageSize;
+        PageHelper.startPage(pageNum,pageSize);
+        List<Shotadmin> data= shotadminmapper.findAll();
         Integer total = shotadminmapper.selectTotal();
         Map<String,Object> res=new HashMap<>();
         res.put("data",data);
@@ -52,6 +53,22 @@ public class ShotadminController {
     public Integer delete(@PathVariable Integer id)
     {
         return  shotadminmapper.deleteByShotId(id);
+    }
+
+    //6.30搜索shot（只用id，后面有什么好的想法可以实现多个框删除
+    @GetMapping("/searchdemo")
+    public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize,
+                                        @RequestParam int id) {
+     //   pageNum=(pageNum-1)*pageSize;
+        PageHelper.startPage(pageNum,pageSize);
+        List<Shotadmin> data= shotadminmapper.selectPage1(id);
+        Integer total = shotadminmapper.selectTotal1(id);
+        // email="%"+email+"%";
+
+        Map<String,Object> res=new HashMap<>();
+        res.put("data",data);
+        res.put("total",total);
+        return res;
     }
 
 }

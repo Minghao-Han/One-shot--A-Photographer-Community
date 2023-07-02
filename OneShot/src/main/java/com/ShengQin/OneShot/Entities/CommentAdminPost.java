@@ -8,15 +8,16 @@ import lombok.ToString;
 import java.sql.Timestamp;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class GamePerson {
+public class CommentAdminPost {
     private int id;
-    private int game_id;
-    private int user_id;
-    private int total_votes;
+    private int inner_id;
+    private int post_id;
+    private int parent_id;
+    private int commentator_id;
+    private String content;
     private Timestamp time;
-
-
+    private int is_read;
 }

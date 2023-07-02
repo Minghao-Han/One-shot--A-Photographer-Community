@@ -4,6 +4,7 @@ package com.ShengQin.OneShot.AdminThings.Controller;
 import com.ShengQin.OneShot.AdminThings.Mapper.CommentadminMapper;
 import com.ShengQin.OneShot.AdminThings.Service.CommentadminService;
 import com.ShengQin.OneShot.Entities.Commentadmin;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,9 +52,9 @@ public class CommentadminController {
     //2.分页查
     @GetMapping("/page")
     public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
-        pageNum = (pageNum - 1) * pageSize;
-
-        List<Commentadmin> data = commentadminMapper.selectPage(pageNum, pageSize);//,email);
+        //pageNum = (pageNum - 1) * pageSize;
+        PageHelper.startPage(pageNum,pageSize);
+        List<Commentadmin> data = commentadminMapper.findAll();//,email);
         Integer total = commentadminMapper.selectTotal();//email);
         Map<String, Object> res = new HashMap<>();
         res.put("data", data);
@@ -61,14 +62,16 @@ public class CommentadminController {
         return res;
     }
 
-    //3.搜索框搜素
+    //搜索2023/6/30
     @GetMapping("/searchdemo")
     public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize,
-                                        @RequestParam Integer id) {
-        pageNum=(pageNum-1)*pageSize;
-         String  id1="%"+id+"%"; //记得改
-        List<Commentadmin> data= commentadminMapper.selectPage1(pageNum,pageSize,id);
+                                        @RequestParam int id) {
+      //  pageNum=(pageNum-1)*pageSize;
+        PageHelper.startPage(pageNum,pageSize);
+        List<Commentadmin> data= commentadminMapper.selectPage1(id);
         Integer total = commentadminMapper.selectTotal1(id);
+        // email="%"+email+"%";
+
         Map<String,Object> res=new HashMap<>();
         res.put("data",data);
         res.put("total",total);

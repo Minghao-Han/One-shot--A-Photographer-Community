@@ -1,5 +1,6 @@
 package com.ShengQin.OneShot.AdminThings.Mapper;
 
+import com.ShengQin.OneShot.Entities.Account;
 import com.ShengQin.OneShot.Entities.Commentadmin;
 import org.apache.ibatis.annotations.*;
 
@@ -50,6 +51,10 @@ public interface CommentadminMapper {
 
     @Select("SELECT count(*)  from comment_of_shot where id=#{id}")
     Integer selectTotal1(Integer id);
+
+    @Select("SELECT  * from  comment_of_shot where id like CONCAT('%', #{id}, '%')")
+    List<Commentadmin> selectPage1(Integer id);
+
     @Select("select count(*) from comment_of_shot where id = #{id}")
     boolean isExist1(int id);
 

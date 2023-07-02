@@ -18,7 +18,11 @@ public class GameInfo {
     private String title; //比赛标题
     private String content; //比赛内容
     //  private String logoroute;//图片路径m
+
+
     //起始时间与结束时间
     private Date start_time;
     private Date end_time;
+    private int winner; //冠军id
+
 }

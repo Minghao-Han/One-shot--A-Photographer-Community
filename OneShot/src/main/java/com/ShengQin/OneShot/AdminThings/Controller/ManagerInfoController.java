@@ -58,4 +58,19 @@ public class ManagerInfoController {
         return  managermapper.deleteById(id);
     }
 
+    //搜索2023/6/30
+    @GetMapping("/searchdemo")
+    public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize,
+                                        @RequestParam int id) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<User> data= managermapper.selectPage1(id);
+        Integer total = managermapper.selectTotal1(id);
+        // email="%"+email+"%";
+
+        Map<String,Object> res=new HashMap<>();
+        res.put("data",data);
+        res.put("total",total);
+        return res;
+    }
+
 }

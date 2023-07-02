@@ -47,8 +47,8 @@ public interface AdminUserMapper {
     Integer selectTotal();
 
 //查询测试
-    @Select("SELECT  * from  account where email like CONCAT('%', #{email}, '%') limit #{pageNum}, #{pageSize}")
-    List<Account> selectPage1(Integer pageNum, Integer pageSize, String email);
+    @Select("SELECT  * from  account where email like CONCAT('%', #{email}, '%')")
+    List<Account> selectPage1( String email);
 
     @Select("SELECT count(*)  from account  where  email=#{email}")
     Integer selectTotal1(String email);

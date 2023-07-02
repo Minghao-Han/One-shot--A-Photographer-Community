@@ -1,4 +1,5 @@
 package com.ShengQin.OneShot.AdminThings.Mapper;
+import com.ShengQin.OneShot.Entities.Account;
 import com.ShengQin.OneShot.Entities.Shotadmin;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
@@ -57,4 +58,11 @@ public interface ShotadminMapper {
 
     @Select("select count(*) from shot where id = #{id}")
     public boolean isExist1(Integer id);
+
+
+    @Select("SELECT  * from  shot where id like CONCAT('%', #{id}, '%')")
+    List<Shotadmin> selectPage1(int id);
+
+    @Select("SELECT count(*)  from shot  where  id=#{id}")
+    Integer selectTotal1(int id);
 }
