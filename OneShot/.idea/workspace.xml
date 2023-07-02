@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameInfoServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Controllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GameInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GameInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GameParticipationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/GameParticipationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameParticipationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameParticipationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameVoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameVoteServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Controllers/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Controllers/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Mappers/GameMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/UserThings/Mappers/GameMapperTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
