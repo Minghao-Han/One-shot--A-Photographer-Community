@@ -1,8 +1,6 @@
 package com.ShengQin.OneShot.AdminThings.Service;
 
-import com.ShengQin.OneShot.AdminThings.Mapper.GameInfoMapper;
 import com.ShengQin.OneShot.AdminThings.Mapper.GamePersonMapper;
-import com.ShengQin.OneShot.Entities.GameInfo;
 import com.ShengQin.OneShot.Entities.GamePerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

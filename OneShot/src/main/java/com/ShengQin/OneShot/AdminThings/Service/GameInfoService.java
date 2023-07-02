@@ -1,6 +1,6 @@
 package com.ShengQin.OneShot.AdminThings.Service;
 
-import com.ShengQin.OneShot.AdminThings.Mapper.GameInfoMapper;
+import com.ShengQin.OneShot.AdminThings.Mapper.AdminGameInfoMapper;
 import com.ShengQin.OneShot.Entities.GameInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 public class GameInfoService {
 
     @Autowired
-    private GameInfoMapper gameInfoMapper;
+    private AdminGameInfoMapper adminGameInfoMapper;
 
     public Integer save(GameInfo gameInfo) {
-        if (!gameInfoMapper.isExist(gameInfo.getId())) {
+        if (!adminGameInfoMapper.isExist(gameInfo.getId())) {
             System.out.println("111");
-            return  gameInfoMapper.insert(gameInfo);
+            return  adminGameInfoMapper.insert(gameInfo);
         } else {
             System.out.println("222");
-            return   gameInfoMapper.update(gameInfo);
+            return   adminGameInfoMapper.update(gameInfo);
         }
     }
 }
