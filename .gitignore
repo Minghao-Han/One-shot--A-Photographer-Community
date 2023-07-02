@@ -8,12 +8,15 @@ bin-release/
 .settings/
 
 # Executables
+OneShot/.idea/workspace.xml
+OneShot/target/
 *.swf
 *.air
 *.ipa
 *.apk
 *.DS_Store
 *.gitignore
+*.class
 *.idea/workspace.xml
 OneShot/target/
 .gitignore
