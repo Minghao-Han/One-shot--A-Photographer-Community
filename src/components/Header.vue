@@ -48,7 +48,7 @@ import { Search } from "@element-plus/icons-vue"
 .header-content .header {
     display: flex;
     flex-direction: column;
-
+    height: 75px;
 }
 
 .header .header-row {

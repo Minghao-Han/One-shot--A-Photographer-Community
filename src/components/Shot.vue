@@ -28,36 +28,41 @@
             </p>
         </div>
 
-        <el-row :gutter="20" justify="space-between">
+        <el-row :gutter="20" justify="space-between" class="icons">
             <el-col :span="12" class="shot-function-icons">
                 <el-icon class="thumb icon" @click="thumb">
                     <Orange :color="orangeColor" />
                 </el-icon>
-                <span>{{ shotObj.total_thumb }}</span>
+                <span class="icon-number">{{ shotObj.total_thumb }}</span>
                 <el-icon class="collect icon" @click="collect">
                     <CollectionTag :color="redColor" />
                 </el-icon>
-                <span>{{ shotObj.total_collect }}</span>
-                <!-- <el-icon class="view icon">
-                    <View />
-                </el-icon> -->
+                <span class="icon-number">{{ shotObj.total_collect }}</span>
+                <span class="icon-number"> 浏览量{{ shotObj.pageView }}</span>
             </el-col>
 
+            <el-col :span="3">
+                <span class="icon-number"> {{ shotObj.createTime }} </span>
+            </el-col>
 
             <el-col :span="4" class="shot-comment">
-                <el-icon class="icon">
+                <el-icon class="icon" @click="comment">
                     <ChatLineSquare />
                 </el-icon>
             </el-col>
         </el-row>
+
+        <CommentArea v-if="showComment"></CommentArea>
     </div>
 </template>
 <script setup>
 import { computed, onBeforeUpdate, onMounted, onUpdated, reactive, ref } from 'vue';
 import { Plus, Orange, View, CollectionTag, ChatLineSquare } from '@element-plus/icons-vue'
+import CommentArea from './CommentArea .vue';
 import img1 from '@/assets/images/1.jpg';
 import img2 from '@/assets/images/2.jpg';
-import img3 from '@/assets/images/vx.jpg';
+import img3 from '@/assets/images/pic.jpg';
+
 const shotObj = ref({
 })
 
@@ -72,12 +77,16 @@ onMounted(() => {
     console.log(shotObj.value);
 })
 
+const time = ref(getMyDate(shotObj.value.createTime))
+
 const posterName = ref("小芳");
 const shotTitle = ref("你好，世界");
 const shotContent = ref("Hello, OneShot!");
 //判断是否点赞或收藏
 const isThumbed = ref(false);
 const isCollected = ref(false);
+//判断是否打开评论区
+const showComment = ref(false);
 //计算属性用来改变颜色
 const orangeColor = computed(() => {
     return isThumbed.value === true ? "orange" : "";
@@ -102,7 +111,24 @@ const collect = () => {
 
 //评论
 const comment = () => {
+    showComment.value = !showComment.value;
+}
 
+const addZero = function (num) {
+    if (parseInt(num) < 10) {
+        num = "0" + num
+    }
+    return num
+}
+
+//毫秒转日期
+function getMyDate(str) {
+    var oDate = new Date(str),
+        oYear = oDate.getFullYear(),
+        oMonth = oDate.getMonth() + 1,
+        oDay = oDate.getDate(),
+        oTime = oYear + '-' + (oMonth) + '-' + (oDay);
+    return oTime;
 }
 
 
@@ -114,6 +140,12 @@ const comment = () => {
     background-color: white;
     box-shadow: 0 0 5px 1px #a2a2a2;
     /* border-radius: 5px; */
+}
+
+.shot-container .icon-number {
+    margin-right: 5px;
+    margin-left: 3px;
+    color: #7b7b7b
 }
 
 .shot-container .shot-poster {
@@ -138,13 +170,13 @@ const comment = () => {
 
 }
 
-.shot-container .el-image__inner {
+/* .shot-container .el-image__inner {
     max-height: 600px;
 }
 
 .el-image__inner {
     max-height: 600px;
-}
+} */
 
 
 .shot-container .poster-name {
@@ -160,13 +192,13 @@ const comment = () => {
 
 .shot-container .icon {
     font-size: 24px;
-    margin-right: 6px;
-    transition: transform 0.3s;
+
+    transition: transform 0.2s;
 }
 
 .shot-container .icon:hover {
     cursor: pointer;
-    transform: translateY(-10px);
+    transform: translateY(-6px);
 }
 
 
@@ -189,4 +221,10 @@ const comment = () => {
 .shot-container .follow-button {
     margin-right: 6px;
 }
+
+/* .shot-container .icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+} */
 </style>

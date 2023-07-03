@@ -1,3 +1,5 @@
+//已弃用
+
 // import axios from "../utils/request";
 // import path from "./path"
 // import { token } from "../utils/request";

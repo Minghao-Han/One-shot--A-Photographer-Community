@@ -5,11 +5,13 @@
         <ShotsContainer :new-shots="shots" />
         <Aside />
     </el-container>
+
+    <el-backtop :right="100" :bottom="100" />
 </template>
 
 <script setup>
 
-import Header from '../components/Header.Vue'
+import Header from '../components/Header.vue';
 import ShotsContainer from '../components/ShotsContainer.vue';
 import Aside from '../components/Aside.vue';
 import { onBeforeMount, onMounted, reactive, ref } from 'vue';
@@ -42,7 +44,8 @@ const shotsPage = () => {
                 ElMessage("验证过期，请重新登录");
                 router.replace('/login');
             }
-            console.log(resolvedObj.value.data);
+            console.log("res.data=>")
+            console.log(resolvedObj.value);
             shots.value = resolvedObj.value.data;
             pageNum.value++;
             console.log(shots.value[0]);
