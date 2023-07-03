@@ -1,11 +1,11 @@
 package com.ShengQin.OneShot.UserThings.Controllers;
 
 import com.ShengQin.OneShot.Security.TokenUtil;
-import com.ShengQin.OneShot.UserThings.Services.Implements.LoginServiceImpl;
+import com.ShengQin.OneShot.UserThings.Services.LoginLogService;
 import com.ShengQin.OneShot.UserThings.Services.LoginService;
 import com.ShengQin.OneShot.Utils.Result;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -14,9 +14,11 @@ import java.util.Map;
 public class LoginController {
     @Autowired
     LoginService loginService;
+    @Autowired
+    LoginLogService loginLogService;
 
     @PostMapping("/login")
-    public String login(@RequestBody Map<String,String> data){
+    public String login(@RequestBody Map<String,String> data, HttpServletRequest request){
         //要补log
         String email = data.get("email");
         String password = data.get("password");
@@ -25,6 +27,7 @@ public class LoginController {
         if (successfulVerify){//登录成功
             int userId = loginService.getId(email);
             String newToken = TokenUtil.createToken(userId);
+            loginLogService.logLoginInfo(request,userId);
             return Result.success("登录成功",newToken);
         }else {//登录失败
             return Result.fail("登录失败");
