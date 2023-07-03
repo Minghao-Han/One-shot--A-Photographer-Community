@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cded2fd1-a3f4-46ba-9f86-d0a1abe2a911" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/ScheduleJob/GameScheduleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/ScheduleJob/SetWinnerJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/ScheduleJob/SetWinnerScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Utils/CronExpressionGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Utils/SpringContextUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/ScheduleJob/GameScheduleMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/Utils/CronExpressionGeneratorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/Utils/SpringContextUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/AdminGameInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/AdminThings/Mapper/AdminGameInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/GameInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/Entities/GameInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameVoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ShengQin/OneShot/UserThings/Services/Implements/GameVoteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Mapper/AdminGameInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/AdminThings/Mapper/AdminGameInfoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/Entities/GameInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/Entities/GameInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/Implements/GameVoteServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ShengQin/OneShot/UserThings/Services/Implements/GameVoteServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ShengQin/OneShot/UserThings/Mappers/GameParticipationMapperTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,9 +93,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.ShengQin.OneShot.ScheduleJob" />
+      <recent name="com.ShengQin.OneShot.Utils" />
+      <recent name="com.ShengQin.OneShot.UserThings.Mappers" />
       <recent name="com.ShengQin.OneShot.AdminThings.Mapper" />
       <recent name="com.ShengQin.OneShot.UserThings.Services.Implements" />
-      <recent name="com.ShengQin.OneShot.UserThings.Mappers" />
     </key>
   </component>
   <component name="RunManager" selected="Application.OneShotApplication">
@@ -91,23 +114,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameInfoServiceImplTest.gameAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneShot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.UserThings.Services.Implements.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Services.Implements" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Services.Implements.GameInfoServiceImplTest" />
-      <option name="METHOD_NAME" value="gameAvailable" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameParticipationMapperTest.getGameId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameInfoMapperTest.getGameOngoing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
@@ -116,40 +123,56 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.UserThings.Mappers" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameParticipationMapperTest" />
-      <option name="METHOD_NAME" value="getGameId" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.UserThings.Mappers.GameInfoMapperTest" />
+      <option name="METHOD_NAME" value="getGameOngoing" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginAdminMapperTest.getId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameScheduleMapperTest.getFinishedNoWinnerGames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.AdminThings.Mapper.*" />
+          <option name="PATTERN" value="com.ShengQin.OneShot.ScheduleJob.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.LoginAdminMapperTest" />
-      <option name="METHOD_NAME" value="getId" />
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.ScheduleJob" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.ScheduleJob.GameScheduleMapperTest" />
+      <option name="METHOD_NAME" value="getFinishedNoWinnerGames" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginAdminMapperTest.getPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameScheduleMapperTest.selectWinner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneShot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ShengQin.OneShot.AdminThings.Mapper.*" />
+          <option name="PATTERN" value="com.ShengQin.OneShot.ScheduleJob.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.AdminThings.Mapper.LoginAdminMapperTest" />
-      <option name="METHOD_NAME" value="getPassword" />
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.ScheduleJob" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.ScheduleJob.GameScheduleMapperTest" />
+      <option name="METHOD_NAME" value="selectWinner" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringContextUtilTest.getBean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneShot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ShengQin.OneShot.Utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ShengQin.OneShot.Utils" />
+      <option name="MAIN_CLASS_NAME" value="com.ShengQin.OneShot.Utils.SpringContextUtilTest" />
+      <option name="METHOD_NAME" value="getBean" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -165,10 +188,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.OneShotApplication" />
-        <item itemvalue="JUnit.LoginAdminMapperTest.getId" />
-        <item itemvalue="JUnit.LoginAdminMapperTest.getPassword" />
-        <item itemvalue="JUnit.GameInfoServiceImplTest.gameAvailable" />
-        <item itemvalue="JUnit.GameParticipationMapperTest.getGameId" />
+        <item itemvalue="JUnit.GameScheduleMapperTest.selectWinner" />
+        <item itemvalue="JUnit.SpringContextUtilTest.getBean" />
+        <item itemvalue="JUnit.GameScheduleMapperTest.getFinishedNoWinnerGames" />
+        <item itemvalue="JUnit.GameInfoMapperTest.getGameOngoing" />
       </list>
     </recent_temporary>
   </component>

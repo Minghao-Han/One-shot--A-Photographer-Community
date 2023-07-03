@@ -17,5 +17,15 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 
+quartz:
+  auto-startup: true
+  wait-for-jobs-to-complete-on-shutdown: false
+  overwrite-existing-jobs: false
+  #  scheduler-name： 定时器名称
+  #
+  #  startup-delay：延时启动定时任务（避免系统未完全启动却开始执行定时任务的情况）
+
+
+
 
 

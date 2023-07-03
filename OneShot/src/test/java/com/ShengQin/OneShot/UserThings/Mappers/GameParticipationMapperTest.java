@@ -32,4 +32,14 @@ class GameParticipationMapperTest {
     void getGameId() {
         System.out.println(gameParticipationMapper.getGameId(2));
     }
+
+    @Test
+    void addTotalVotes() {
+        gameParticipationMapper.addTotalVotes(2);
+    }
+
+    @Test
+    void subTotalVotes() {
+        gameParticipationMapper.subTotalVotes(2);
+    }
 }
