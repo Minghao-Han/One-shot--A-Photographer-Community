@@ -17,6 +17,7 @@ bin-release/
 *.idea/workspace.xml
 OneShot/target/
 .gitignore
+*.idea/
 
 # Exclude OneShot's workspace.xml file
 OneShot/.idea/workspace.xml
