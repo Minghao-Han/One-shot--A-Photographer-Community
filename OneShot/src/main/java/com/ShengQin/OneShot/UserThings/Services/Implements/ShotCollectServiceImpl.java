@@ -51,8 +51,13 @@ public class ShotCollectServiceImpl implements ShotCollectService {
         for (int shot_id :
                 shot_ids) {
             Shot shot = shotService.getShot(shot_id);
-            shotVOs.add(shotVOService.createShotVO(shot));
+            shotVOs.add(shotVOService.createShotVO(shot,user_id));
         }
          return shotVOs;
+    }
+
+    @Override
+    public boolean collectExist(int user_id, int shot_id) {
+        return collectMapper.shotCollectionExist(user_id,shot_id);
     }
 }

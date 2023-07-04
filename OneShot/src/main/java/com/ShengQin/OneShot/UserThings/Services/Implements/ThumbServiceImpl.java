@@ -50,6 +50,11 @@ public class ThumbServiceImpl implements ThumbService {
     }
 
     @Override
+    public boolean shotThumbExist(int thumber_id, int shot_id) {
+        return thumbMapper.shotThumbExist(thumber_id,shot_id);
+    }
+
+    @Override
     public int postGiveThumb(int thumber_id, int post_id) {
         if (!postService.isExist(post_id)) return notExist;
         else if (thumbMapper.postThumbExist(thumber_id,post_id)) {
@@ -75,5 +80,10 @@ public class ThumbServiceImpl implements ThumbService {
             messageMapper.deleteMessage("thumb_of_post",references_id);
             return success;
         }
+    }
+
+    @Override
+    public boolean postThumbExist(int thumber_id, int post_id) {
+        return thumbMapper.postThumbExist(thumber_id,post_id);
     }
 }

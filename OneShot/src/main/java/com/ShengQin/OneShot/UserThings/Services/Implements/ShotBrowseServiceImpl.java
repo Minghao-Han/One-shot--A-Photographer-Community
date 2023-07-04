@@ -72,7 +72,7 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
         }
         for (Shot shot :
                 shots) {
-            shotVOs.add(shotVOService.createShotVO(shot));
+            shotVOs.add(shotVOService.createShotVO(shot,user_id));
         }
         return shotVOs;
     }
