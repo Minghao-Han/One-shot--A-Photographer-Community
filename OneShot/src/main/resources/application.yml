@@ -2,20 +2,21 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/oneshot1
-    username: root
-    password: root
+    url: jdbc:mysql://localhost:3306/OneShot
+    username: OneShot
+    password: OneShot
   mail:
-    host: smtp.163.com
-    port: 25
-    username: 13907587111@163.com
-    password: Yinliqi168
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+    # SMTP服务器
+    host: smtp.qq.com
+    # 发送验证码邮箱
+    username: 3508627758@qq.com
+    # 授权码
+    password: kygykfbwmlzfdbaj
+    # 编码
+    default-encoding: utf-8
+
+
+
 mybatis:
   configuration:
     #下划线转驼峰
@@ -26,7 +27,14 @@ pagehelper:
   reasonable: false
   supportMethodsArguments: true
   params: count=countSql
-server:
-  port: 9090
+
+quartz:
+  auto-startup: true
+  wait-for-jobs-to-complete-on-shutdown: false
+  overwrite-existing-jobs: false
+  #  scheduler-name： 定时器名称
+  #
+  #  startup-delay：延时启动定时任务（避免系统未完全启动却开始执行定时任务的情况）
+
 
 
