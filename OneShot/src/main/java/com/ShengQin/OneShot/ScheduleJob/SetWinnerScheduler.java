@@ -21,16 +21,12 @@ public class SetWinnerScheduler {
         try {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.start();
-            System.out.println("scheduler started");
-            System.out.println("clear scheduler");
             scheduler.clear();
             /**先为尚未结束的比赛加定时选winner任务*/
             List<GameInfo> unfinishedGames = gameScheduleMapper.getUnfinishedGames();
-            System.out.println(unfinishedGames);
             int index = 0;//计数用，确保不同job的名字不一样
             for (GameInfo unfinishedGame :unfinishedGames) {
                 String cronExpression = CronExpressionGenerator.getCronExpression(unfinishedGame.getEnd_time());
-                System.out.println("新建job name =setWinnerJob"+index+"并添加进scheduler");
                 scheduler.scheduleJob(
                         JobBuilder.newJob(SetWinnerJob.class)
                                 .withIdentity("setWinnerJob"+index,"setWinnerGroup")
