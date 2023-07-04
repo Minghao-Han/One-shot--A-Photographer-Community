@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("admin/login")
+@RequestMapping("/admin/login")
 public class LoginAdminController {
     @Autowired
     LoginAdminService loginAdminService;

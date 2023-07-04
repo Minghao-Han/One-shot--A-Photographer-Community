@@ -48,7 +48,7 @@ public interface GamePersonMapper {
     @Delete("delete from game_participation where id =#{id}")
     Integer deleteById(int id);
 
-    @Select("SELECT count(*)  from game_particition where id=#{id}")
+    @Select("SELECT count(*)  from game_participation where id=#{id}")
     Integer selectTotal1(Integer id);
 
     @Select("SELECT  * from  game_participation where id like CONCAT('%', #{id}, '%')")
