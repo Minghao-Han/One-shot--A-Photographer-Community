@@ -29,13 +29,5 @@ public interface ShotCommentMapper {
     @Select("select max(inner_id)+1 from comment_of_shot group by shot_id having shot_id=#{shot_id}")
     public Integer getNewInnerID(int shot_id);
     @Select("select * from comment_of_shot where shot_id=#{shot_id}")
-//    @Results(id="commentMap", value={
-//            @Result(column="id", property="id", id=true),
-//            @Result(column="innerID", property="inner_id"),
-//            @Result(column="receiver_id", property="receiver_id"),
-//            @Result(column="parent_id", property="parent_id"),
-//            @Result(column="commentator_id", property="commentator_id"),
-//            @Result(column="time", property="time", jdbcType= JdbcType.TIMESTAMP, javaType = java.util.Date.class)
-//    })
     public List<Comment> getComment(int shot_id);
 }

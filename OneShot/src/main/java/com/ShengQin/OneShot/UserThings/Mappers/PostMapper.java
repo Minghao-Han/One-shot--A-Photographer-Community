@@ -20,6 +20,9 @@ public interface PostMapper {
             @Result(column="time", property="createTime", jdbcType= JdbcType.TIMESTAMP, javaType = java.util.Date.class)
     })
     public Post getPost(int post_id);
+    @Select("select * from post where user_id=#{user_id}")
+    @ResultMap("postMap")
+    public List<Post> getPostsOfUser(int user_id);
 
     public default void save(Post post){
         if (isExist(post)) {
@@ -47,6 +50,10 @@ public interface PostMapper {
     public void update(Post updatedPost);
     @Delete("delete from post where id=#{post_id}")
     public void delete(int post_id);
-    public List<Post> getRecommendPost(int pageNum);
-    public List<Post> getPostsOf(int user_id, int pageNum);
+    @Select("select * from post where page_view != 0 and (total_thumb/page_view)>=2")
+    @ResultMap("postMap")
+    public List<Post> getRecommendedPost(int pageNum);
+    @Select("select * from shot where (page_view != 0 and 2>(total_thumb/page_view)) or (page_view = 0)")
+    @ResultMap("postMap")
+    public List<Post> getNotSoRecommendedPost(int pageNum);
 }

@@ -79,7 +79,7 @@ public class ThumbServiceImpl implements ThumbService {
             postService.addThumb(post_id);
             Thumb newThumb = new Thumb(thumber_id, post_id);
             thumbMapper.postAddThumb(newThumb);//往thumb_of_shot里加数据
-            int receiver_id = postService.getPost(post_id).getUserId();
+            int receiver_id = postService.getPost(post_id).getUser_id();
             messageMapper.createMessage("thumb_of_post", newThumb.getId(), receiver_id);
             return success;
         }
