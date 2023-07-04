@@ -34,8 +34,10 @@ const errorHandle = (status, info) => {
 // 网络公共配置
 const instance = axios.create({
     timeout: 5000,
+
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('token')
     }
 })
 

@@ -28,11 +28,22 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
-const userName = ref("小芳");
-const gender = ref("Male");
-const age = ref(22);
-const personSignature = ref("像风一样");
+import { computed, onBeforeUpdate, onMounted, ref } from 'vue';
+const userName = ref("");
+const gender = ref("");
+const age = ref();
+const personSignature = ref("");
+
+const props = defineProps({
+    user: Object
+})
+
+onBeforeUpdate(() => {
+    userName.value = props.user.userName;
+    gender.value = props.user.gender;
+    age.value = props.user.age;
+    personSignature.value = props.user.personalSignature;
+})
 
 const genderInCn = computed(() => {
     if (gender.value === "Male")

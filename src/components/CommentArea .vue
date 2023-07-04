@@ -11,14 +11,11 @@
                 </el-button>
             </div>
             <el-scrollbar max-height="400px">
-                <Comment></Comment>
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
+                <Comment v-for="item in props.comments">
+                    <template #avatar><img src="@/assets/images/1.jpg"></template>
+                    <template #content>{{ item.content }}</template>
+                    <template #name>小芳</template>
+                </Comment>
             </el-scrollbar>
         </div>
 
@@ -29,8 +26,26 @@
 import { ChatSquare } from '@element-plus/icons-vue'
 import { ref } from "vue"
 import Comment from './Comment.vue'
+import request from '../utils/request'
+import { resolvedObj } from '../utils/request'
+//评论的页数
+const pageNum = ref(1);
 
 const comment = ref();
+
+const props = defineProps({
+    comments: Array
+})
+
+const config = {
+    headers: {
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('token')
+    }
+}
+
+
+
 </script>
 
 <style scoped>

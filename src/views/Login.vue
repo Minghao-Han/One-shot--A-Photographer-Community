@@ -24,7 +24,7 @@
 </template>
   
 <script setup>
-import { getCurrentInstance, onMounted, ref } from 'vue';
+import { getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
 const { proxy } = getCurrentInstance();
 
 import { useRouter } from 'vue-router';
@@ -40,9 +40,6 @@ const formInfo = ref({
     password: ""
 })
 
-onMounted(() => {
-
-})
 
 const errorMessage = ref("");
 
@@ -65,8 +62,6 @@ const login = () => {
                 email: formInfo.value.email,
                 password: formInfo.value.password
             }
-
-
             const loginData = JSON.stringify(param);
             console.log(loginData);
             axios.post("http://localhost:8080/login", loginData, {
@@ -80,9 +75,12 @@ const login = () => {
                     console.log(token);
                     //如果token存在，说明登录成功，则跳转入shots网页，否则
                     if (token !== undefined) {
+                        localStorage.removeItem('token');
                         localStorage.setItem('token', token);
+                        console.log("陈工");
+                        console.log(token);
                         ElMessage.success("登录成功");
-                        router.push({
+                        router.replace({
                             path: '/shots'
                         })
                     }

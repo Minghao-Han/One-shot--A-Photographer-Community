@@ -3,7 +3,7 @@
 
     <el-container class="main-content">
         <ShotsContainer :new-shots="shots" />
-        <Aside />
+        <Aside :user="userInfo" />
     </el-container>
 
     <el-backtop :right="100" :bottom="100" />
@@ -24,21 +24,26 @@ const router = useRouter();
 
 
 const shots = ref();
+const userInfo = ref();
+
+const config = {
+    headers: {
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('token')
+    }
+}
 
 //获取最初的shot
 onMounted(() => {
     shotsPage();
+    //更新侧边栏
+    initAside();
 })
 
 //请求一页shots
 const shotsPage = () => {
-    const url = "http://localhost:8080/shotBrowse/4/" + pageNum.value;
-    axios.get(url, {
-        headers: {
-            'Content-Type': 'application/json',
-            'token': localStorage.getItem('token')
-        }
-    })
+    const url = "http://localhost:8080/shotBrowse/" + pageNum.value;
+    axios.get(url, config)
         .then(response => {
             if (resolvedObj.value.code === "500") {
                 ElMessage("验证过期，请重新登录");
@@ -49,6 +54,16 @@ const shotsPage = () => {
             shots.value = resolvedObj.value.data;
             pageNum.value++;
             console.log(shots.value[0]);
+        })
+}
+
+const initAside = () => {
+    const url = "http://localhost:8080/userInfo";
+    axios.get(url, config)
+        .then(response => {
+
+            console.log(resolvedObj.value);
+            userInfo.value = resolvedObj.value.data;
         })
 }
 </script>

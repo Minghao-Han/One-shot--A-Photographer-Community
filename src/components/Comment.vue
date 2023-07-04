@@ -2,14 +2,21 @@
     <div class="comment-container">
         <div class="info">
             <el-avatar>
+                <slot name="avatar"></slot>
             </el-avatar>
-            <h5 style="margin-left:10px ; font-size: 18px;">名字</h5>
+            <h5 style="margin-left:10px ; font-size: 18px;">
+                <slot name="name">
+
+                </slot>
+            </h5>
         </div>
 
         <div>
+
             <p class="content">
-                这是你见过最聪明的评论
+                <slot name="content"></slot>
             </p>
+
         </div>
 
         <div class="end-container">
