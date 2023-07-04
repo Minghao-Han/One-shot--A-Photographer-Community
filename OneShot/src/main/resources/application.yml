@@ -5,6 +5,11 @@ spring:
     url: jdbc:mysql://localhost:3306/OneShot
     username: OneShot
     password: OneShot
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    #password: redis默认没密码
   mail:
     # SMTP服务器
     host: smtp.qq.com

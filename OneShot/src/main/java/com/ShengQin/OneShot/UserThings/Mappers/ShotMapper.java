@@ -23,6 +23,10 @@ public interface ShotMapper {
     })
     public Shot getShot(int shot_id);
 
+    @Select("select * from shot where user_id=#{user_id}")
+    @ResultMap("shotMap")
+    public List<Shot> getShotsOfUser(int user_id);
+
     public default void save(Shot shot){
         if (isExist(shot)) {
             update(shot);
@@ -84,6 +88,5 @@ public interface ShotMapper {
     @Select("select * from shot where (page_view != 0 and 2>(total_thumb/page_view)) or (page_view = 0)")
     @ResultMap("shotMap")
     public List<Shot> getShotIgnorePreferenceLow();//多条件查询,不匹配用户喜好且低浏览点赞比的shot
-    public List<Shot> getShotsOfUser(int user_id);
 
 }

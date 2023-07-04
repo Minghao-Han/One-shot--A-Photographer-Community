@@ -18,4 +18,6 @@ public class ShotVO {//相比Shot增加作者用户名，仅用来向前端传�
     private int total_collect;
     private int pageView;//浏览量
     private Date createTime;
+    private boolean thumbed;
+    private boolean collected;
 }

@@ -13,9 +13,9 @@ public class CommentVOImpl implements CommentVOService {
     UserService userService;
     @Override
     public CommentVO createCommentVO(Comment comment) {
-        String commentatorUserName = userService.getUserName(comment.getCommentator_id());//发评论的人的用户名
-        String receiverUserName = userService.getUserName(comment.getReceiver_id());//被评论的人的用户名
-        CommentVO commentVO = new CommentVO(comment.getId(), comment.getInnerID(), comment.getShot_id(),comment.getReceiver_id(), comment.getCommentator_id(), comment.getTime(),comment.getContent(),commentatorUserName,receiverUserName);
+        String commentatorUserName = userService.getUserName(comment.getCommentatorId());//发评论的人的用户名
+        String receiverUserName = userService.getUserName(comment.getReceiverId());//被评论的人的用户名
+        CommentVO commentVO = new CommentVO(comment.getId(), comment.getInnerID(), comment.getShotId(),comment.getReceiverId(), comment.getCommentatorId(), comment.getTime(),comment.getContent(),commentatorUserName,receiverUserName);
         return commentVO;
     }
 }

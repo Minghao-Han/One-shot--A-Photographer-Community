@@ -15,4 +15,8 @@ public interface SubscribeMapper {
     public boolean isExist(int user_id,int subscribed_id);
     @Select("select * from subscribe where user_id = #{user_id}")
     public List<Subscribe> getSubscription(int user_id);
+    @Select("select user_id from subscribe where subscribed_id = #{user_id}")
+    public List<Integer> getFansId(int user_id);
+    @Select("select count(*) from subscribe where subscribed_id = #{user_id}")
+    public int getFanciesNum(int user_id);
 }

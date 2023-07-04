@@ -12,20 +12,20 @@ import java.util.Date;
 public class Comment {
     private int id;
     private int innerID;//在一条shot或post中的id
-    private int shot_id;
-    private int receiver_id;//被评论的人的id
+    private int shotId;
+    private int receiverId;//被评论的人的id
 
-    private int parent_id;
-    private int commentator_id;
+    private int parentId;
+    private int commentatorId;
     private Date time;
     private String content;
 
-    public Comment(int innerID, int shot_id, int parent_id, int commentator_id, String content,int receiver_id) {
+    public Comment(int innerID, int shotId, int parentId, int commentatorId, String content, int receiverId) {
         this.innerID = innerID;
-        this.shot_id = shot_id;
-        this.parent_id = parent_id;
-        this.commentator_id = commentator_id;
+        this.shotId = shotId;
+        this.parentId = parentId;
+        this.commentatorId = commentatorId;
         this.content = content;
-        this.receiver_id=receiver_id;
+        this.receiverId = receiverId;
     }
 }
