@@ -1,5 +1,6 @@
 package com.ShengQin.OneShot.UserThings.Services.Implements;
 
+import com.ShengQin.OneShot.Entities.Shot;
 import com.ShengQin.OneShot.Entities.Thumb;
 import com.ShengQin.OneShot.UserThings.Mappers.MessageMappers.MessageMapper;
 import com.ShengQin.OneShot.UserThings.Mappers.ThumbMapper;
@@ -8,6 +9,9 @@ import com.ShengQin.OneShot.UserThings.Services.ShotService;
 import com.ShengQin.OneShot.UserThings.Services.ThumbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ThumbServiceImpl implements ThumbService {
@@ -53,6 +57,18 @@ public class ThumbServiceImpl implements ThumbService {
     public boolean shotThumbExist(int thumber_id, int shot_id) {
         return thumbMapper.shotThumbExist(thumber_id,shot_id);
     }
+
+    @Override
+    public int getTotalThumbsOfUser(int user_id) {
+        List<Shot> shots = shotService.getShotsOfUser(user_id);
+        if (shots==null) return 0;
+        List<Integer> shot_ids = new ArrayList<>();
+        for (Shot shot:shots) {
+            shot_ids.add(shot.getId());
+        }
+        return thumbMapper.getTotalThumb(shot_ids);
+    }
+
 
     @Override
     public int postGiveThumb(int thumber_id, int post_id) {

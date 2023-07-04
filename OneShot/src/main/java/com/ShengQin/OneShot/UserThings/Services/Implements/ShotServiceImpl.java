@@ -23,6 +23,11 @@ public class ShotServiceImpl implements ShotService {
     }
 
     @Override
+    public List<Shot> getShotsOfUser(int user_id) {
+        return shotMapper.getShotsOfUser(user_id);
+    }
+
+    @Override
     public boolean isExist(Shot shot) {
         return shotMapper.isExist(shot);
     }
