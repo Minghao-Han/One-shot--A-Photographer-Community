@@ -1,10 +1,7 @@
 package com.ShengQin.OneShot.UserThings.Mappers;
 
 import com.ShengQin.OneShot.VO.GameParticipatorVO;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -20,4 +17,8 @@ public interface GameParticipationMapper {
     public boolean entryExist(int entry_id);
     @Select("select game_id from game_participation where id = #{id}")
     public Integer getGameId(int id);
+    @Update("update game_participation set total_votes = total_votes+1 where id = #{entry_id}")
+    public void addTotalVotes(int entry_id);
+    @Update("update game_participation set total_votes = total_votes-1 where id = #{entry_id}")
+    public void subTotalVotes(int entry_id);
 }
