@@ -20,10 +20,8 @@ public class GameInfo {
     private Date start_time;
     private Date end_time;
     private int winner;//获奖者
-<<<<<<< HEAD
 
-    private boolean isSelected;
-=======
+
     private boolean isSelected;//是否已经选过（选出）获胜者
->>>>>>> af3b9df8c8dff0f131d86ce72048d585e670db5c
+
 }

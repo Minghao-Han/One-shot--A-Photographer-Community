@@ -16,11 +16,7 @@ public interface AdminGameInfoMapper {
     Integer insert(GameInfo gameInfo);
 
     @Update("UPDATE game_publish set id = #{id}, title = #{title} ,content = #{content}," +
-<<<<<<< HEAD
             "start_time = #{start_time}, end_time = #{end_time} ,winner = #{winner},is_selected=#{isSelected}where id= #{id}")
-=======
-            "start_time = #{start_time}, end_time = #{end_time} ,winner = #{winner}where id= #{id}")
->>>>>>> af3b9df8c8dff0f131d86ce72048d585e670db5c
     Integer update(GameInfo gameInfo);
 
     @Select("select count(*) from game_publish where id=#{id}")
