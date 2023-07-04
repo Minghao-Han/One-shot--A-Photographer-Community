@@ -15,7 +15,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "http://127.0.0.1:5173")
 @RestController
-@RequestMapping("/gamepublish")
+@RequestMapping("/admin/gamepublish")
 public class GameInfoController {
 @Autowired
 AdminGameInfoMapper adminGameInfoMapper;

@@ -5,10 +5,17 @@ spring:
     url: jdbc:mysql://localhost:3306/oneshot1
     username: root
     password: root
-
-server:
-  port:
-    9090
+  mail:
+    host: smtp.163.com
+    port: 25
+    username: 13907587111@163.com
+    password: Yinliqi168
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 mybatis:
   configuration:
     #下划线转驼峰
@@ -19,6 +26,7 @@ pagehelper:
   reasonable: false
   supportMethodsArguments: true
   params: count=countSql
-
+server:
+  port: 9090
 
 

@@ -14,7 +14,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "http://127.0.0.1:5173")
 @RestController
-@RequestMapping("/CommentAdmin")
+@RequestMapping("/admin/CommentAdmin")
 public class CommentadminController {
     @Autowired
     CommentadminMapper commentadminMapper;

@@ -10,13 +10,13 @@ import java.util.List;
 @Mapper
 public interface AdminGameInfoMapper {
 
-    @Insert("INSERT INTO game_publish(id, title,content,start_time,end_time,winner ) VALUES " +
+    @Insert("INSERT INTO game_publish(id, title,content,start_time,end_time,winner,is_selected ) VALUES " +
             "(#{id},  #{title}, " +
-            "#{content}, #{start_time},#{end_time},#{winner})")
+            "#{content}, #{start_time},#{end_time},#{winner},#{isSelected})")
     Integer insert(GameInfo gameInfo);
 
     @Update("UPDATE game_publish set id = #{id}, title = #{title} ,content = #{content}," +
-            "start_tiime = #{start_time}, end_time = #{end_time} ,winner = #{winner}where id= #{id}")
+            "start_time = #{start_time}, end_time = #{end_time} ,winner = #{winner},is_selected=#{isSelected}where id= #{id}")
     Integer update(GameInfo gameInfo);
 
     @Select("select count(*) from game_publish where id=#{id}")
@@ -30,7 +30,8 @@ public interface AdminGameInfoMapper {
 
             @Result(column="start_time", property="start_time"),
             @Result(column="end_time", property="end_time"),
-            @Result(column="winner", property="winner")
+            @Result(column="winner", property="winner"),
+            @Result(column="is_selected", property="isSelected")
     })
     List<GameInfo> findAll();
 
@@ -42,7 +43,8 @@ public interface AdminGameInfoMapper {
             @Result(column="content", property="content"),
             @Result(column="start_time", property="start_time"),
             @Result(column="end_time", property="end_time"),
-            @Result(column="winner", property="winner")
+            @Result(column="winner", property="winner"),
+            @Result(column="is_selected", property="isSelected")
     })
     List<GameInfo> selectPage(Integer pageNum, Integer pageSize);
 

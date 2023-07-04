@@ -20,4 +20,6 @@ public class GameInfo {
     private Date start_time;
     private Date end_time;
     private int winner;//获奖者
+
+    private boolean isSelected;
 }
