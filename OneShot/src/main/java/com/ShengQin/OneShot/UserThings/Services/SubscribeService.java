@@ -10,4 +10,6 @@ public interface SubscribeService {
     public List<SubscribeVO> getSubscribes(int user_id, int pageNum);
     public ServiceResult subscribe(int user_id, int subscribed_id);
     public ServiceResult cancelSubscribe(int user_id, int subscribed_id);
+    public List<Integer> getFansId(int user_id, int pageNum);
+    public int getFanciesNum(int user_id);
 }

@@ -23,10 +23,10 @@ public class ShotDetailServiceImpl implements ShotDetailService {
     CommentService shotCommentServiceImpl;
 
     @Override
-    public Map<String, Object> getShotDetail(int shot_id) {
+    public Map<String, Object> getShotDetail(int shot_id,int user_id) {
         Map<String, Object> shotWithFewComments = new HashMap<>();
         Shot shot = shotService.getShot(shot_id);
-        ShotVO shotVO = shotVOService.createShotVO(shot);
+        ShotVO shotVO = shotVOService.createShotVO(shot,user_id);
         shotWithFewComments.put("shotVO",shotVO);
         List<CommentVO> commentVOs = shotCommentServiceImpl.getComments(shot_id,1);
         shotWithFewComments.put("commentVOs",commentVOs);

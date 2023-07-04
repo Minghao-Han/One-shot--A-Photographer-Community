@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ShotService {
     public Shot getShot(int shot_id);
+    public List<Shot> getShotsOfUser(int user_id);
     public boolean isExist(Shot shot);
     public boolean isExist(int shot_id);
     public void save(Shot shot);

@@ -12,14 +12,14 @@ public class MailUtil {
     private JavaMailSender javaMailSender;
     private String defaultSender = "3508627758@qq.com";
 
-    public boolean sendEmailCode(String verifyCode, String from, String to,String mailTile) {
+    public boolean sendEmailCode(String captcha, String from, String to,String mailTile) {
         try {
             // 用来设置邮件信息
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
             // 设置邮件标题
             simpleMailMessage.setSubject(mailTile);
             // 设置邮件内容
-            simpleMailMessage.setText("您收到的验证码是：" + verifyCode);
+            simpleMailMessage.setText("您收到的验证码是\n" + captcha+"\n请在三分钟内完成验证");
             // 设置源邮箱
             simpleMailMessage.setFrom(from);
             // 设置目的邮箱
@@ -34,7 +34,7 @@ public class MailUtil {
             return false;
         }
     }
-    public boolean sendEmailCodeWithDefaultSender(String verifyCode, String to,String mailTile){
-        return sendEmailCode(verifyCode,defaultSender,to,mailTile);
+    public boolean sendEmailCodeWithDefaultSender(String captcha, String to,String mailTile){
+        return sendEmailCode(captcha,defaultSender,to,mailTile);
     }
 }

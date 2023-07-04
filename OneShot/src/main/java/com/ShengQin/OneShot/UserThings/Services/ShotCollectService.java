@@ -12,4 +12,5 @@ public interface ShotCollectService {
     public int collect(int collector_id, int shot_id);
     public int cancelCollect(int collector_id, int shot_id);
     public List<ShotVO> getUserShotCollections(int user_id,int pageNum);
+    public boolean collectExist(int user_id,int shot_id);
 }

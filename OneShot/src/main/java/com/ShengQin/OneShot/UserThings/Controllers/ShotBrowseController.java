@@ -41,8 +41,8 @@ public class ShotBrowseController {
     }
 
     @GetMapping("/detail/{shot_id}")
-    public String getDetailShot(@PathVariable("shot_id")int shot_id){
-        Map<String,Object> shotWithFewComments = shotDetailService.getShotDetail(shot_id);
+    public String getDetailShot(@PathVariable("shot_id")int shot_id,@UserId int user_id){
+        Map<String,Object> shotWithFewComments = shotDetailService.getShotDetail(shot_id,user_id);
         if (shotWithFewComments.get("shotVO")==null) return Result.fail("查无此shot");
         else return Result.success("成功获取详细shot(带评论)",shotWithFewComments);
     }

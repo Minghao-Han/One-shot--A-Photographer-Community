@@ -19,6 +19,5 @@ public class SetWinnerJob implements Job {//在启动定时任务开始执行的
         Integer winner_id = gameScheduleMapper.selectWinner(game_id);
         if (winner_id!=null) gameScheduleMapper.setWinner(winner_id,game_id);//有winner
         else gameScheduleMapper.setWinner(0,game_id);//无人参加比赛，即无winner。设置is_selected为true避免每次都为这个比赛找winner
-        System.out.println("为"+game_id+"找winner");
     }
 }
