@@ -7,6 +7,7 @@ import com.ShengQin.OneShot.UserThings.Services.GameVoteService;
 import com.ShengQin.OneShot.Utils.Result;
 import com.ShengQin.OneShot.Utils.ServiceResult;
 import com.ShengQin.OneShot.Utils.UserId;
+import com.ShengQin.OneShot.VO.GameParticipatorVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("game")
+@RequestMapping("/game")
 public class GameController {
     @Autowired
     GameParticipationService gameParticipationService;
@@ -89,5 +90,12 @@ public class GameController {
             else if (serviceResult.equals(ServiceResult.OPERATED)) return Result.fail("尚未参加比赛");
             else return Result.fail("未知错误");
         }
+    }
+    @GetMapping("/entries")
+    public String getEntriesOfGame(@RequestBody Map<String,Object> requestBody){
+        if (requestBody.get("game_id")==null) return Result.fail("比赛不存在");
+        int game_id = (int) requestBody.get("game_id");
+        List<GameParticipatorVO> entriesOfGame = gameParticipationService.getEntriesOf(game_id);
+        return Result.success("获取参赛作品成功",entriesOfGame);
     }
 }

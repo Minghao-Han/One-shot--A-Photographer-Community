@@ -2,13 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/oneshot1
-    username: root
-    password: root
-#=======
-#    url: jdbc:mysql://localhost:3306/OneShot
-#    username: OneShot
-#    password: OneShot
+    url: jdbc:mysql://localhost:3306/OneShot
+    username: OneShot
+    password: OneShot
   redis:
     database: 1
     host: localhost
@@ -23,8 +19,7 @@ spring:
     password: kygykfbwmlzfdbaj
     # 编码
     default-encoding: utf-8
-server:
-  port: 9090
+
 
 
 mybatis:
@@ -45,6 +40,8 @@ quartz:
   #  scheduler-name： 定时器名称
   #
   #  startup-delay：延时启动定时任务（避免系统未完全启动却开始执行定时任务的情况）
+
+
 
 
 
