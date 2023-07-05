@@ -1,12 +1,13 @@
 package com.ShengQin.OneShot.UserThings.Services.Implements;
 
 import com.ShengQin.OneShot.UserThings.Mappers.GameParticipationMapper;
-import com.ShengQin.OneShot.UserThings.Services.GameInfoService;
 import com.ShengQin.OneShot.UserThings.Services.GameParticipationService;
 import com.ShengQin.OneShot.Utils.ServiceResult;
 import com.ShengQin.OneShot.VO.GameParticipatorVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class GameParticipationServiceImpl implements GameParticipationService {
@@ -39,5 +40,10 @@ public class GameParticipationServiceImpl implements GameParticipationService {
     @Override
     public int getGameId(int id) {
         return gameParticipationMapper.getGameId(id);
+    }
+
+    @Override
+    public List<GameParticipatorVO> getEntriesOf(int game_id) {
+        return gameParticipationMapper.getAllEntriesOfGame(game_id);
     }
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface GameParticipationMapper {
+    @Select("select * from game_participation where game_id = game_id")
+    public List<GameParticipatorVO> getAllEntriesOfGame(int game_id);
     @Insert("insert into game_participation(game_id,user_id) values(#{game_id},#{user_id})")
     public void participate(GameParticipatorVO gameParticipatorVO);
     @Delete("delete from game_participation where game_id=#{game_id} and user_id=#{participator_id}")
