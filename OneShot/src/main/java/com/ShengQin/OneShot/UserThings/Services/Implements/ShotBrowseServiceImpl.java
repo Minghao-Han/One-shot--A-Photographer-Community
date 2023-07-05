@@ -66,13 +66,14 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
 //                int shotMatchesPreferenceHighTotal = shotMapper.getShotMatchesPreferenceHighTotal(tags,user_id);
                 int maxPage = shotMatchesPreferenceHighTotal/PAGE_SIZE + 1;//获得不匹配用户喜好但高浏览点赞比的shot的最大页数
                 pageNum-=maxPage;//获取查询low的页码
+                if (pageNum==0) pageNum=1;//避免取第0页
                 PageHelper.startPage(pageNum,PAGE_SIZE);
                 shots = shotMapper.getShotMatchesPreferenceLow(tags);
             }
         }
         for (Shot shot :
                 shots) {
-            shotVOs.add(shotVOService.createShotVO(shot));
+            shotVOs.add(shotVOService.createShotVO(shot,user_id));
         }
         return shotVOs;
     }

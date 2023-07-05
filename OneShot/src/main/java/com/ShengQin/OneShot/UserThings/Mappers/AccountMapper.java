@@ -8,10 +8,12 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface AccountMapper {
+    @Select("select * from account where id =#{id}")
+    public Account  getAccount(int user_id);
 
     public default boolean save(Account account){
-        if (this.isExist(account)){
-            if (this.emailExist(account)) return false;
+        if (isExist(account)){
+            if (emailExist(account)) return false;
             else {
                 update(account);
                 return true;
@@ -37,4 +39,6 @@ public interface AccountMapper {
      public String getPassword(String email);
     @Select("select id from account where email = #{email}")
      public int getId(String email);
+    @Select("select email from account where id = #{use_id}")
+    public String getEmail(int user_id);
 }

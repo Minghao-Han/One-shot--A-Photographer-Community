@@ -50,4 +50,16 @@ public class SubscribeServiceImpl implements SubscribeService {
             return ServiceResult.SUCCESS;
         }
     }
+
+    @Override
+    public List<Integer> getFansId(int user_id, int pageNum) {
+        PageHelper.startPage(pageNum,PAGE_SIZE);
+        List<Integer> fanciesId = subscribeMapper.getFansId(user_id);
+        return fanciesId;
+    }
+
+    @Override
+    public int getFanciesNum(int user_id) {
+        return subscribeMapper.getFanciesNum(user_id);
+    }
 }

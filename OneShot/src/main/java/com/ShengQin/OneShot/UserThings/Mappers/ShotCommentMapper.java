@@ -2,6 +2,7 @@ package com.ShengQin.OneShot.UserThings.Mappers;
 
 import com.ShengQin.OneShot.Entities.Comment;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
 

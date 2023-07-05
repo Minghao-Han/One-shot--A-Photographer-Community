@@ -30,6 +30,6 @@ public class LoginLogServiceImpl implements LoginLogService {
         Browser browser = (Browser) loginInfo.get("browser");
         String browserName = browser!=null? browser.getName() : null;
         String ip_address = (String) loginInfo.get("ip_address");
-        loginLogMapper.log(user_id,"登录",ip_address, operating_system.getName(), browser.getName(),new Date(),null);
+        loginLogMapper.log(user_id,"登录成功",ip_address, operating_system.getName(), browser.getName(),new Date(),null);
     }
 }

@@ -2,6 +2,9 @@ package com.ShengQin.OneShot.UserThings.Mappers;
 
 import com.ShengQin.OneShot.Entities.Thumb;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Mapper
 public interface ThumbMapper {
@@ -37,4 +40,10 @@ public interface ThumbMapper {
         postCancelThumb1(thumber_id, post_id);
         return id;
     }
+    @Select("<script>select count(*) from thumb_of_shot where" +
+            "<foreach collection='shot_ids' item ='shot_id' separator='or'>" +
+            "shot_id=#{shot_id}" +
+            "</foreach>" +
+            "</script>")
+    public int getTotalThumb(List<Integer> shot_ids);
 }

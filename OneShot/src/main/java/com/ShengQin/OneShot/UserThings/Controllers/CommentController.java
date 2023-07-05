@@ -49,7 +49,8 @@ public class CommentController {
     @GetMapping("/shot/{shot_id}/{pageNum}")
     public String shotGetMoreComment(@PathVariable("shot_id")int shot_id,@PathVariable("pageNum")int pageNum){
         List<CommentVO> commentVOs = shotCommentServiceImpl.getComments(shot_id,pageNum);
-        return Result.success("获得下一页评论成功",commentVOs);
+        if (!commentVOs.isEmpty())return Result.success("获得下一页评论成功",commentVOs);
+        else return Result.fail("没有更多评论");
     }
 
     /**post*/
