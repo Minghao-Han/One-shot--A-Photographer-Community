@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface ShotService {
+    public List<Shot> getAllShots();
     public Shot getShot(int shot_id);
     public List<Shot> getShotsOfUser(int user_id);
     public boolean isExist(Shot shot);

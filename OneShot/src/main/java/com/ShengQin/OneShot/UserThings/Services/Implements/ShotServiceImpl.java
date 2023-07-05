@@ -18,6 +18,11 @@ public class ShotServiceImpl implements ShotService {
     TagMapper tagMapper;
 
     @Override
+    public List<Shot> getAllShots() {
+        return shotMapper.findAll();
+    }
+
+    @Override
     public Shot getShot(int shot_id) {
         return shotMapper.getShot(shot_id);
     }

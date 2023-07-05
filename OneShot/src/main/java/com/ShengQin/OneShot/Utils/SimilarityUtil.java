@@ -1,27 +1,27 @@
 package com.ShengQin.OneShot.Utils;
 
 import com.hankcs.hanlp.HanLP;
+import com.hankcs.hanlp.corpus.synonym.Synonym;
+import com.hankcs.hanlp.dictionary.CoreSynonymDictionary;
+import com.hankcs.hanlp.dictionary.common.CommonSynonymDictionary;
 import com.hankcs.hanlp.seg.common.Term;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Component
 public class SimilarityUtil {
-    @Autowired
-    private NGramUtil nGramUtil;
+    private static int N = 3;
     public double getJaccardSimilarityBetweenText(String text1,String text2){
+        //使用HanLP分词
         List<Term> terms1 = HanLP.segment(text1);
         List<Term> terms2 = HanLP.segment(text2);
         List<String> words1 = termsToWords(terms1);
         List<String> words2 = termsToWords(terms2);
-        List<String> nGrams1 = nGramUtil.generateNGrams(words1,3);
-        List<String> nGrams2 = nGramUtil.generateNGrams(words2,3);
-        return calculateJaccardSimilarity(nGrams1,nGrams2);
+        List<String> wordWithSyn1 = wordsAddSynonym(words1);
+        List<String> wordWithSyn2 = wordsAddSynonym(words2);
+        return calculateJaccardSimilarity(wordWithSyn1,wordWithSyn2);
     }
     private double calculateJaccardSimilarity(List<String> nGrams1,List<String> nGrams2){
         Set<String> set1 = new HashSet<>(nGrams1);
@@ -36,7 +36,7 @@ public class SimilarityUtil {
         int unionSize = set1.size() + set2.size() - intersectionSize;
 
         // 计算Jaccard相似度
-        double similarity = (double) intersectionSize / unionSize;
+        double similarity = ((double) intersectionSize / unionSize)*1.5;//乘1.5放大差距
 
         return similarity;
     }
@@ -46,5 +46,20 @@ public class SimilarityUtil {
             words.add(term.word);
         }
         return words;
+    }
+    public List<String> wordsAddSynonym(List<String> words){//获取同义词，至多3个
+        List<String> addedSynonyms = new ArrayList<>();
+        for (String word:words) {
+            addedSynonyms.add(word);
+            CommonSynonymDictionary.SynonymItem synonymItem = CoreSynonymDictionary.get(word);
+            if (synonymItem!=null){
+                List<Synonym> synonyms = synonymItem.synonymList;
+                int maxNumOfSynonym = synonyms.size()>N?N: synonyms.size();
+                for (int i=0;i<maxNumOfSynonym;i++){
+                    addedSynonyms.add(synonyms.get(i).realWord);
+                }
+            }
+        }
+        return addedSynonyms;
     }
 }
