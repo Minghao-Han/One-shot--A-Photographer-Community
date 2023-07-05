@@ -1,11 +1,14 @@
 package com.ShengQin.OneShot.Utils;
 
+import com.hankcs.hanlp.dictionary.common.CommonSynonymDictionary;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Service;
+import com.hankcs.hanlp.dictionary.CoreSynonymDictionary;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.List;
+
 @SpringBootTest
 class SimilarityUtilTest {
     @Autowired
@@ -13,7 +16,12 @@ class SimilarityUtilTest {
 
     @Test
     void getJaccardSimilarityBetweenText() {
-        System.out.println(similarityUtil.getJaccardSimilarityBetweenText("我喜欢足球","他喜欢足球"));
-        System.out.println(similarityUtil.getJaccardSimilarityBetweenText("我喜欢踢足球","呃呃"));
+        CommonSynonymDictionary.SynonymItem synonymItem = CoreSynonymDictionary.get("喜欢");
+        System.out.println(synonymItem.synonymList.get(1).realWord);
+    }
+
+    @Test
+    void testGetJaccardSimilarityBetweenText() {
+        System.out.println(similarityUtil.getJaccardSimilarityBetweenText("我喜欢踢球","自己喜欢踢球"));
     }
 }

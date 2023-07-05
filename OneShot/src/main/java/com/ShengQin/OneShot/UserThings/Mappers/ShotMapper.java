@@ -22,6 +22,9 @@ public interface ShotMapper {
             @Result(column="time", property="createTime", jdbcType= JdbcType.TIMESTAMP, javaType = java.util.Date.class)
     })
     public Shot getShot(int shot_id);
+    @Select("select * from shot")
+    @ResultMap("shotMap")
+    public List<Shot> findAll();
 
     @Select("select * from shot where user_id=#{user_id}")
     @ResultMap("shotMap")

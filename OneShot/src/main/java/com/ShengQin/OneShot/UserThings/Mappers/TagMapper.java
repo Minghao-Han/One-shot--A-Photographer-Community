@@ -26,6 +26,8 @@ public interface TagMapper {
             "</foreach></script>"
     )
     public void addTagsToShot(@Param("tags")List<String> tags,@Param("shot_id")int shot_id);
+    @Select("select tag from shot_tags where shot_id=#{shot_id}")
+    public List<String> getTagsOfShot(int shot_id);
     @Delete("delete from shot_tags where shot_id = #{shot_id}")
     public void removeTagsFromShot(int shot_id);
 }
