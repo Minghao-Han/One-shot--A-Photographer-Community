@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface ShotadminMapper {
 
-    //不知道为什么数据没有全部返回，明天找bug
+
 
     @Select("SELECT * FROM shot")
     @Results(id="shotMap", value={
