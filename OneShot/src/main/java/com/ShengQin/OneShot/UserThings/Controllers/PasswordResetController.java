@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("password/reset")
+@RequestMapping("/password/reset")
 public class PasswordResetController {
     @Autowired
     PasswordResetService passwordResetService;

@@ -37,6 +37,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         excludePath.add("/login");  //登录
         excludePath.add("/register");     //注册
         excludePath.add("/admin/login");  //管理员登录
+        excludePath.add("/password/reset");  //忘记密码
         registry.addInterceptor(tokenInterceptor) // 注册拦截器
                 .addPathPatterns("/**")
                 .excludePathPatterns(excludePath);
