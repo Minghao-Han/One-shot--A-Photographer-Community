@@ -12,4 +12,5 @@ public interface GameParticipationService {
     public boolean entryExist(int entry_id);//entry_id就是game_participation的主键id
     public int getGameId(int id);
     public List<GameParticipatorVO> getEntriesOf(int game_id,int pageNum);
+
 }
