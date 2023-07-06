@@ -29,4 +29,7 @@ public class RedisStorageImpl implements TemporaryDataStoreService {
         if (serializedValue instanceof String ) return serializedValue;
         else return redisUtil.deserializeObject(serializedValue);
     }
+    public void delete(String key){
+        redisUtil.delete(key);
+    }
 }

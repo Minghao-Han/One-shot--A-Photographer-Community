@@ -42,7 +42,10 @@ public class PasswordResetServiceImpl implements PasswordResetService {
         Object captchaObj = temporaryDataStoreService.get(key);
         if (captchaObj!=null) {
             String captcha = (String) captchaObj;
-            if (userEnteredCaptcha.equals(captcha)) return true;
+            if (userEnteredCaptcha.equals(captcha)) {
+                temporaryDataStoreService.delete(key);
+                return true;
+            }
         }
         return false;
     }

@@ -21,6 +21,12 @@ public class CacheStorageImpl implements TemporaryDataStoreService {
     public Object get(String key) {
         return dataMap.get(key);
     }
+
+    @Override
+    public void delete(String key) {
+        dataMap.remove(key);
+    }
+
     @Scheduled(initialDelay = 5*60*1000)
     private void expireData(String key,Long expire_time){
         dataMap.remove(key);
