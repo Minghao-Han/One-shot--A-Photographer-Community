@@ -23,20 +23,19 @@ public class GeneralMessageServiceImpl implements GeneralMessageService {
     @Override
     public List<Message> getUncheckMessages(int user_id) {
         List<Message> uncheckMessages = new ArrayList<>();//Message是发给前端的
-        List<MessageVO> uncheckMessageVOs = messageMapper.getUncheckMessageVOs(user_id);//MessageVO是用来接收数据库数据的
+        List<MessageVO> uncheckMessageVOs = messageMapper.getUncheckMessageVOs(user_id);//MessageVO是用来接收数据库数据的，此处从message表按时间获取消息
         for (MessageVO messageVO :uncheckMessageVOs) {
             String messageType = messageVO.getMessageType();
             int references_id = messageVO.getReferencesId();
             Date time = messageVO.getTime();
-            System.out.println(subMessageServiceMap.get(messageType));
-            AbstractSubMessageService subMessageService = subMessageServiceSelector.get(subMessageServiceMap.get(messageType));
+            AbstractSubMessageService subMessageService = subMessageServiceSelector.get(subMessageServiceMap.get(messageType));//根据消息类型选择对应的service
             Message message = subMessageService.getMessage(references_id);
             message.setTime(time);
             message.setMessageType(messageType);
             uncheckMessages.add(message);
         }
         uncheckMessages.sort(Comparator.comparing(Message::getTime));
-        return uncheckMessages;
+        return uncheckMessages;//返回Message对象
     }
 
     @Override

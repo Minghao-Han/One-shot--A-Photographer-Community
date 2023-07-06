@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Update;
 public interface AccountMapper {
     @Select("select * from account where id =#{id}")
     public Account  getAccount(int user_id);
+    @Select("select * from account where email =#{email}")
+    public Account  getAccountByEmail(String email);
 
     public default boolean save(Account account){
         if (isExist(account)){

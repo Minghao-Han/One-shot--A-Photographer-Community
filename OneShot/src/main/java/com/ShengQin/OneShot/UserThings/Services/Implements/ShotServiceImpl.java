@@ -54,9 +54,10 @@ public class ShotServiceImpl implements ShotService {
     }
 
     @Override
-    public void createShot(int creator_id, String title, String content, Date time, List<String> tags) {
+    public Integer createShot(int creator_id, String title, String content, Date time, List<String> tags) {
         int shot_id = shotMapper.insert(new Shot(creator_id,title,content,time));
-        tagMapper.addTagsToShot(tags,shot_id);
+        if (tags!=null) tagMapper.addTagsToShot(tags,shot_id);
+        return shot_id;
     }
 
     @Override

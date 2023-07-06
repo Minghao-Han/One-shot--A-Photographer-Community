@@ -11,14 +11,14 @@ class PasswordResetServiceImplTest {
     PasswordResetService passwordResetService;
     @Test
     public void resetPassword(){;
-        passwordResetService.sendCaptchaToMailbox(5);
+        passwordResetService.sendCaptchaToMailbox("3508627758@qq.com");
     }
     @Test
     void testVerifyCaptcha(){
-        String captcha ="GJIEOR";
-        if (passwordResetService.verifyCaptcha(5,captcha)){
-            String newPassword = "11223344hmh";
-            passwordResetService.resetPassword(5,newPassword);
+        String captcha ="DF2QR6";
+        if (passwordResetService.verifyCaptcha("3508627758@qq.com",captcha)){
+            String newPassword = "hmh123456";
+            passwordResetService.resetPassword("3508627758@qq.com",newPassword);
         }else System.out.println("错误的验证码");
     }
 }

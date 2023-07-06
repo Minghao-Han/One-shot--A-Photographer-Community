@@ -15,8 +15,10 @@ public class PasswordResetController {
     @Autowired
     PasswordResetService passwordResetService;
     @GetMapping
-    public String sendCaptchaToMailBox(@UserId int user_id){
-        ServiceResult serviceResult = passwordResetService.sendCaptchaToMailbox(user_id);
+    public String sendCaptchaToMailBox(@RequestBody Map<String,Object> requestBody){
+        if (requestBody.get("email")==null) return Result.fail("邮箱为空");
+        String email = (String) requestBody.get("email");
+        ServiceResult serviceResult = passwordResetService.sendCaptchaToMailbox(email);
         switch (serviceResult){
             case SUCCESS -> {return Result.success("请查看邮箱中的验证码");}
             case OTHER_FAIL -> {return Result.fail("验证码发送失败");}
@@ -29,7 +31,9 @@ public class PasswordResetController {
         Object userEnterCaptchaObj = requestBody.get("captcha");
         if (userEnterCaptchaObj==null) return Result.fail("未输入验证码");
         String userEnterCaptcha = (String) userEnterCaptchaObj;
-        if (passwordResetService.verifyCaptcha(user_id,userEnterCaptcha)) return Result.success("验证码验证成功");
+        if (requestBody.get("email")==null) return Result.fail("邮箱为空");
+        String email = (String) requestBody.get("email");
+        if (passwordResetService.verifyCaptcha(email,userEnterCaptcha)) return Result.success("验证码验证成功");
         else return Result.fail("验证码验证失败");
     }
 
@@ -38,7 +42,9 @@ public class PasswordResetController {
         Object newPasswordObj = requestBody.get("newPassword");
         if (newPasswordObj==null) return Result.fail("未输入验证码");
         String newPassword = (String) newPasswordObj;
-        ServiceResult serviceResult = passwordResetService.resetPassword(user_id,newPassword);
+        if (requestBody.get("email")==null) return Result.fail("邮箱为空");
+        String email = (String) requestBody.get("email");
+        ServiceResult serviceResult = passwordResetService.resetPassword(email,newPassword);
         switch (serviceResult){
             case SUCCESS -> {return Result.success("更改密码成功");}
             case OTHER_FAIL -> {return Result.fail("写入数据库异常");}

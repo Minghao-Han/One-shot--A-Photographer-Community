@@ -34,6 +34,10 @@ public class PersonalPageServiceImpl implements PersonalPageService {
         personalPageVO.setTotalReceivedThumbs(totalReceivedThumbs);
         int totalFancies = subscribeService.getFanciesNum(user_id);
         personalPageVO.setTotalFancies(totalFancies);
+        String email = accountMapper.getEmail(user_id);
+        personalPageVO.setEmail(email);
+        int totalSubscription = subscribeService.getSubscriptionNum(user_id);
+        personalPageVO.setTotalSubscriptions(totalSubscription);
         return personalPageVO;
     }
 

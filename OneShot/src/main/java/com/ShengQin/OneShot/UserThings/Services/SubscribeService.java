@@ -12,4 +12,5 @@ public interface SubscribeService {
     public ServiceResult cancelSubscribe(int user_id, int subscribed_id);
     public List<Integer> getFansId(int user_id, int pageNum);
     public int getFanciesNum(int user_id);
+    public int getSubscriptionNum(int user_id);
 }

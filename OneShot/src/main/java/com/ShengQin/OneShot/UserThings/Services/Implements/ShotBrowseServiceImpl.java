@@ -56,7 +56,7 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
                 shots = shotMapper.getShotIgnorePreferenceLow();
             }
         }
-        else {
+        else {//用户设置了喜好
             PageHelper.startPage(pageNum,PAGE_SIZE);
             shots = shotMapper.getShotMatchesPreferenceHigh(tags);
             PageInfo<Shot> pageInfo = new PageInfo<Shot>(shots);
@@ -64,11 +64,20 @@ public class ShotBrowseServiceImpl implements ShotBrowseService {
                 int shotMatchesPreferenceHighTotal = (int) pageInfo.getTotal();
                 System.out.println(shotMatchesPreferenceHighTotal+"------------------------------------------------");
 //                int shotMatchesPreferenceHighTotal = shotMapper.getShotMatchesPreferenceHighTotal(tags,user_id);
-                int maxPage = shotMatchesPreferenceHighTotal/PAGE_SIZE + 1;//获得不匹配用户喜好但高浏览点赞比的shot的最大页数
+                int maxPage = shotMatchesPreferenceHighTotal/PAGE_SIZE + 1;//获得匹配用户喜好且高浏览点赞比的shot的最大页数
                 pageNum-=maxPage;//获取查询low的页码
                 if (pageNum==0) pageNum=1;//避免取第0页
                 PageHelper.startPage(pageNum,PAGE_SIZE);
-                shots = shotMapper.getShotMatchesPreferenceLow(tags);
+                shots = shotMapper.getShotMatchesPreferenceLow(tags);//获取匹配喜好但低浏览点赞比的shot
+                pageInfo = new PageInfo<Shot>(shots);
+                if (shots.isEmpty()){
+                    int shotIgnorePreferenceHighTotal = (int) pageInfo.getTotal();
+                    maxPage = shotIgnorePreferenceHighTotal/PAGE_SIZE + 1;//获得匹配用户喜好但低浏览点赞比的shot的最大页数
+                    pageNum-=maxPage;//获取查询low的页码
+                    if (pageNum==0) pageNum=1;//避免取第0页
+                    PageHelper.startPage(pageNum,PAGE_SIZE);
+                    shots = shotMapper.getShotIgnorePreferenceHigh();
+                }
             }
         }
         for (Shot shot :
