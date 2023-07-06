@@ -1,12 +1,10 @@
 <template>
     <div class="comment-container">
         <div class="info">
-            <el-avatar>
-                <slot name="avatar"></slot>
-            </el-avatar>
+            <slot name="avatar"></slot>
+
             <h5 style="margin-left:10px ; font-size: 18px;">
                 <slot name="name">
-
                 </slot>
             </h5>
         </div>
@@ -21,11 +19,13 @@
 
         <div class="end-container">
             <div>
-                <p style="color: #969696;">2021-3-21</p>
+                <p style="color: #969696;">
+                    <slot name="date"></slot>
+                </p>
             </div>
             <div class="thumb">
                 <el-icon>
-                    <CaretTop></CaretTop>
+                    <ChatDotSquare></ChatDotSquare>
                 </el-icon>
             </div>
         </div>
@@ -33,7 +33,18 @@
 </template>
 
 <script setup>
-import { CaretTop } from '@element-plus/icons-vue'
+
+import { defineProps, withDefaults } from 'vue';
+
+
+
+
+
+import { ChatDotSquare } from '@element-plus/icons-vue'
+
+const props = defineProps({
+    time: String,
+})
 </script>
 
 <style scoped>
@@ -59,6 +70,7 @@ import { CaretTop } from '@element-plus/icons-vue'
 }
 
 .comment-container .thumb {
-    font-size: 28px;
+    font-size: 18px;
+    margin-right: 20px;
 }
 </style>

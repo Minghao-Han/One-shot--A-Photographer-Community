@@ -8,34 +8,34 @@
                 </el-col>
 
                 <el-col :offset="0" :span="1" class="grid-content navi-block">
-                    <img src="@/assets/images/shots.png" alt="Shots" class="icon">
+                    <img src="@/assets/images/shots.png" alt="Shots" class="icon" @click="goToShots">
                     <p class="navi-word">动态</p>
                 </el-col>
 
                 <el-col :span="1" class="grid-content navi-block">
-                    <img src="@/assets/images/forum.png" alt="Forum" class="icon">
-                    <p class="navi-word">论坛</p>
+                    <img src="@/assets/images/forum.png" alt="Forum" class="icon" @click="goToGame">
+                    <p class="navi-word">比赛</p>
                 </el-col>
 
                 <el-col :span="1" class="grid-content navi-block">
-                    <img src="@/assets/images/competition.png" alt="Competition" class="icon">
-                    <p class="navi-word">比赛</p>
+                    <img src="@/assets/images/competition.png" alt="Competition" class="icon" @click="goToEquip">
+                    <p class="navi-word">器材</p>
                 </el-col>
 
                 <el-col :offset="2" :span="5" class="grid-content">
                     <el-input deep v-model="searchInfo" placeholder="你有一双发现美的眼睛" cleartable class="search-input">
                         <template #prepend>
-                            <el-button :icon="Search" class="search-icon" />
+                            <el-button :icon="Search" class="search-icon" @click="search" />
                         </template>
                     </el-input>
                 </el-col>
 
                 <el-col :offset="0" :span="1" class="grid-content">
-                    <img src="@/assets/images/add.png" alt="post shot" class="icon">
+                    <img src="@/assets/images/add.png" alt="post shot" class="icon" @click="postShot">
                 </el-col>
 
                 <el-col :offset="1" :span="1" class="grid-content">
-                    <img src="@/assets/images/userAvator.png" alt="avator" class="icon avator">
+                    <img src="@/assets/images/userAvator.png" alt="avator" class="icon avator" @click="goToUserInfo">
                 </el-col>
             </el-row>
         </el-header>
@@ -43,6 +43,90 @@
 </template>
 <script setup>
 import { Search } from "@element-plus/icons-vue"
+import { useRouter } from "vue-router";
+import { ref, reactive } from "vue";
+import Tag from "./Tag.vue";
+import request from '../utils/request'
+import { resolvedObj } from "../utils/request";
+const router = useRouter();
+
+//用来计数，动态添加tag
+const countArray = ref(new Array(1));
+
+const searchInfo = ref("");
+
+
+
+//用来记录tag的数组
+const tagArray = ref(new Array());
+
+const onAddTag = (tagContent) => {
+    countArray.value.push(1);
+    tagArray.value.push(tagContent);
+    console.log("tags:")
+    console.log(tagArray.value);
+}
+
+const form = reactive({
+    title: '',
+    content: ''
+
+})
+
+const goToGame = () => {
+    router.push('/game')
+}
+
+const goToShots = () => {
+    router.push('/shots')
+}
+
+const goToEquip = () => {
+    router.push('/equipment')
+}
+
+const search = () => {
+    router.push('/search')
+}
+
+const goToUserInfo = () => {
+    router.push('/user-info')
+}
+
+const postShot = () => {
+}
+
+const config = {
+    headers: {
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('token')
+    }
+}
+const save = () => {
+    console.log(form)
+    const url = 'http://localhost:8080/shot';
+    const param = {
+        content: form.content,
+        title: form.title,
+        tags: tagArray.value
+    }
+    const data = JSON.stringify(param);
+    console.log("postdata:")
+    console.log(data)
+    request.post(url, data, config)
+        .then(() => {
+            console.log(resolvedObj.value);
+            uploadImageToServer(resolvedObj.value.data);
+        })
+}
+// 上传图片到服务器，id从后端返回的response中获取
+const uploadImageToServer = id => {
+    const url = "http://localhost:8080/shot"
+    const param = {
+        shotid: id
+    }
+}
+
 </script>
 <style scoped>
 .header-content .header {

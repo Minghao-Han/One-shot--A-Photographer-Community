@@ -76,8 +76,9 @@ const login = () => {
                     //如果token存在，说明登录成功，则跳转入shots网页，否则
                     if (token !== undefined) {
                         localStorage.removeItem('token');
+
                         localStorage.setItem('token', token);
-                        console.log("陈工");
+                        console.log("陈工")
                         console.log(token);
                         ElMessage.success("登录成功");
                         router.replace({

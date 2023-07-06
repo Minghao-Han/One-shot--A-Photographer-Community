@@ -5,15 +5,16 @@
         </div>
         <div class="other-info">
             <div class="name-gender">
-                <h3 style="text-indent: 1em;">小芳</h3>
+                <h3 style="text-indent: 1em;">{{ props.fans.userName }}</h3>
                 <div style="font-size: 12px; display: flex; align-items: center;">
                     <el-icon>
-                        <Female />
+                        <Female v-if="!gender" />
+                        <Male v-if="gender" />
                     </el-icon>
                 </div>
             </div>
             <div>
-                <p style="text-indent: 2em; font-size: 10px;">这是一个很酷很酷的男孩</p>
+                <p style="text-indent: 2em; font-size: 10px;">{{ props.fans.personalSignature }}</p>
             </div>
         </div>
     </div>
@@ -21,6 +22,18 @@
 
 <script setup>
 import { Female, Male } from '@element-plus/icons-vue'
+import { computed, defineProps, ref } from 'vue';
+const props = defineProps({
+    fans: Object
+})
+
+// const fansObj = ref({});
+// fansObj.value = props.fans;
+const gender = computed(() => {
+    if (props.fans.gender === "Male")
+        return true;
+    else return false;
+})
 </script>
 
 <style scoped>

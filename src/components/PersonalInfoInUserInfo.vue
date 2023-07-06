@@ -4,40 +4,125 @@
             <el-avatar :size="100">
 
             </el-avatar>
-            <h2 style="margin: auto 10px;">小芳</h2>
-            <h3>xiaofang@163.com</h3>
+            <h2 style="margin: auto 10px;">{{ infoObj.userName }}</h2>
+            <h3>{{ infoObj.email }}</h3>
             <el-link :icon="Edit">编辑资料</el-linK>
         </div>
 
         <div class="personal-signature">
-            <p>这个人很酷什么都没有留下</p>
+            <p>{{ infoObj.personalSignature }}</p>
         </div>
 
         <div class="addition-info">
-            <div class="addition-info-block">
+            <div class="addition-info-block" @click="showMyShots">
                 <H2>获赞</H2>
-                <h3>200</h3>
+                <h3>{{ infoObj.totalReceivedThumbs }}</h3>
             </div>
-            <div class="addition-info-block">
+            <div class="addition-info-block" @click="showMyFans">
                 <H2>粉丝</H2>
-                <h3>200</h3>
+                <h3>{{ infoObj.totalFancies }}</h3>
             </div>
-            <div class="addition-info-block">
+            <div class="addition-info-block" @click="showMyFollow">
                 <H2>关注</H2>
-                <h3>200</h3>
+                <h3>{{ infoObj.totalSubscriptions }}</h3>
             </div>
         </div>
 
         <div class="personal-info-main">
-            <UserDivContainer />
+            <el-scrollbar max-height="500px">
+                <component :is="personSubComponent" :List="objList" />
+            </el-scrollbar>
         </div>
     </div>
 </template>
 
 <script setup>
 import { Edit } from '@element-plus/icons-vue'
+import { onBeforeMount, onMounted, ref } from 'vue';
 import MyShots from './MyShots.vue'
 import UserDivContainer from './UserDivContainer.vue';
+import request from '../utils/request';
+import { resolvedObj } from '../utils/request';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const url = 'http://localhost:8080/';
+const infoObj = ref({});
+const fansPage = ref(1);
+const objList = ref();
+
+onBeforeMount(() => {
+    getPersonalInfo();
+})
+
+const getPersonalInfo = () => {
+
+    request.get(url + 'personPage', {
+        headers: {
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        }
+    })
+        .then(() => {
+            if (resolvedObj.value.code === "500") {
+                ElMessage("验证过期，请重新登录");
+                router.replace('/login');
+            }
+            else {
+                console.log(resolvedObj.value);
+                infoObj.value = resolvedObj.value.data;
+            }
+        })
+}
+
+const personSubComponent = ref(MyShots);
+
+const showMyShots = () => {
+    personSubComponent.value = MyShots;
+}
+
+//初始化Fans界面
+const showMyFans = () => {
+    personSubComponent.value = UserDivContainer;
+    request.get(url + 'personPage/fans/1', {
+        headers: {
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        }
+    })
+        .then(() => {
+            if (resolvedObj.value.code === "500") {
+                ElMessage("验证过期，请重新登录");
+                router.replace('/login');
+            }
+            else {
+                console.log(resolvedObj.value);
+                objList.value = resolvedObj.value.data;
+                fansPage.value = 2;
+            }
+        })
+}
+
+const showMyFollow = () => {
+    personSubComponent.value = UserDivContainer;
+    request.get(url + 'subscribe/1', {
+        headers: {
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('token')
+        }
+    })
+        .then(() => {
+            if (resolvedObj.value.code === "500") {
+                ElMessage("验证过期，请重新登录");
+                router.replace('/login');
+            }
+            else {
+                console.log(resolvedObj.value);
+                objList.value = resolvedObj.value.data;
+                fansPage.value = 2;
+            }
+        })
+}
 </script>
 
 <style scoped>
@@ -94,6 +179,4 @@ import UserDivContainer from './UserDivContainer.vue';
     vertical-align: bottom;
     color: #494949;
 }
-
-.personal-info-main {}
 </style>

@@ -2,7 +2,7 @@
     <Header />
     <div class="container">
         <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" default-active="1"
-            text-color="#fff" @open="handleOpen" @close="handleClose">
+            text-color="#fff" @open="handleOpen" @close="handleClose" @select="handleSelect">
             <el-menu-item index="1" class="el-menu-vertical-item">
                 <el-icon :size="50">
                     <User />
@@ -39,26 +39,40 @@
                     历史消息
                 </span>
             </el-menu-item>
-            <el-menu-item index="4" class="el-menu-vertical-item">
-                <el-icon>
-                    <Trophy />
-                </el-icon>
-                <span>
-                    我参加的比赛
-                </span>
-            </el-menu-item>
         </el-menu>
         <div class="aside-container">
-            <HistoryMessage></HistoryMessage>
+            <component :is="subComponent" />
         </div>
     </div>
 </template>
 
 <script setup>
 import Header from '../components/Header.vue';
+import { ref } from 'vue';
 import { User, Star, View, Picture, Clock, Trophy } from '@element-plus/icons-vue'
+import MyCollection from '../components/MyCollection.vue';
 import PersonalInfoInUserInfo from '../components/PersonalInfoInUserInfo.vue';
 import HistoryMessage from '../components/HistoryMessage.vue';
+
+const subComponent = ref(PersonalInfoInUserInfo);
+
+const handleSelect = index => {
+    console.log("has selected>" + index);
+    console.log(typeof (index));
+    switch (index) {
+        case '1':
+            subComponent.value = PersonalInfoInUserInfo;
+            break;
+        case '2':
+            subComponent.value = MyCollection;
+            break;
+        case '3':
+            subComponent.value = HistoryMessage;
+            break;
+        default:
+            break;
+    }
+}
 </script>
 
 <style scoped>
@@ -80,6 +94,7 @@ import HistoryMessage from '../components/HistoryMessage.vue';
     align-items: start;
     margin-left: 50px;
     width: 620px;
+    margin-bottom: 10vh;
 }
 
 /* 用来设置高度 */

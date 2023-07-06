@@ -4,7 +4,8 @@
 
             <div class="aside-user-info-container">
                 <div class="aside-user-avatar">
-                    <el-avatar :size="60"></el-avatar>
+                    <el-avatar :src="'https://oneshot-person.oss-cn-guangzhou.aliyuncs.com/' + user.id + '.jpg'"
+                        :size="60"></el-avatar>
                     <H3>{{ userName }}</H3>
                 </div>
                 <div class="info-list">

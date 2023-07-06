@@ -10,6 +10,10 @@
 
 <script setup>
 import MyShotCard from './MyShotCard.vue';
+import { defineProps } from 'vue';
+const props = defineProps({
+    List: Array
+})
 </script>
 
 <style scoped></style>

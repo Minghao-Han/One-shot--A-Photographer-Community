@@ -5,6 +5,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/',
+      name: 'HomePage',
+      component: () => import('@/views/Homepage.vue')
+    },
+    {
       path: '/login',
       name: "login",
       component: () => import('@/views/Login.vue')
@@ -43,6 +48,20 @@ const router = createRouter({
       path: '/user-info',
       name: 'user-info',
       component: () => import('@/views/UserInfo.vue')
+    },
+    {
+      path: '/equipment',
+      name: 'equipment',
+      component: () => import('@/views/Equipment.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@/views/Search.Vue')
+    },
+    {
+      path: '/test',
+      component: () => import('@/views/createShot(1).vue')
     }
   ]
 })

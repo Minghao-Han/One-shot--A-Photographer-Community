@@ -2,25 +2,43 @@
     <div class="message-card-container">
         <div class="message-card-info">
             <div class="message-title">
-                <h2>标题</h2>
+                <h2>{{ messageObj.messageType }}</h2>
             </div>
             <div class="message-content">
-                <p style="text-indent: 2em;">发酒疯嘎嘎垃圾啊的两个空间打开拉萨</p>
+                <p style="text-indent: 2em;">{{ messageObj.messageText }}</p>
             </div>
             <div class="message-time">
-                <h6>2021-12-4</h6>
+                <h6>{{ dateTime }}</h6>
             </div>
         </div>
-        <div class="view-button">
-            <el-button :icon="Message" class="button">
 
-            </el-button>
-        </div>
     </div>
 </template>
 
 <script setup>
 import { Message } from '@element-plus/icons-vue';
+import { defineProps, ref, watch, computed } from 'vue';
+const props = defineProps({
+    message: Object
+})
+
+const messageObj = ref({});
+
+watch(() => props.message, (newValue, oldValue) => {
+    console.log("new>>")
+    console.log(newValue);
+    messageObj.value = newValue;
+}, { deep: true, immediate: true })
+
+const dateTime = computed(() => {
+    const dateObject = new Date(messageObj.value.time);
+    //毫秒转日期
+    var year = dateObject.getFullYear(); // 年份
+    var month = dateObject.getMonth() + 1; // 月份（注意需要加1，因为月份是从0开始计数的）
+    var day = dateObject.getDate(); // 日
+    return "" + year + "-" + month + "-" + day;
+})
+
 </script>
 <style scoped>
 .message-card-container {

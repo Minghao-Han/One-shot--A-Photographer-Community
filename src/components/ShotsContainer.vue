@@ -2,7 +2,7 @@
     <el-main class="el-main">
         <div class="shots-container">
             <Shot v-for="shot in shotsProps.newShots" :newShot="shot" />
-            <component></component>
+            <slot name="bottom"></slot>
         </div>
     </el-main>
 </template>
@@ -16,6 +16,7 @@ const shotsProps = defineProps({
 })
 
 onUpdated(() => {
+
     console.log(shotsProps.newShots)
 })
 
