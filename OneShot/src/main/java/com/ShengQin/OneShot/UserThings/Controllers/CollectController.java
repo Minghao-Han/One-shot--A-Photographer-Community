@@ -22,6 +22,7 @@ public class CollectController {
     /**shot*/
     @PostMapping("/shot")
     public String shotCollect(@RequestBody Map<String,Integer> requestBody, @UserId int collector_id){
+        if (!requestBody.containsKey("shot_id")) return Result.fail("缺少shot_id参数");
         int shot_id = requestBody.get("shot_id");
         int serviceResult = shotCollectService.collect(collector_id,shot_id);
         switch (serviceResult){
@@ -34,6 +35,7 @@ public class CollectController {
 
     @DeleteMapping("/shot")
     public String shotCancelCollect(@RequestBody Map<String,Integer> requestBody, @UserId int collector_id){
+        if (!requestBody.containsKey("shot_id")) return Result.fail("缺少shot_id参数");
         int shot_id = requestBody.get("shot_id");
         int serviceResult = shotCollectService.cancelCollect(collector_id,shot_id);
         switch (serviceResult){
