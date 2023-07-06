@@ -21,4 +21,9 @@ class AccountMapperTest {
         Account account = new Account(5,"3117824612@qq.com","11223344");
         accountMapper.save(account);
     }
+
+    @Test
+    void getId() {
+        System.out.println(accountMapper.getId("1907821839@qq.com"));
+    }
 }

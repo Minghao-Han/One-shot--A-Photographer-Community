@@ -15,9 +15,7 @@ public class PasswordResetController {
     @Autowired
     PasswordResetService passwordResetService;
     @GetMapping
-    public String sendCaptchaToMailBox(@RequestBody Map<String,Object> requestBody){
-        if (requestBody.get("email")==null) return Result.fail("邮箱为空");
-        String email = (String) requestBody.get("email");
+    public String sendCaptchaToMailBox(@RequestParam String email){
         ServiceResult serviceResult = passwordResetService.sendCaptchaToMailbox(email);
         switch (serviceResult){
             case SUCCESS -> {return Result.success("请查看邮箱中的验证码");}
@@ -27,7 +25,7 @@ public class PasswordResetController {
     }
 
     @PostMapping
-    public String verifyCaptcha(@RequestBody Map<String,Object> requestBody,@UserId int user_id){
+    public String verifyCaptcha(@RequestBody Map<String,Object> requestBody){
         Object userEnterCaptchaObj = requestBody.get("captcha");
         if (userEnterCaptchaObj==null) return Result.fail("未输入验证码");
         String userEnterCaptcha = (String) userEnterCaptchaObj;
@@ -38,7 +36,7 @@ public class PasswordResetController {
     }
 
     @PutMapping
-    public String resetPassword(@RequestBody Map<String,Object> requestBody,@UserId int user_id){
+    public String resetPassword(@RequestBody Map<String,Object> requestBody){
         Object newPasswordObj = requestBody.get("newPassword");
         if (newPasswordObj==null) return Result.fail("未输入验证码");
         String newPassword = (String) newPasswordObj;
