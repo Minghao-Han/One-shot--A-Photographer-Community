@@ -12,11 +12,11 @@ import org.springframework.web.method.HandlerMethod;
 public class GlobalExceptionHandler {
 
     //处理控制器的控制器异常
-    @ExceptionHandler(NullPointerException.class)
-    public String handleResourceNotFoundException(NullPointerException nullPointerException, HandlerMethod handlerMethod) {
-        if (handlerMethod.getBeanType().getAnnotation(RestController.class) == null) throw nullPointerException;
-        return Result.fail("缺少必要的参数",nullPointerException.getMessage());
-    }
+//    @ExceptionHandler(NullPointerException.class)
+//    public String handleResourceNotFoundException(NullPointerException nullPointerException, HandlerMethod handlerMethod) {
+//        if (handlerMethod.getBeanType().getAnnotation(RestController.class) == null) throw nullPointerException;
+//        return Result.fail("缺少必要的参数",nullPointerException.getMessage());
+//    }
 
 //    @ExceptionHandler(Exception.class)
 //    public ResponseEntity<String> handleException(Exception ex) {

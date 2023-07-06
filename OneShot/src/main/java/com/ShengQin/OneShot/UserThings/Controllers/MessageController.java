@@ -27,7 +27,7 @@ public class MessageController {
         else return Result.fail("没有更多历史消息");
     }
     @GetMapping("/uncheck")
-    public String getHistoryMessage(@UserId int user_id,@RequestHeader Map<String,String> requestHeader){
+    public String getUMessage(@UserId int user_id,@RequestHeader Map<String,String> requestHeader){
         String token = (String) requestHeader.get("token");
         if (!TokenUtil.IdPermissionCheck(token,user_id)) return Result.fail("失败，不能看别人的信息");
         generalMessageService.registerSubMessageService();
