@@ -16,7 +16,7 @@ import java.util.Date;
  **/
 public class TokenUtil {
     //token到期时间30分钟(根据需求改)
-    private static final long EXPIRE_TIME= 30*60*1000;
+    private static final long EXPIRE_TIME= 2*24*60*60*1000;
     //密钥 (随机生成,可以从网上找到随机密钥生成器)
     private static final String TOKEN_SECRET="MD9**+4MG^EG79RV+T?J87AI4NWQVT^&";
     /** 生成token */

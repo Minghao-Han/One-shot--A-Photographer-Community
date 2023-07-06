@@ -10,7 +10,7 @@ import java.util.List;
 public interface LoginStateMapper {
     @Select("SELECT * FROM sys_log")
     @Results(id="log1", value={
-            @Result(column="ID", property="ID", id=true),
+            @Result(column="logID", property="logID", id=true),
             @Result(column="userID", property="userID"),
             @Result(column="Log_Content", property="Log_Content"),
             @Result(column="IP_Address", property="IP_Address"),
@@ -31,7 +31,7 @@ public interface LoginStateMapper {
 
     @Select("SELECT * from  sys_log  limit #{pageNum},  #{pageSize}")
     @Results(id="log2", value={
-            @Result(column="ID", property="ID", id=true),
+            @Result(column="logID", property="logID", id=true),
             @Result(column="userID", property="userID"),
             @Result(column="Log_Content", property="Log_Content"),
             @Result(column="IP_Address", property="IP_Address"),
@@ -64,8 +64,20 @@ public interface LoginStateMapper {
     Integer selectTotal1(int logID);
 
     @Select("SELECT  * from  sys_log where CreateDate like CONCAT('%', #{CreateDate}, '%')")
+    @Results(id="log3", value={
+            @Result(column="logID", property="logID", id=true),
+            @Result(column="userID", property="userID"),
+            @Result(column="Log_Content", property="Log_Content"),
+            @Result(column="IP_Address", property="IP_Address"),
+            @Result(column="OS", property="OS"),
+            @Result(column="IE", property="IE"),
+            @Result(column="CreateDate", property="CreateDate"),
+            @Result(column="Remark", property="Remark")
+    })
     List<LogInState> selectPage2(String CreateDate);
 
-    @Select("SELECT count(*)  from sys_log  where  logID=#{CreateDate}")
+
+
+    @Select("SELECT count(*)  from sys_log  where  CreateDate like CONCAT('%', #{CreateDate}, '%')")
     Integer selectTotal2(String CreateDate);
 }
