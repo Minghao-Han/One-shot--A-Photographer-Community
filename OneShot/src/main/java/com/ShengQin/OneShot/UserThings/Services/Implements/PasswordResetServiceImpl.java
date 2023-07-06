@@ -23,10 +23,10 @@ public class PasswordResetServiceImpl implements PasswordResetService {
     @Autowired
     CaptchaGenerator captchaGenerator;
     @Override
-    public ServiceResult sendCaptchaToMailbox(int user_id) {
-        String userEmail = accountMapper.getEmail(user_id);
+    public ServiceResult sendCaptchaToMailbox(String email) {
+        int user_id = accountMapper.getId(email);
         String captcha = captchaGenerator.generate(DEFAULT_CAPTCHA_LENGTH);
-        boolean sendResult = mailUtil.sendEmailCodeWithDefaultSender(captcha,userEmail,"密码重置验证码");
+        boolean sendResult = mailUtil.sendEmailCodeWithDefaultSender(captcha,email,"密码重置验证码");
         if (!sendResult)return ServiceResult.OTHER_FAIL;
         else {
             String key = "captcha"+user_id;
@@ -36,7 +36,8 @@ public class PasswordResetServiceImpl implements PasswordResetService {
     }
 
     @Override
-    public boolean verifyCaptcha(int user_id, String userEnteredCaptcha) {
+    public boolean verifyCaptcha(String email, String userEnteredCaptcha) {
+        int user_id = accountMapper.getId(email);
         String key = "captcha"+user_id;
         Object captchaObj = temporaryDataStoreService.get(key);
         if (captchaObj!=null) {
@@ -47,8 +48,8 @@ public class PasswordResetServiceImpl implements PasswordResetService {
     }
 
     @Override
-    public ServiceResult resetPassword(int user_id ,String newPassword) {
-        Account account = accountMapper.getAccount(user_id);
+    public ServiceResult resetPassword(String email,String newPassword) {
+        Account account = accountMapper.getAccountByEmail(email);
         if (account==null) return ServiceResult.NONEXISTENT;
         else {
             account.setPassword(newPassword);

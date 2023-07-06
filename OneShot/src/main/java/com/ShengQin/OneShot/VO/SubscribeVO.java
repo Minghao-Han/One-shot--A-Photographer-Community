@@ -14,5 +14,5 @@ public class SubscribeVO {
     private int userId;
     private int subscribedId;
     private Date time;
-    private String subscribedName;
+    private String userName;//原名subscribedName
 }

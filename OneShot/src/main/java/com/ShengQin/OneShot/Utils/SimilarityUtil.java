@@ -4,7 +4,12 @@ import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.corpus.synonym.Synonym;
 import com.hankcs.hanlp.dictionary.CoreSynonymDictionary;
 import com.hankcs.hanlp.dictionary.common.CommonSynonymDictionary;
+import com.hankcs.hanlp.seg.NShort.NShortSegment;
+import com.hankcs.hanlp.seg.Segment;
 import com.hankcs.hanlp.seg.common.Term;
+import com.hankcs.hanlp.tokenizer.IndexTokenizer;
+import com.hankcs.hanlp.tokenizer.NLPTokenizer;
+import com.hankcs.hanlp.tokenizer.StandardTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,17 +17,25 @@ import java.util.*;
 
 @Component
 public class SimilarityUtil {
-    private static int N = 3;
+    private static int N = 8;
     public double getJaccardSimilarityBetweenText(String text1,String text2){
         //使用HanLP分词
-        List<Term> terms1 = HanLP.segment(text1);
-        List<Term> terms2 = HanLP.segment(text2);
+        Segment nShortSegment = new NShortSegment()
+                .enableCustomDictionary(true)
+                .enablePlaceRecognize(true)
+                .enableOrganizationRecognize(true)
+                .enableNameRecognize(true);
+//        List<Term> terms1 = IndexTokenizer.segment(text1);
+//        List<Term> terms2 = IndexTokenizer.segment(text2);
+        List<Term> terms1 = nShortSegment.seg(text1);
+        List<Term> terms2 = nShortSegment.seg(text2);
         List<String> words1 = termsToWords(terms1);
         List<String> words2 = termsToWords(terms2);
         List<String> wordWithSyn1 = wordsAddSynonym(words1);
         List<String> wordWithSyn2 = wordsAddSynonym(words2);
         return calculateJaccardSimilarity(wordWithSyn1,wordWithSyn2);
     }
+
     private double calculateJaccardSimilarity(List<String> nGrams1,List<String> nGrams2){
         Set<String> set1 = new HashSet<>(nGrams1);
         Set<String> set2 = new HashSet<>(nGrams2);
