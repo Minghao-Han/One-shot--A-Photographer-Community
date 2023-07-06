@@ -66,6 +66,7 @@ public class ThumbServiceImpl implements ThumbService {
         for (Shot shot:shots) {
             shot_ids.add(shot.getId());
         }
+        if (shot_ids.isEmpty()) return 0;
         return thumbMapper.getTotalThumb(shot_ids);
     }
 

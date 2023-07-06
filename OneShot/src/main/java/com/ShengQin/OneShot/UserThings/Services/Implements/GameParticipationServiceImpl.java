@@ -4,6 +4,7 @@ import com.ShengQin.OneShot.UserThings.Mappers.GameParticipationMapper;
 import com.ShengQin.OneShot.UserThings.Services.GameParticipationService;
 import com.ShengQin.OneShot.Utils.ServiceResult;
 import com.ShengQin.OneShot.VO.GameParticipatorVO;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,9 @@ public class GameParticipationServiceImpl implements GameParticipationService {
     }
 
     @Override
-    public List<GameParticipatorVO> getEntriesOf(int game_id) {
-        return gameParticipationMapper.getAllEntriesOfGame(game_id);
+    public List<GameParticipatorVO> getEntriesOf(int game_id,int pageNum) {
+        PageHelper.startPage(pageNum,PAGE_SIZE);
+        List<GameParticipatorVO> entries = gameParticipationMapper.getAllEntriesOfGame(game_id);
+        return entries;
     }
 }
