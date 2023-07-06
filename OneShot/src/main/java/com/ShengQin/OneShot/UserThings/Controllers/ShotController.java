@@ -22,8 +22,8 @@ public class ShotController {
         String content = (String) requestBody.get("content");
         List<String> tags = (List<String>) requestBody.get("tags");
         Date time = (Date) requestBody.get("time");
-        shotService.createShot(user_id,title,content,time,tags);
-        return Result.success("创建shot成功");
+        Integer shot_id = shotService.createShot(user_id,title,content,time,tags);
+        return Result.success("创建shot成功",shot_id);
     }
 
     @DeleteMapping
