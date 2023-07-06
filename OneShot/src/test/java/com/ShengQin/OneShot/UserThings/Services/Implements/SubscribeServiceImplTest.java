@@ -19,4 +19,9 @@ class SubscribeServiceImplTest {
     void getSubscribes() {
 
     }
+
+    @Test
+    void getSubscriptionNum() {
+        System.out.println(subscribeService.getSubscriptionNum(110));
+    }
 }

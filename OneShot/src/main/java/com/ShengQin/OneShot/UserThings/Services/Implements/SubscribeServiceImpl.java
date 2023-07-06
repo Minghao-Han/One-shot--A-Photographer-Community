@@ -62,4 +62,11 @@ public class SubscribeServiceImpl implements SubscribeService {
     public int getFanciesNum(int user_id) {
         return subscribeMapper.getFanciesNum(user_id);
     }
+
+    @Override
+    public int getSubscriptionNum(int user_id) {
+        Integer totalSubscription = subscribeMapper.getSubscriptionNum(user_id);
+        if (totalSubscription==null) return 0;
+        else return totalSubscription;
+    }
 }

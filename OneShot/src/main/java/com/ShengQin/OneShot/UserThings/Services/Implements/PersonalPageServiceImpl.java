@@ -36,6 +36,8 @@ public class PersonalPageServiceImpl implements PersonalPageService {
         personalPageVO.setTotalFancies(totalFancies);
         String email = accountMapper.getEmail(user_id);
         personalPageVO.setEmail(email);
+        int totalSubscription = subscribeService.getSubscriptionNum(user_id);
+        personalPageVO.setTotalSubscriptions(totalSubscription);
         return personalPageVO;
     }
 
