@@ -1,6 +1,6 @@
 <template>
     <div class="my-shots-container">
-        <MyShotCard v-for="shot in myShotList" :id="shot.id" />
+        <MyShotCard v-for="shot in myShotList" :shot-obj="shot" />
         <div class="footer" @mouseover="getMyShot(pageNum)" v-if="visiable">
             <p>获取更多我的Shot
             </p>

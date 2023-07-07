@@ -42,7 +42,6 @@
 
         <!-- 弹出对话框，判断是否发布shot -->
         <el-dialog v-model="centerDialogVisible" title="发布我的Shot" width="30%" align-center>
-            <span>Open the dialog from the center from the screen</span>
             <UpLoadTest />
             <template #footer>
                 <span class="dialog-footer">

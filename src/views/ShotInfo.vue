@@ -4,34 +4,35 @@
     <div class="container">
         <div class="shot-info">
             <div class="shot-image">
-                <img src="@/assets/images/1.jpg" style="object-fit: contain;" class="image" />
+                <img src="https://oneshot-person.oss-cn-guangzhou.aliyuncs.com/17.jpg" style="object-fit: contain;"
+                    class="image" />
 
             </div>
 
-            <span class="shot-aside">
+            <span class="shot-aside" style="margin-top: 30px;">
                 <div class="poster-info">
                     <div class="avatar-name">
-                        <el-avatar>
+                        <el-avatar style="width:50px;height: 50px;">
 
                         </el-avatar>
-                        <h2>
+                        <h2 style="margin-left: 10px;">
                             用户名
                         </h2>
                     </div>
 
                     <div class="follow-button">
-                        <el-button>
+                        <el-button style="margin-top:10px">
                             关注
                         </el-button>
                     </div>
                 </div>
 
-                <div class="thumb-and-collect">
+                <div class="thumb-and-collect" style="margin-top:14px">
                     <el-icon>
                         <Orange></Orange>
                     </el-icon>
                     <p>1</p>
-                    <el-icon>
+                    <el-icon style="margin-left:10px ;">
                         <CollectionTag>
                         </CollectionTag>
                     </el-icon>
@@ -40,16 +41,16 @@
                 </div>
 
                 <div class="comment-container">
-                    <div class="post-comment">
+                    <div class="post-comment" style="margin-top:10px">
                         <!-- 评论的输入框 -->
                         <el-input v-model="comment" type="textarea" :rows="2" class="comment-input" resize="none">
                         </el-input>
                         <!-- 评论按钮 -->
-                        <el-button :icon="ChatLineSquare" style="height: 52px; font-size: 20px;">
+                        <el-button :icon="ChatLineSquare" style="height: 52px; font-size: 20px;margin-left: 10px;">
 
                         </el-button>
                     </div>
-                    <el-scrollbar max-height="400px">
+                    <el-scrollbar max-height="400px" style="margin-top: 15px;margin-left: 20px;">
                         <Comment></Comment>
                         <Comment></Comment>
                         <Comment></Comment>
@@ -135,4 +136,22 @@ const comment = ref();
     max-height: 640px;
 
 }
-</style>
+
+.shot-image {
+    flex: 0 0 auto;
+    /* 图片宽度自适应，不伸缩 */
+    margin-right: 10px;
+    /* 图片与文字之间的间距 */
+}
+
+.image {
+    width: 95%;
+    /* 图片宽度填满容器 */
+    height: 85%;
+    /* 图片高度自适应 */
+}
+
+.shot-aside {
+    flex: 1;
+    /* 文字部分占满剩余空间 */
+}</style>

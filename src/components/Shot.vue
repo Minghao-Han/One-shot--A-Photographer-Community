@@ -9,9 +9,9 @@
             </el-col>
 
             <el-col class="follow-button" span="2">
-                <!-- <el-button type="primary" :icon="Plus" color="#7c7c7c" plain v-if="followed">
+                <el-button type="primary" :icon="Plus" color="#7c7c7c" plain @click="follow">
                     关注
-                </el-button> -->
+                </el-button>
             </el-col>
         </el-row>
         <div class="shot-img-container" @mouseover="addView">
@@ -245,6 +245,18 @@ const collect = () => {
             })
     }
 }
+
+const follow = () => {
+    const param = {
+        user_id: shotObj.value.user_id
+    }
+    const data = JSON.stringify(param);
+    request.post('http://localhost:8080/subscribe', data, config)
+        .then(() => {
+
+        })
+}
+
 
 const loadNewComment = (newComment) => {
     if (myComments.value === undefined)
