@@ -1,14 +1,25 @@
 <template>
-  <div style="width: 60vw; margin: 5vh auto;">
+  <div style="width:500px;margin-left: 500px;display: inline-block; ">
     <el-input class="search-box" v-model="searchQuery" placeholder="请输入搜索内容" @mouseover="handleMouseOver"
       @mouseleave="handleMouseLeave"></el-input>
-    <div class="image-results" ref="imageResults">
-      <div class="image-item" v-for="(image, index) in imageResults" :key="index"
-        :class="{ 'focused': index === focusedIndex }" @click="navigateToImageDetails(image.filename)">
-        <img :src="image.url" alt="Image">
-      </div>
+  </div>
+
+  <div style="margin-left:20px; display: inline-block;"><el-button type="primary" @click="loadNextPage"
+      style="width:100px">
+      <P style="font: 20px;font-weight: bold;">搜索</P>
+    </el-button></div>
+
+
+  <div v-for="result in searchResults" :key="result.id" class="search-result-box">
+
+    <img :src="'https://oneshot-test.oss-cn-guangzhou.aliyuncs.com/' + result.id + '.jpg'" alt="获取的图片" style="
+    width:800px;" />
+
+    <div class="search-result">
+      <p style="font-weight: bold;font-size: 20px;">{{ result.title }}</p>
+      <p>{{ result.content }}</p>
+      <p>{{ result.user_name }}</p>
     </div>
-    <div><el-button @click="loadNextPage">搜索</el-button></div>
   </div>
 </template>
 
@@ -19,20 +30,15 @@ import { useRouter } from 'vue-router';
 import axios from '../utils/request'
 import { resolvedObj } from '../utils/request'
 
+
+
 const searchQuery = ref('');
 const isHovered = ref(false);
 const focusedIndex = ref(null);
-const imageResults = ref([]);
+const searchResults = ref([]); // 用于存储搜索结果
 
 
-
-// // 定义组件的 props
-// const props = defineProps({
-//   searchQuery: {
-//     type: String,
-
-//   }
-// });
+const imgSrc = ref()
 const router = useRouter();
 
 const handleMouseOver = () => {
@@ -43,12 +49,9 @@ const handleMouseLeave = () => {
   isHovered.value = false;
 };
 
-const navigateToImageDetails = (filename) => {
-  router.push({ name: 'image-details', params: { filename } });
-};
 
 onMounted(async () => {
-  // Initial load of image results
+
   await loadNextPage();
 });
 
@@ -68,29 +71,16 @@ const loadNextPage = async () => {
       }
     });
 
-    console.log(resolvedObj.value)
+    console.log(resolvedObj.value.data)
     console.log(localStorage.getItem('token'))
-    const nextPageImages = response.data.images; // Modify according to your API response structure
+    searchResults.value = resolvedObj.value.data
 
-    imageResults.value.push(...nextPageImages);
   } catch (error) {
     console.error('Error loading image results:', error);
   }
 };
 
-const observeScroll = () => {
-  const imageResultsEl = document.querySelector('.image-results');
-  if (imageResultsEl) {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        loadNextPage();
-      }
-    });
-    observer.observe(imageResultsEl);
-  }
-};
 
-observeScroll();
 </script>
 
 <style scoped>
@@ -119,6 +109,23 @@ observeScroll();
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 20px;
   margin: 0 auto;
+}
+
+.search-results-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.search-result-box {
+  margin-bottom: 10px;
+  width: 800px;
+  margin-left: 390px
+}
+
+.search-result {
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
 .image-item {

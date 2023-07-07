@@ -9,13 +9,12 @@
             </el-col>
 
             <el-col class="follow-button" span="2">
-                <el-button type="primary" :icon="Plus" color="#7c7c7c" plain>
+                <!-- <el-button type="primary" :icon="Plus" color="#7c7c7c" plain v-if="followed">
                     关注
-                </el-button>
+                </el-button> -->
             </el-col>
-
         </el-row>
-        <div class="shot-img-container">
+        <div class="shot-img-container" @mouseover="addView">
             <el-image :src="imgSrc" class="shot-image" fit="contain" />
         </div>
         <div class="shot-title">
@@ -30,7 +29,7 @@
         </div>
 
         <el-row :gutter="20" justify="space-between" class="icons">
-            <el-col :span="12" class="shot-function-icons">
+            <el-col :span="9" class="shot-function-icons">
                 <el-icon class="thumb icon" @click="thumb">
                     <Orange :color="orangeColor" />
                 </el-icon>
@@ -58,6 +57,9 @@
             <template #load>
                 <div class="load-more" v-if="isOver" @mouseenter="loadComment">
                     <p>显示更多评论</p>
+                </div>
+                <div class="load-more" v-if="!isOver">
+                    <p>已经加载所有评论</p>
                 </div>
             </template>
         </CommentArea>
@@ -115,10 +117,10 @@ onUpdated(() => {
 onMounted(() => {
     isThumbed.value = props.newShot.thumbed;
     isCollected.value = props.newShot.collected;
-    console.log(2);
 })
 
 
+const isVisited = ref(false);
 
 const isOver = ref(true)
 const posterName = ref("小芳");
@@ -138,15 +140,25 @@ const redColor = computed(() => {
 
     return isCollected.value === true ? "red" : "";
 })
+const param = {
+    shot_id: props.newShot.id
+}
+
+const data = JSON.stringify(param);
+//增加浏览量
+const addView = () => {
+    if (!isVisited.value) {
+        isVisited.value = true;
+        request.post('http://localhost:8080/shotBrowse/pageView', data, config)
+            .then(() => {
+                shotObj.value.pageView++;
+            })
+    }
+}
 // 點贊
 const thumb = () => {
     isThumbed.value = !isThumbed.value;
     if (isThumbed.value) {
-        const param = {
-            shot_id: props.newShot.id
-        }
-
-        const data = JSON.stringify(param);
         request.post("http://localhost:8080/thumb/shot", data, config)
             .then(() => {
                 if (resolvedObj.value.code === "500") {
@@ -248,7 +260,8 @@ const loadComment = () => {
     request.get(url, config)
         .then(() => {
             console.log(resolvedObj.value);
-            myComments.value = myComments.value.concat(resolvedObj.value.data);
+            if (resolvedObj.value.data !== undefined)
+                myComments.value = myComments.value.concat(resolvedObj.value.data);
             console.log(myComments.value)
             if (resolvedObj.value.status === 400) {
                 isOver.value = false;
@@ -262,7 +275,7 @@ const loadComment = () => {
 //初始化评论
 const getNewComment = () => {
     console.log("getNewComment")
-    const url = 'http://localhost:8080/comment/shot/' + props.newShot.id + "/" + 1;
+    const url = 'http://localhost:8080/comment/shot/' + props.newShot.id + "/1";
     request.get(url, config)
         .then(() => {
             console.log(resolvedObj.value);

@@ -1,25 +1,41 @@
 <template>
-    <div class="login-container">
-        <el-form ref="loginForm" :model="formInfo" :rules="loginRules" label-width="50px" class="login-form">
-            <h2 class="login-title">欢迎来到OneShot</h2>
-            <el-form-item prop="email" label="邮箱" :message="errorMessage">
-                <el-input v-model="formInfo.email"></el-input>
-            </el-form-item>
+    <div class="image-container">
+        <img class="custom-icon" src="../assets/images/logo.png" alt="图标">
+        <h style="margin-left:120px; font-weight: bold;font-size: 50px;">镜头下的诗意世界，让每个瞬间永恒流转</h>
+        <div class="login-container" style="margin-top:-60px">
+            <el-form ref="loginForm" :model="formInfo" :rules="loginRules" label-width="50px" class="login-form">
+                <h2 class="login-title" style="margin-bottom: 5px;">登录OneShot社区</h2>
+                <p style="margin-bottom: 50px;">特约供稿人 & 共同开发者的用户无需注册，可直接登录</p>
+                <el-form-item prop="email" label="邮箱" :message="errorMessage">
+                    <el-input v-model="formInfo.email"></el-input>
+                </el-form-item>
 
-            <el-form-item prop="password" label="密码">
-                <el-input type="password" v-model="formInfo.password"></el-input>
-                <router-link to="/forget-password">忘记密码</router-link>
-            </el-form-item>
+                <el-form-item style="margin-top: 30px;margin-bottom: 30px;" prop="password" label="密码">
+                    <el-input type="password" v-model="formInfo.password"></el-input>
+                    <router-link to="/forget-password">
+                        <p style="margin-left: 4px;">忘记密码</p>
+                    </router-link>
+                </el-form-item>
 
-            <div class="form-buttons">
-                <div>
-                    <el-button type="primary" @click="login">登录</el-button>
+                <div class="form-buttons">
+                    <div>
+                        <el-button type="primary" @click="login" style="margin-left:53px;width:255px;height:40px
+                    margin-top:30px">
+                            <p style="font-weight: bold;font-size: 20px;">登录</p>
+                        </el-button>
+                        <p style="font-size: 12px;margin-left: 83px;margin-top: 20px;">
+                            登录即代表同意服务协议和隐私政策
+                        </p>
+                    </div>
+
                 </div>
                 <div>
-                    <router-link to="/register">注册</router-link>
+                    <router-link to="/register">
+                        <p style="font-size: 12px;margin-top: 50px;margin-left:121px">还没有账号？点击注册</p>
+                    </router-link>
                 </div>
-            </div>
-        </el-form>
+            </el-form>
+        </div>
     </div>
 </template>
   
@@ -30,7 +46,7 @@ const { proxy } = getCurrentInstance();
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
-import { ElMessage } from 'element-plus';
+import { ElMessage, localeContextKey } from 'element-plus';
 
 import axios from '../utils/request';
 import { resolvedObj } from '../utils/request';
@@ -76,9 +92,12 @@ const login = () => {
                     //如果token存在，说明登录成功，则跳转入shots网页，否则
                     if (token !== undefined) {
                         localStorage.removeItem('token');
-
+                        if (localStorage.getItem('id') !== null)
+                            localStorage.removeItem('id')
+                        if (localStorage.getItem('username') !== null)
+                            localStorage.removeItem('username');
                         localStorage.setItem('token', token);
-                        console.log("陈工")
+                        console.log("陈工");
                         console.log(token);
                         ElMessage.success("登录成功");
                         router.replace({
@@ -108,19 +127,39 @@ const login = () => {
     font-weight: bold;
 }
 
+.image-container {
+    background-image: url(../assets/images/pink.png);
+    /* background-size:cover; */
+    background-color: transparent;
+}
+
+.custom-icon {
+    width: 140px;
+    height: 40px;
+    margin-left: 30px;
+
+}
+
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    /* background-image: url(../assets/images/1.jpg); */
+    /* background-size:cover;  */
+    /* opacity: 0.5;*/
+
 }
 
 .login-form {
-    width: 400px;
+    width: 420px;
+    height: 550px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    /* 设置不透明度 */
 }
 
 .login-form h2 {

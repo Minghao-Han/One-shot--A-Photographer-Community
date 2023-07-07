@@ -1,11 +1,15 @@
 <template>
-    <Header />
+    <Header style="position: fixed;top: 0;width: 100vw;background-color: rgb(255, 255, 255); z-index: 1 ;" />
 
-    <el-container class="main-content">
+
+    <el-container class="main-content" style="margin-top: 60px;">
         <ShotsContainer :new-shots="shots">
             <template #bottom>
                 <div class="load-more" v-if="isOver" @mouseenter="loadShots">
                     <p>显示更多shot</p>
+                </div>
+                <div class="load-more" v-if="!isOver">
+                    <p>已经加载完成所有的shot</p>
                 </div>
             </template>
         </ShotsContainer>
@@ -89,6 +93,7 @@ const initAside = () => {
             console.log(resolvedObj.value);
             userInfo.value = resolvedObj.value.data;
             localStorage.setItem('username', userInfo.value.userName);
+            localStorage.setItem('id', userInfo.value.id);
         })
 }
 </script>

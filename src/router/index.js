@@ -37,7 +37,7 @@ const router = createRouter({
     {
       path: '/game',
       name: 'game',
-      component: () => import('@/views/Game.vue')
+      component: () => import('@/views/GameList.vue')
     },
     {
       path: '/game-info',
@@ -60,8 +60,8 @@ const router = createRouter({
       component: () => import('@/views/Search.Vue')
     },
     {
-      path: '/test',
-      component: () => import('@/views/createShot(1).vue')
+      path: '/upload',
+      component: () => import('@/views/UpLoadTest.vue')
     }
   ]
 })

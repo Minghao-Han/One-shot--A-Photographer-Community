@@ -1,6 +1,6 @@
 <template>
     <el-affix>
-        <el-aside width="240px">
+        <el-aside width="240px" style="margin-top: 40px; position:fixed;">
 
             <div class="aside-user-info-container">
                 <div class="aside-user-avatar">

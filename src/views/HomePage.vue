@@ -1,5 +1,5 @@
 <script setup>
-import Header from '../components/Header1.Vue';
+import Header from '../components/Header1.vue';
 
 import { onBeforeMount, onMounted, reactive, ref } from 'vue';
 import axios from '../utils/request'
@@ -14,9 +14,6 @@ function manager() {
   // 使用 window.location.href 进行跳转
   window.location.href = path;
 }
-
-
-
 
 
 </script>
@@ -479,4 +476,5 @@ export default {
 
 .carousel-wrapper {
   flex: 1;
-}</style>
+}
+</style>

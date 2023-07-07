@@ -1,7 +1,7 @@
 <template>
     <div class="personal-info-container">
         <div class="basic-info-container">
-            <el-avatar :size="100">
+            <el-avatar :size="100" :src="'https://oneshot-person.oss-cn-guangzhou.aliyuncs.com/' + infoObj.userId + '.jpg'">
 
             </el-avatar>
             <h2 style="margin: auto 10px;">{{ infoObj.userName }}</h2>
@@ -136,7 +136,8 @@ const showMyFollow = () => {
     display: flex;
     flex-direction: column;
     margin-top: 0 !important;
-    border: 1px solid #868686;
+    border-top: 3px solid #718b9c;
+
     width: 100%;
 }
 

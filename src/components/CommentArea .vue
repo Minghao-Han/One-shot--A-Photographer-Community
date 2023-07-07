@@ -14,8 +14,8 @@
                 <Comment v-for="item in props.comments">
                     <template #avatar><img src="@/assets/images/1.jpg" class="avatar"></template>
                     <template #content>{{ item.content }}</template>
-                    <template #date>{{ item.time }}</template>
-                    <template #name>{{ item.userName }}</template>
+                    <template #date></template>
+                    <template #name>{{ item.commentatorUserName }}</template>
                 </Comment>
                 <slot name="load"></slot>
             </el-scrollbar>
@@ -57,7 +57,7 @@ const postComment = () => {
         shot_id: props.shotId,
         parent_id: 0,
         receiver_id: props.posterId,
-        userName: localStorage.getItem('username')
+        commentatorUserName: localStorage.getItem('username')
     }
     const data = JSON.stringify(param);
     request.post(url, data, config)

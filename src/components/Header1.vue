@@ -31,17 +31,8 @@
                     <p class="navi-word">器材</p>
                 </el-col>
 
-                <el-col :offset="2" :span="5" class="grid-content">
-                    <el-input deep v-model="searchInfo" placeholder="你有一双发现美的眼睛" cleartable class="search-input">
-                        <template #prepend>
-                            <el-button :icon="Search" class="search-icon" />
-                        </template>
-                    </el-input>
-                </el-col>
-
 
                 <el-col :offset="9" :span="1" class="grid-content">
-
                     <el-button style="border: none;" @click="tologin">
                         <p style="font-weight: bold;font-size: 18px;">登录</p>
                     </el-button>

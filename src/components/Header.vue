@@ -16,7 +16,6 @@
                     <img src="@/assets/images/forum.png" alt="Forum" class="icon" @click="goToGame">
                     <p class="navi-word">比赛</p>
                 </el-col>
-
                 <el-col :span="1" class="grid-content navi-block">
                     <img src="@/assets/images/competition.png" alt="Competition" class="icon" @click="goToEquip">
                     <p class="navi-word">器材</p>
@@ -35,27 +34,52 @@
                 </el-col>
 
                 <el-col :offset="1" :span="1" class="grid-content">
-                    <img src="@/assets/images/userAvator.png" alt="avator" class="icon avator" @click="goToUserInfo">
+                    <img :src="'https://oneshot-person.oss-cn-guangzhou.aliyuncs.com/' + id + '.jpg'" alt="avator"
+                        class="icon avator" @click="goToUserInfo">
                 </el-col>
             </el-row>
         </el-header>
+
+        <!-- 弹出对话框，判断是否发布shot -->
+        <el-dialog v-model="centerDialogVisible" title="发布我的Shot" width="30%" align-center>
+            <span>Open the dialog from the center from the screen</span>
+            <UpLoadTest />
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="centerDialogVisible = false">取消</el-button>
+                    <el-button type="primary" @click="centerDialogVisible = false">
+                        确定
+                    </el-button>
+                </span>
+            </template>
+        </el-dialog>
     </div>
 </template>
 <script setup>
 import { Search } from "@element-plus/icons-vue"
 import { useRouter } from "vue-router";
-import { ref, reactive } from "vue";
+import { ref, reactive, defineProps, onMounted, watch } from "vue";
+import UpLoadTest from "../views/UpLoadTest.vue";
 import Tag from "./Tag.vue";
 import request from '../utils/request'
 import { resolvedObj } from "../utils/request";
 const router = useRouter();
+const centerDialogVisible = ref(false)
 
 //用来计数，动态添加tag
 const countArray = ref(new Array(1));
 
 const searchInfo = ref("");
 
+const id = ref(1);
 
+watch(() => localStorage.getItem('id'), (newValue, oldValue) => {
+    id.value = newValue;
+    console.log("id>>" + id.value);
+}, {
+    deep: true,
+    immediate: true
+})
 
 //用来记录tag的数组
 const tagArray = ref(new Array());
@@ -94,6 +118,7 @@ const goToUserInfo = () => {
 }
 
 const postShot = () => {
+    centerDialogVisible.value = true;
 }
 
 const config = {
@@ -148,6 +173,10 @@ const uploadImageToServer = id => {
     padding: 0 !important;
 }
 
+.header .navi-block:hover {
+    cursor: pointer;
+}
+
 .header .navi-block img {
     margin-top: 1vh;
 }
@@ -162,6 +191,10 @@ const uploadImageToServer = id => {
     vertical-align: center;
     display: flex;
     align-items: center;
+}
+
+.grid-content:hover {
+    cursor: pointer;
 }
 
 .header .icon {
