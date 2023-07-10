@@ -30,16 +30,7 @@ public interface LoginStateMapper {
 
 
     @Select("SELECT * from  sys_log  limit #{pageNum},  #{pageSize}")
-    @Results(id="log2", value={
-            @Result(column="logID", property="logID", id=true),
-            @Result(column="userID", property="userID"),
-            @Result(column="Log_Content", property="Log_Content"),
-            @Result(column="IP_Address", property="IP_Address"),
-            @Result(column="OS", property="OS"),
-            @Result(column="IE", property="IE"),
-            @Result(column="CreateDate", property="CreateDate"),
-            @Result(column="Remark", property="Remark")
-    })
+    @ResultMap("log1")
     List<LogInState> selectPage(Integer pageNum, Integer pageSize);
 
     @Select("SELECT count(*)  from sys_log ")
@@ -50,7 +41,7 @@ public interface LoginStateMapper {
     int  deleteById(@Param("logID") Integer logID);
 
     @Update("UPDATE sys_log set logID = #{logID}, userID = #{userID},Log_Content=#{Log_Content},IP_Address=#{IP_Address}," +
-            " OS=#{OS} , IE=#{IE} , CreateDate=#{CreateDate} ,Remark=#{Remark}where logID= #{logID}")
+            " OS=#{OS} , IE=#{IE} , CreateDate=#{CreateDate} ,Remark=#{Remark} where logID= #{logID}")
     int update(LogInState logInState);
 
     @Select("select count(*) from sys_log where logID = #{logID}")

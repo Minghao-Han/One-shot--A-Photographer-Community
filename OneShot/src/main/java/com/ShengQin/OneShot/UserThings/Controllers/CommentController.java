@@ -52,29 +52,4 @@ public class CommentController {
         if (!commentVOs.isEmpty())return Result.success("获得下一页评论成功",commentVOs);
         else return Result.fail("没有更多评论");
     }
-
-    /**post*/
-    @PostMapping("/post")
-    public String makeCommentOnPost(@RequestBody Map<String,Object> requestBody,@UserId int commentator_id){
-        String content = (String) requestBody.get("content");
-        int post_id = (int) requestBody.get("post_id");
-        int parent_id = (int) requestBody.get("parent_id");
-        int receiver_id = (int) requestBody.get("receiver_id");
-        boolean serviceResult = postCommentServiceImpl.createComment(post_id,parent_id,commentator_id,content,receiver_id);
-        if (serviceResult) return Result.success("评论成功");
-        else return Result.fail("评论失败");
-    }
-    @DeleteMapping("/post")
-    public String deleteCommentOfPost(@RequestBody Map<String,Integer> requestBody){
-        int shot_id = requestBody.get("post_id");
-        int comment_id = requestBody.get("comment_id");
-        boolean serviceResult = postCommentServiceImpl.deleteComment(comment_id,shot_id);
-        if (serviceResult) return Result.success("评论成功");
-        else return Result.fail("评论失败");
-    }
-    @GetMapping("/post/{post_id}/{pageNum}")
-    public String postGetMoreComment(@PathVariable("post_id")int post_id,@PathVariable("pageNum")int pageNum){
-        List<CommentVO> commentVOs = postCommentServiceImpl.getComments(post_id,pageNum);
-        return Result.success("获得下一页评论成功",commentVOs);
-    }
 }

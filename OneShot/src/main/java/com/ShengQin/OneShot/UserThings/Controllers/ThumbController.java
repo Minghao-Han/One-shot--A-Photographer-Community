@@ -36,27 +36,4 @@ public class ThumbController {
             default -> {return Result.fail("something wrong");}
         }
     }
-    /**post*/
-    @PostMapping("/post")
-    public String postAddThumb(@RequestBody Map<String,Integer> requestBody,@UserId int thumber_id){
-        int shot_id = requestBody.get("shot_id");
-        int serviceResult = thumbService.postGiveThumb(thumber_id,shot_id);
-        switch (serviceResult){
-            case ThumbService.success -> {return Result.success("点赞成功");}
-            case ThumbService.notExist -> {return Result.fail("点赞的作品不存在");}
-            case ThumbService.operated -> {return Result.fail("已点赞过");}
-            default -> {return Result.fail("something wrong");}
-        }
-    }
-    @DeleteMapping("/post")
-    public String postCancelThumb(@RequestBody Map<String,Integer> requestBody,@UserId int thumber_id){
-        int shot_id = requestBody.get("shot_id");
-        int serviceResult = thumbService.postRevokeThumb(thumber_id,shot_id);
-        switch (serviceResult){
-            case ThumbService.success -> {return Result.success("取消点赞成功");}
-            case ThumbService.notExist -> {return Result.fail("取消点赞的作品不存在");}
-            case ThumbService.operated -> {return Result.fail("尚未点赞");}
-            default -> {return Result.fail("something wrong");}
-        }
-    }
 }

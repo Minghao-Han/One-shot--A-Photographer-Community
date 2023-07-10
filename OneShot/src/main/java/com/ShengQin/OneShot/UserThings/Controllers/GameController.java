@@ -91,11 +91,8 @@ public class GameController {
             else return Result.fail("未知错误");
         }
     }
-    @GetMapping("/entries")
-    public String getEntriesOfGame(@RequestBody Map<String,Object> requestBody){
-        if (requestBody.get("game_id")==null) return Result.fail("比赛不存在");
-        int game_id = (int) requestBody.get("game_id");
-        int pageNum = (int) requestBody.get("pageNum");
+    @GetMapping("/entries/{game_id}/{pageNum}")
+    public String getEntriesOfGame(@PathVariable("game_id") int game_id,@PathVariable("pageNum") int pageNum){
         List<GameParticipatorVO> entriesOfGame = gameParticipationService.getEntriesOf(game_id,pageNum);
         return Result.success("获取参赛作品成功",entriesOfGame);
     }

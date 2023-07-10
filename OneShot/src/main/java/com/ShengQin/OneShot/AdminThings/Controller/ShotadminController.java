@@ -25,7 +25,7 @@ public class ShotadminController {
     //用于对内容的增加与修改
     @PostMapping("/add")
     public Integer save(@RequestBody Shotadmin sa){
-        return shotadminmapper.insert(sa);
+        return shotadminservice.save(sa);
     }
 
     //查询所有shot
@@ -50,8 +50,7 @@ public class ShotadminController {
 
     //删除
     @DeleteMapping("/delete/{id}")
-    public Integer delete(@PathVariable Integer id)
-    {
+    public Integer delete(@PathVariable("id") int id) {
         return  shotadminmapper.deleteByShotId(id);
     }
 

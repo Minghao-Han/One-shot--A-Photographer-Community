@@ -12,7 +12,7 @@ public interface ManagerMapper {
 
     //插入与查找
     @Select("SELECT * FROM user")
-    @Results(id="shotMap", value={
+    @Results(id="userMap", value={
             @Result(column="id", property="id", id=true),
             @Result(column="user_name", property="userName"),
             @Result(column="personal_signature", property="personalSignature"),
@@ -22,8 +22,8 @@ public interface ManagerMapper {
     })
     List<User> findAll();
 
-    @Insert("INSERT INTO user(user_name, id,gender,personal_signature,age ) VALUES (#{user_name}, #{id}, #{gender}, " +
-            "#{personal_signature}, #{age})")
+    @Insert("INSERT INTO user(user_name, id,gender,personal_signature,age ) VALUES (#{userName}, #{id}, #{gender}, " +
+            "#{personalSignature}, #{age})")
     int insert(User managerinfo);
 
 //    @Select("SELECT * from  user  limit #{pageNum},  #{pageSize}")
@@ -48,7 +48,7 @@ public interface ManagerMapper {
     @Delete("delete from user where id= #{id}")
     int  deleteById(@Param("id") Integer id);
 
-    @Update("UPDATE user set user_name = #{user_name}, id = #{id},gender=#{gender},personal_signature=#{personal_signature}," +
+    @Update("UPDATE user set user_name = #{userName}, id = #{id},gender=#{gender},personal_signature=#{personalSignature}," +
             " age=#{age} where id= #{id}")
     int update(User user);
 

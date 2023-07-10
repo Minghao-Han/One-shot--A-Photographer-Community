@@ -303,4 +303,12 @@ END
 ;;
 delimiter ;
 
+ CREATE TRIGGER `before_insert_game_participation` BEFORE INSERT ON `game_participation` FOR EACH ROW BEGIN
+  DECLARE end_time datetime;
+  SELECT end_time INTO end_time FROM game_publish WHERE id = NEW.game_id LIMIT 1;
+  IF NEW.time >= end_time THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Time must be before end_time';
+  END IF;
+END
+
 SET FOREIGN_KEY_CHECKS = 1;
