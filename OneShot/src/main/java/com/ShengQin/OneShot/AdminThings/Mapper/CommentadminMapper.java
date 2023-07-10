@@ -19,7 +19,6 @@ public interface CommentadminMapper {
             @Result(column="commentator_id", property="commentator_id"),
             @Result(column="content", property="content"),
             @Result(column="time", property="time"),
-            @Result(column="is_read", property="is_read"),
             @Result(column="receiver_id", property="receiver_id")
     })
     List<Commentadmin> findAll();
@@ -38,7 +37,6 @@ public interface CommentadminMapper {
             @Result(column="commentator_id", property="commentator_id"),
             @Result(column="content", property="content"),
             @Result(column="time", property="time"),
-            @Result(column="is_read", property="is_read"),
             @Result(column="receiver_id", property="receiver_id")
     })
     List<Commentadmin> selectPage(Integer pageNum, Integer pageSize);
@@ -59,12 +57,12 @@ public interface CommentadminMapper {
     boolean isExist1(int id);
 
     @Insert("INSERT INTO comment_of_shot(id, inner_id,shot_id,parent_id,commentator_id,content,time" +
-            ",is_read,receiver_id) VALUES (#{id}, #{inner_id},#{shot_id},#{parent_id},#{commentator_id}," +
-            "#{content},#{time},#{is_read},#{receiver_id})")
+            ",receiver_id) VALUES (#{id}, #{inner_id},#{shot_id},#{parent_id},#{commentator_id}," +
+            "#{content},#{time},#{receiver_id})")
     int insert(Commentadmin commentadmin);
 
     @Update("UPDATE comment_of_shot set id = #{id}, inner_id = #{inner_id},shot_id=#{shot_id},parent_id=#{parent_id}," +
             " commentator_id=#{commentator_id}, content = #{content}, time = #{time}" +
-            ", is_read = #{is_read}, receiver_id = #{receiver_id} where id= #{id}")
+            ", receiver_id = #{receiver_id} where id= #{id}")
     int update(Commentadmin commentadmin);
 }

@@ -23,11 +23,11 @@ AdminGameInfoMapper adminGameInfoMapper;
 @Autowired
 GameInfoService gameInfoService;
 
-@PostMapping("/addorupdate")
-    public Integer save(@RequestBody GameInfo gameInfo)
-{
+    @PostMapping("/addorupdate")
+    public Integer save(@RequestBody GameInfo gameInfo) {
+    System.out.println(gameInfo);
     return gameInfoService.save(gameInfo);
-}
+    }
 
 //获取所有比赛信息
     @GetMapping("/select")

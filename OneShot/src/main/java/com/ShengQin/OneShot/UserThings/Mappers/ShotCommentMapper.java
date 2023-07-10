@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface ShotCommentMapper {
 
-    @Insert("insert into comment_of_shot(inner_id,shot_id,parent_id,commentator_id,content,receiver_id) values(#{innerID},#{shotId},#{parentId},#{commentatorId},#{content},#{receiverId})")
+    @Insert("insert into comment_of_shot(inner_id,shot_id,parent_id,commentator_id,content) values(#{innerID},#{shotId},#{parentId},#{commentatorId},#{content}")
     @SelectKey(statement = "SELECT last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     public void insert(Comment comment);
 

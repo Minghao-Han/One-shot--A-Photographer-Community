@@ -15,7 +15,7 @@ import java.util.Map;
 public class SearchController {
     @Autowired
     FuzzySearchService fuzzySearchService;
-    @GetMapping
+    @PostMapping
     public String searchShots(@UserId int user_id,@RequestBody Map<String,Object> requestMap){
         String searchContent = (String) requestMap.get("searchContent");
         System.out.println(searchContent+"searchContent");

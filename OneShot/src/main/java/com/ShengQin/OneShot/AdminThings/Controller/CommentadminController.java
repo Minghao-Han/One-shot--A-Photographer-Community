@@ -34,7 +34,7 @@ public class CommentadminController {
     //删
 
     @DeleteMapping("/delete/{id}")
-    public Integer delete(@PathVariable int id) {
+    public Integer delete(@PathVariable("id") int id) {
         return commentadminMapper.deleteById(id);
     }
 
