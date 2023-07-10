@@ -30,7 +30,7 @@ public class ShotCommentServiceImpl implements CommentService {
         else {
             Integer innerID = shotCommentMapper.getNewInnerID(shot_id);//获取该评论在这条shot中的id，即innerID
             if (innerID==null) innerID=1;
-            Comment newComment = new Comment((int)innerID,shot_id,parent_id,commentator_id,content);
+            Comment newComment = new Comment((int)innerID,shot_id,parent_id,commentator_id,content,receiver_id);
             shotCommentMapper.insert(newComment);
             int references_id = newComment.getId();
             messageMapper.createMessage("comment_of_shot",references_id,receiver_id);

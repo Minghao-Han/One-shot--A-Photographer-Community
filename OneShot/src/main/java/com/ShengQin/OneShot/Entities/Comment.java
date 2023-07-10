@@ -18,12 +18,14 @@ public class Comment {
     private int commentatorId;
     private Date time;
     private String content;
+    private int receiverId;
 
-    public Comment(int innerID, int shotId, int parentId, int commentatorId, String content) {
+    public Comment(int innerID, int shotId, int parentId, int commentatorId, String content,int receiverId) {
         this.innerID = innerID;
         this.shotId = shotId;
         this.parentId = parentId;
         this.commentatorId = commentatorId;
         this.content = content;
+        this.receiverId = receiverId;
     }
 }
