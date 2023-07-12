@@ -1,7 +1,9 @@
 import axios from "axios";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import querystring from 'querystring';
 
+const router = useRouter();
 //获取response的信息
 export const resolvedObj = ref();
 
@@ -34,11 +36,11 @@ const errorHandle = (status, info) => {
 // 网络公共配置
 const instance = axios.create({
     timeout: 5000,
-
-    headers: {
-        'Content-Type': 'application/json',
-        'token': localStorage.getItem('token')
-    }
+    baseURL: 'http://localhost:8080'
+    // headers: {
+    //     'Content-Type': 'application/json',
+    //     'token': localStorage.getItem('token')
+    // }
 })
 
 // 拦截器
@@ -60,6 +62,9 @@ instance.interceptors.request.use(
 // 接收数据之前
 instance.interceptors.response.use(
     response => {
+        if (response.data.message === "token验证未通过") {
+            router.push("/login");
+        }
         response.status === 200 ? Promise.resolve(response).then(resolvedObj.value = response.data) : Promise.reject(response)
     },
     error => {

@@ -1,31 +1,37 @@
 <template>
   <div class="Header">
-<Header /></div>
+    <Header />
+  </div>
 
   <div class="container">
     <el-menu mode="horizontal" class="menu" @select="handleMenuSelect">
-      <el-menu-item index="history" class="menu-item"><p style="font-weight: bold;">历史比赛</p></el-menu-item>
-      <el-menu-item index="ongoing" class="menu-item"><p style="font-weight: bold;">进行中的比赛</p></el-menu-item>
+      <el-menu-item index="history" class="menu-item">
+        <p style="font-weight: bold;">历史比赛</p>
+      </el-menu-item>
+      <el-menu-item index="ongoing" class="menu-item">
+        <p style="font-weight: bold;">进行中的比赛</p>
+      </el-menu-item>
     </el-menu>
 
     <div class="content">
-      <el-card v-for="game in state.games.value" :key="game.id">
+      <el-card v-for="game in state.games.value" :key="game.id" @click="goToGameDetail">
         <div style="display: flex; flex-direction: row;">
-   
-    <div style="flex: 1;">
-        <div class="game-title">{{ game.title }}</div>
-        <div class="game-content">{{ game.content }}</div>
-        <div class="game-info">
-          <div>起始时间: {{ formatDate(game.start_time) }}</div>
-          <div>结束时间: {{ formatDate(game.end_time) }}</div>
-          <div v-if="game.winner">获奖者ID: {{ game.winner }}</div>
-        </div>
-        </div>
-         <div style="flex: 0 0 auto;">
-          <div style="width:250px;height: 50px;margin-bottom: 30px;">
-      <img src="src/assets/images/2.jpg" alt="fengmianphoto">
-    </div>
-    </div>
+
+          <div style="flex: 1;">
+            <div class="game-title">{{ game.title }}</div>
+            <div class="game-content">{{ game.content }}</div>
+            <div class="game-info">
+              <div>起始时间: {{ formatDate(game.start_time) }}</div>
+              <div>结束时间: {{ formatDate(game.end_time) }}</div>
+              <div v-if="game.winner">获奖者ID: {{ game.winner }}</div>
+            </div>
+          </div>
+          <div style="flex: 0 0 auto;">
+            <div style="">
+              <img :src="'https://oneshot-game.oss-cn-guangzhou.aliyuncs.com/' + game.id + '.jpg'" alt="fengmianphoto"
+                style="object-fit: contain;width:350px;height: 250px">
+            </div>
+          </div>
         </div>
       </el-card>
 
@@ -33,6 +39,18 @@
       <div v-if="!hasMore" class="end">已加载全部比赛信息</div>
     </div>
   </div>
+
+  <el-dialog v-model="centerDialogVisible" title="Warning" width="30%" align-center>
+    <span>Open the dialog from the center from the screen</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="centerDialogVisible = false">
+          Confirm
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 
   <!-- <div>
     <uploadtest/>
@@ -42,23 +60,23 @@
       <input type="submit" value="上传">
     </form> -->
 
-    <!-- <form action="/imgtest/upimg" method="post" enctype="multipart/form-data">
+  <!-- <form action="/imgtest/upimg" method="post" enctype="multipart/form-data">
       <input ref="fileInput2" type="file" name="file" @change="handleFileChange($event, 'fileInput2')">
       <input type="submit" value="上传">
     </form> -->
-    <!-- <div>
+  <!-- <div>
    
     <input type="file" @change="handleFileChange">
     <button @click="uploadFile">上传</button>
   </div>
-  </div> --> 
+  </div> -->
 </template>
 
 <script>
 import Header from '../components/Header.Vue';
-import { reactive, onMounted,ref } from 'vue'
+import { reactive, onMounted, ref } from 'vue'
 import { ElMenu, ElMenuItem, ElCard } from 'element-plus'
-import axios  from '../utils/request'
+import axios from '../utils/request'
 import { resolvedObj } from '../utils/request'
 import uploadtest from './uploadtest.vue';
 
@@ -67,13 +85,13 @@ const fileInput2 = ref(null);
 
 const handleFileChange = (event, refName) => {
   const inputElm = refName === 'fileInput1' ? fileInput1.value : fileInput2.value;
-  
+
   // 处理文件选择事件的逻辑
   const file = event.target.files[0];
   if (file) {
     // 执行你的逻辑，例如上传文件等
   }
-  
+
   // 清空文件输入框的值
   if (inputElm) {
     inputElm.value = '';
@@ -91,7 +109,10 @@ export default {
     ElMenuItem,
     ElCard,
   },
-  methods:{
+  methods: {
+    goToGameDetail() {
+
+    },
     handleFileChange(event) {
       this.file = event.target.files[0];
     },
@@ -99,12 +120,12 @@ export default {
       const formData = new FormData();
       formData.append('file', this.file);
 
-      axios.post('http://172.20.10.2:9090/img/upimgshot', formData,
-      {
-        headers:{
-          'Content-Type':'multipart/form-data'
-        }
-      })
+      axios.post('img/upimgshot', formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
         .then(response => {
           // 处理上传成功的逻辑
         })
@@ -112,10 +133,10 @@ export default {
           // 处理上传失败的逻辑
         });
     }
-  },  setup() {
+  }, setup() {
     const state = reactive({
       games: Array, // 存储比赛信息的数组
-     
+
       page: 1, // 当前页数
       isLoading: false, // 是否正在加载
       hasMore: true, // 是否还有更多比赛信息
@@ -135,13 +156,15 @@ export default {
       // 向后端发送GET请求获取历史比赛信息
       // 使用实际的接口地址和参数
       axios
-        .get("http://localhost:9090/game/history/1",{headers: {
+        .get("/game/history/1", {
+          headers: {
             'Content-Type': 'application/json',
             'token': localStorage.getItem('token')
-        }})
+          }
+        })
         .then(response => {
-          state.games.value=new Array();
-          
+          state.games.value = new Array();
+
           const data = resolvedObj.value.data
           console.log("<<data")
           console.log(resolvedObj.value)
@@ -166,12 +189,16 @@ export default {
       // 向后端发送GET请求获取进行中的比赛信息
       // 使用实际的接口地址
       axios
-        .get("http://localhost:9090/game/ongoing",{headers: {
+        .get("/game/ongoing", {
+          headers: {
             'Content-Type': 'application/json',
             'token': localStorage.getItem('token')
-        }})
+          }
+        })
         .then(response => {
-          state.games.value=new Array();
+          console.log("response")
+          console.log(response)
+          state.games.value = new Array();
           console.log(resolvedObj.value)
           const data = resolvedObj.value.data
           console.log(data);
@@ -230,21 +257,27 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .Header {
-    position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px; /* 设置适当的高度 */
+  height: 100px;
+  /* 设置适当的高度 */
   z-index: 999;
   /* 添加其他样式 */
 }
 
 .container {
   padding: 20px;
-margin-top:80px;
+  margin-top: 80px;
 
+}
+
+.el-card:hover {
+  background-color: #999;
+  cursor: pointer;
 }
 
 .menu {
@@ -256,12 +289,7 @@ margin-top:80px;
   font-size: 24px;
 }
 
-.content {
-  margin-top: 30px;
-  width: 500px;
-  margin-left: 430px;
-  margin-top:30px
-}
+.content {}
 
 .game-title {
   font-size: 18px;
@@ -283,5 +311,15 @@ margin-top:80px;
   text-align: center;
   margin-top: 20px;
   color: #999;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  margin-bottom: 200px;
+
 }
 </style>

@@ -80,7 +80,7 @@ const login = () => {
             }
             const loginData = JSON.stringify(param);
             console.log(loginData);
-            axios.post("http://localhost:8080/login", loginData, {
+            axios.post("/login", loginData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

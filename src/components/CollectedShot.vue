@@ -21,12 +21,16 @@ const props = defineProps({
     collectShot: Object
 })
 </script>
-<style>
+<style scoped>
 .collected-shot-container {
     display: flex;
-
     align-items: center;
     height: 144px;
+}
+
+.collected-shot-container:hover {
+    background-color: rgb(181, 180, 179);
+    cursor: pointer;
 }
 
 .collected-shot-shotinfo {

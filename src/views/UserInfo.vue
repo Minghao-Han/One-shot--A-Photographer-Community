@@ -39,6 +39,15 @@
                     历史消息
                 </span>
             </el-menu-item>
+
+            <el-menu-item index="4" class="el-menu-vertical-item">
+                <el-icon>
+                    <SwitchButton />
+                </el-icon>
+                <span>
+                    退出登录
+                </span>
+            </el-menu-item>
         </el-menu>
         <div class="aside-container">
             <component :is="subComponent" />
@@ -49,10 +58,14 @@
 <script setup>
 import Header from '../components/Header.vue';
 import { ref } from 'vue';
-import { User, Star, View, Picture, Clock, Trophy } from '@element-plus/icons-vue'
+import { User, Star, View, Picture, Clock, Trophy, SwitchButton } from '@element-plus/icons-vue'
 import MyCollection from '../components/MyCollection.vue';
 import PersonalInfoInUserInfo from '../components/PersonalInfoInUserInfo.vue';
 import HistoryMessage from '../components/HistoryMessage.vue';
+import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
+
+const router = useRouter();
 
 const subComponent = ref(PersonalInfoInUserInfo);
 
@@ -68,6 +81,11 @@ const handleSelect = index => {
             break;
         case '3':
             subComponent.value = HistoryMessage;
+            break;
+        case '4':
+            localStorage.clear();
+            router.push('/login')
+            ElMessage.success("退出登录成功")
             break;
         default:
             break;

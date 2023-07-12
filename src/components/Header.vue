@@ -57,7 +57,7 @@
 <script setup>
 import { Search } from "@element-plus/icons-vue"
 import { useRouter } from "vue-router";
-import { ref, reactive, defineProps, onMounted, watch } from "vue";
+import { ref, reactive, defineProps, onMounted, watch, onBeforeUpdate } from "vue";
 import UpLoadTest from "../views/UpLoadTest.vue";
 import Tag from "./Tag.vue";
 import request from '../utils/request'
@@ -70,7 +70,11 @@ const countArray = ref(new Array(1));
 
 const searchInfo = ref("");
 
-const id = ref(1);
+const id = ref();
+const props = defineProps({
+    userId: String
+})
+
 
 watch(() => localStorage.getItem('id'), (newValue, oldValue) => {
     id.value = newValue;
@@ -83,12 +87,7 @@ watch(() => localStorage.getItem('id'), (newValue, oldValue) => {
 //用来记录tag的数组
 const tagArray = ref(new Array());
 
-const onAddTag = (tagContent) => {
-    countArray.value.push(1);
-    tagArray.value.push(tagContent);
-    console.log("tags:")
-    console.log(tagArray.value);
-}
+
 
 const form = reactive({
     title: '',
@@ -128,7 +127,7 @@ const config = {
 }
 const save = () => {
     console.log(form)
-    const url = 'http://localhost:8080/shot';
+    const url = '/shot';
     const param = {
         content: form.content,
         title: form.title,
@@ -145,7 +144,7 @@ const save = () => {
 }
 // 上传图片到服务器，id从后端返回的response中获取
 const uploadImageToServer = id => {
-    const url = "http://localhost:8080/shot"
+    const url = "/shot"
     const param = {
         shotid: id
     }
@@ -157,6 +156,7 @@ const uploadImageToServer = id => {
     display: flex;
     flex-direction: column;
     height: 75px;
+    background-color: #fff;
 }
 
 .header .header-row {

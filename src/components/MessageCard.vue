@@ -2,7 +2,7 @@
     <div class="message-card-container">
         <div class="message-card-info">
             <div class="message-title">
-                <h2>{{ messageObj.messageType }}</h2>
+                <h2>{{ messageTypeInCn }}</h2>
             </div>
             <div class="message-content">
                 <p style="text-indent: 2em;">{{ messageObj.messageText }}</p>
@@ -20,6 +20,13 @@ import { Message } from '@element-plus/icons-vue';
 import { defineProps, ref, watch, computed } from 'vue';
 const props = defineProps({
     message: Object
+})
+
+const messageTypeInCn = computed(() => {
+    if (messageObj.value.messageType === 'comment_of_shot')
+        return '评论'
+    else if (messageObj.value.messageType === 'thumb_of_shot')
+        return '点赞'
 })
 
 const messageObj = ref({});

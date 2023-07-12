@@ -48,6 +48,6 @@ const getNewCollection = page => {
     display: flex;
     flex-direction: column;
     padding: 25px;
-    padding-bottom: 0px;
+    padding-bottom: 25px;
 }
 </style>

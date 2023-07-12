@@ -1,5 +1,5 @@
 <script setup>
-import Header from '../components/Header.Vue';
+import Header from '../components/Header.vue';
 
 import { onBeforeMount, onMounted, reactive, ref } from 'vue';
 import axios from '../utils/request'
@@ -20,6 +20,12 @@ const form = reactive({
 
 }
 );
+const config = {
+    headers: {
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('token')
+    }
+}
 
 const targetArray = ref()
 
@@ -29,7 +35,7 @@ const showForm = ref(false);
 const showForm1 = ref(false);// 控制表单的显示与隐藏
 
 function conHou() {
-    axios.get("http://localhost:9090/camera/get?name=" + camera1.value.name).then(res => {
+    axios.get("/camera/get?name=" + camera1.value.name, config).then(res => {
         console.log(resolvedObj.value)
 
         targetArray.value = resolvedObj.value;
@@ -48,7 +54,7 @@ function conHou() {
 }
 
 function pailideshow() {
-    axios.get("http://localhost:9090/instantcamera/get?name=" + pailide2.value.name).then(res => {
+    axios.get("/get?name=" + pailide2.value.name, config).then(res => {
         console.log(resolvedObj.value)
 
         targetArray.value = resolvedObj.value;
@@ -757,4 +763,5 @@ font-family:微软雅黑">
     /* 设置适当的高度 */
     z-index: 999;
     /* 添加其他样式 */
-}</style>
+}
+</style>

@@ -29,7 +29,7 @@ const config = {
 
 const getHistoryMessage = () => {
     messageList.value = new Array();
-    const url = 'http://localhost:8080/message/history/5';
+    const url = 'message/history/5';
     request.get(url, config)
         .then(() => {
             console.log(resolvedObj.value);

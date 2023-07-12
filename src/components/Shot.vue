@@ -246,6 +246,7 @@ const collect = () => {
     }
 }
 
+//关注
 const follow = () => {
     const param = {
         user_id: shotObj.value.user_id

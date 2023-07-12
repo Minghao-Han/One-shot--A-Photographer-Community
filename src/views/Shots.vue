@@ -1,5 +1,6 @@
 <template>
-    <Header style="position: fixed;top: 0;width: 100vw;background-color: rgb(255, 255, 255); z-index: 1 ;" />
+    <Header style="position: fixed;top: 0;width: 100vw;background-color: rgb(255, 255, 255); z-index: 1 ;"
+        :user-id="userInfo.id" />
 
 
     <el-container class="main-content" style="margin-top: 60px;">
@@ -48,7 +49,7 @@ const config = {
 }
 
 //获取最初的shot
-onMounted(() => {
+onBeforeMount(() => {
     console.log("1");
     shotsPage();
     //更新侧边栏
@@ -63,7 +64,7 @@ const loadShots = () => {
 
 //请求一页shots
 const shotsPage = () => {
-    const url = "http://localhost:8080/shotBrowse/" + pageNum.value;
+    const url = "/shotBrowse/" + pageNum.value;
     axios.get(url, config)
         .then(response => {
             if (resolvedObj.value.code === "500") {
@@ -87,7 +88,7 @@ const shotsPage = () => {
 }
 
 const initAside = () => {
-    const url = "http://localhost:8080/userInfo";
+    const url = "/userInfo";
     axios.get(url, config)
         .then(response => {
             console.log(resolvedObj.value);

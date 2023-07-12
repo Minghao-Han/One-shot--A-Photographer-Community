@@ -14,6 +14,13 @@
       <input type="text" v-model="title" placeholder="请输入图片的标题" />
       <!-- 假设你有一个input元素，用来输入图片的content -->
       <input type="text" v-model="content" placeholder="请输入图片的内容" />
+      <div>
+        <p>在下方选择标签:</p>
+      </div>
+
+      <div class="tag-container">
+        <Tag v-for="tag in countArray" @add-tag="onAddTag" />
+      </div>
       <input type="file" @change="handleFileChange">
       <button @click="upLoad">上传</button>
     </div>
@@ -21,7 +28,7 @@
 </template>
 
 <script>
-import Header from '../components/Header.Vue';
+import Header from '../components/Header.vue';
 import { reactive, onMounted, ref } from 'vue'
 import { ElMenu, ElMenuItem, ElCard, ElMessage } from 'element-plus'
 import request from '../utils/request'
@@ -59,7 +66,10 @@ export default {
     return {
       file: null,
       title: "",
-      content: ""
+      content: "",
+      countArray: new Array(1),
+      tagArray: new Array(),
+
     };
   },
   components: {
@@ -71,13 +81,19 @@ export default {
     handleFileChange(event) {
       this.file = event.target.files[0];
     },
+    onAddTag(tagContent) {
+      this.countArray.push(1);
+      this.tagArray.push(tagContent);
+      console.log("tags:")
+      console.log(this.tagArray);
+    },
     uploadFile(id) {
       const formData = new FormData();
       formData.append('file', this.file);
       // formData.append('title', this.title);
       // formData.append('content', this.content);
 
-      request.post('http://localhost:8080/img/upimgshot/' + id, formData,
+      request.post('/img/upimgshot/' + id, formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -92,14 +108,16 @@ export default {
         });
     },
     upLoad() {
-      const url = 'http://localhost:8080/shot';
+      const url = '/shot';
       const param = {
         title: this.title,
-        content: this.content
+        content: this.content,
+        tags: this.tagArray
       }
 
       const data = JSON.stringify(param);
-
+      console.log("发送的shot")
+      console.log("data")
       request.post(url, data, config)
         .then(() => {
           console.log(resolvedObj.value.data);
@@ -112,4 +130,16 @@ export default {
 }
 </script>
 
-<style></style>
+
+
+<style scoped>
+.tag-container {
+  display: flex;
+  flex-direction: row;
+  padding: 6px;
+  padding-left: 0;
+  align-items: center;
+  justify-content: start;
+  margin: 15px;
+}
+</style>
